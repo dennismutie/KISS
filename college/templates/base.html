@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KISS College | Kenya Institute of Social Sciences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .nav-link { transition: all 0.2s ease; }
+    .nav-link:hover { color: #f3e8ff; transform: translateY(-1px); }
+    .dropdown-content { display: none; }
+    .dropdown:hover .dropdown-content { display: block; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Top Bar -->
+  <div class="bg-red-700 text-white text-xs py-2.5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-1">
+        <a href="tel:0741958940" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0741 958 940
+        </a>
+        <a href="tel:0726580464" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0726 580 464
+        </a>
+        <a href="mailto:kissje2009@gmail.com" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope"></i> kissje2009@gmail.com
+        </a>
+      </div>
+      <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
+         target="_blank" class="hover:text-gray-200 flex items-center gap-2">
+        <i class="fa-brands fa-facebook text-lg"></i>
+        <span class="hidden sm:inline">Facebook</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="bg-red-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5">
+      <div class="flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="home.html" class="flex items-center gap-3">
+          <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-12 w-auto">
+          <div>
+            <span class="text-white text-2xl font-bold tracking-tight">KISS</span>
+            <p class="text-red-200 text-xs leading-none">Kenya Institute of Social Sciences</p>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-white font-medium">
+
+          <a href="home.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About Us</a>
+
+          <!-- Programs Dropdown -->
+          <div class="relative group dropdown">
+            <a href="programs.html" class="nav-link flex items-center gap-1">
+              Programs <i class="fa-solid fa-chevron-down text-xs"></i>
+            </a>
+            <div class="dropdown-content absolute bg-white text-gray-800 shadow-xl rounded-2xl py-4 w-72 mt-3 z-50">
+              <a href="programs.html#computing" class="block px-6 py-3 hover:bg-gray-100">School of Computing & Engineering</a>
+              <a href="programs.html#health" class="block px-6 py-3 hover:bg-gray-100">School of Health Sciences</a>
+              <a href="programs.html#business" class="block px-6 py-3 hover:bg-gray-100">School of Business Studies</a>
+              <a href="programs.html#hospitality" class="block px-6 py-3 hover:bg-gray-100">School of Hospitality & Tourism</a>
+              <a href="programs.html#beauty" class="block px-6 py-3 hover:bg-gray-100">School of Beauty & Fashion</a>
+              <a href="programs.html#social" class="block px-6 py-3 hover:bg-gray-100">School of Social Sciences</a>
+            </div>
+          </div>
+
+          <!-- Short Courses Dropdown -->
+          <div class="relative group dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Short Courses <i class="fa-solid fa-chevron-down text-xs"></i>
+            </a>
+            <div class="dropdown-content absolute bg-white text-gray-800 shadow-xl rounded-2xl py-4 w-64 mt-3 z-50">
+              <a href="shortcourses.html" class="block px-6 py-3 hover:bg-gray-100">All Short Courses</a>
+              <a href="shortcourses.html#computer" class="block px-6 py-3 hover:bg-gray-100">Computer Packages & ICDL</a>
+              <a href="shortcourses.html#design" class="block px-6 py-3 hover:bg-gray-100">Web & Graphic Design</a>
+              <a href="shortcourses.html#beauty" class="block px-6 py-3 hover:bg-gray-100">Beauty & Nail Tech</a>
+            </div>
+          </div>
+
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="contact.html" class="nav-link">Contact Us</a>
+        </div>
+
+        <!-- Apply Button -->
+        <a href="admissions.html"
+           class="bg-white text-red-700 hover:bg-red-100 px-8 py-3 rounded-2xl font-semibold transition text-sm">
+          Apply Now
+        </a>
+
+        <!-- Mobile Menu Button (you can enhance later) -->
+        <button class="md:hidden text-white text-3xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== PAGE CONTENT GOES HERE ==================== -->
+  <!-- For Home page → paste your hero, search, news, etc. here -->
+  <!-- For Programs page → paste your programs content here -->
+
+<!-- Improved Footer - 5 Columns with Embedded Google Maps -->
+<!-- Improved Footer - 5 Columns with Interactive Google Maps -->
+
+<footer class="bg-blue-950 text-gray-300 pt-16 pb-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-5 gap-10">
+
+     <!-- Column 1: Logo Centered at Top -->
+<div class="flex flex-col items-center text-center">
+
+  <!-- Large Circular Logo -->
+  <div class="w-25 h-20  flex items-center justify-center p-4 shadow-2xl mb-6">
+    <img src="../static/images/logo.jpg"
+         alt="KISS Logo"
+         class="h-32 w-auto drop-shadow-md">
+  </div>
+
+  <!-- Institute Name -->
+<!--  <div class="mb-2">-->
+<!--    <span class="text-white text-5xl font-bold tracking-tighter">KISS</span>-->
+<!--  </div>-->
+
+  <!-- Full Institute Name -->
+  <p class="text-red-400 text-xl font-medium tracking-wide mb-6">
+    Kenya Institute of Social Sciences
+  </p>
+
+  <!-- Tagline -->
+ <p class="text-sm leading-relaxed">
+            Transforming lives through quality education and practical skills.<br>
+            My Skills – My Future
+          </p>
+          <p class="text-xs mt-4 text-gray-400">TVETA Registered • NITA Accredited</p>
+</div>
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Quick Links</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+          <li><a href="programs.html" class="hover:text-white transition">Our Programs</a></li>
+          <li><a href="shortcourses.html" class="hover:text-white transition">Short Courses</a></li>
+          <li><a href="admissions.html" class="hover:text-white transition">Admissions</a></li>
+          <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+          <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Campuses -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Our Campuses</h4>
+        <ul class="space-y-4 text-sm">
+          <li>
+            <strong class="text-white">Machakos Campus</strong><br>
+            <span class="text-gray-400">Ngwatanio Building, Next to Lau Guest House,<br>Opposite KWFT Bank</span>
+          </li>
+          <li>
+            <strong class="text-white">Mlolongo Campus</strong><br>
+            <span class="text-gray-400">Unaitas Building, Along Mombasa Road</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+    <h4 class="text-white font-semibold mb-6 text-lg">Get In Touch</h4>
+    <div class="space-y-4 text-sm">
+        <div class="flex gap-3">
+            <i class="fa-solid fa-phone mt-1 text-red-400"></i>
+            <div class="flex flex-col">
+                <a href="tel:0741958940" class="hover:text-white">0741 958 940</a>
+                <a href="tel:0726580464" class="hover:text-white">0726 580 464</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope text-red-400"></i>
+            <a href="mailto:kissje2009@gmail.com" class="hover:text-white">kissje2009@gmail.com</a>
+        </div>
+
+        <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-2xl text-white text-sm font-medium mt-3 transition-transform hover:scale-105">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+
+        <div class="mt-4">
+            <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
+               target="_blank"
+               class="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 font-medium animate-pulse-slow">
+                <i class="fa-brands fa-facebook text-xl"></i>
+                <span>Follow us on Facebook</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom Animation for the Facebook Link */
+@keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+.animate-pulse-slow {
+    animation: pulse-slow 2s infinite ease-in-out;
+}
+</style>
+      <!-- Column 5: Interactive Google Map -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Visit Our Campus</h4>
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-700">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.85!2d37.2634!3d-1.5177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f8181bfbc2027%3A0x282a651d23750e0b!2sKenya%20Institute%20of%20Social%20Sciences!5e0!3m2!1sen!2ske!4v1710000000000"
+            width="100%"
+            height="240"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Kenya+Institute+of+Social+Sciences+Machakos"
+           target="_blank"
+           class="mt-4 inline-flex items-center gap-2 text-sm text-red-400 hover:text-red-300 transition">
+          <i class="fa-solid fa-directions"></i>
+          <span>Get Directions</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar - Larger & More Visible -->
+    <div class="border-t border-gray-800 mt-16 pt-10">
+      <div class="text-center">
+        <p class="text-gray-300 text-base font-medium">
+          © 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved.
+        </p>
+        <p class="text-red-400 text-sm mt-3 font-medium">
+<!--          TVETA Registered • NITA Accredited • Empowering Kenya Through Skills-->
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="fixed bottom-6 left-6 z-50">
+    <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
+       target="_blank"
+       class="flex items-center justify-center w-14 h-14 bg-green-600 text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+</div>
+
+<div id="backToTop" class="fixed bottom-6 right-6 z-50 cursor-pointer opacity-0 invisible transition-all duration-300 translate-y-10">
+    <div class="relative flex items-center justify-center w-14 h-14 group">
+        <svg class="absolute transform -rotate-90" width="56" height="56">
+            <circle
+                cx="28"
+                cy="28"
+                r="24"
+                stroke="currentColor"
+                stroke-width="3"
+                fill="transparent"
+                class="text-gray-200"
+            />
+            <circle
+                id="progressCircle"
+                cx="28"
+                cy="28"
+                r="24"
+                stroke="currentColor"
+                stroke-width="3"
+                fill="transparent"
+                stroke-dasharray="150.8"
+                stroke-dashoffset="150.8"
+                class="text-green-600 transition-all duration-150 ease-out"
+                stroke-linecap="round"
+            />
+        </svg>
+        <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md group-hover:bg-gray-50">
+            <i class="fa-solid fa-arrow-up text-green-600 text-lg"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    const backToTopBtn = document.getElementById('backToTop');
+    const progressCircle = document.getElementById('progressCircle');
+    const radius = progressCircle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    // Set initial dasharray
+    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = scrollTop / scrollHeight;
+
+        // Update Progress Circle
+        const offset = circumference - (scrollPercentage * circumference);
+        progressCircle.style.strokeDashoffset = offset;
+
+        // Show/Hide Button
+        if (scrollTop > 300) {
+            backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-10');
+            backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-10');
+            backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+    });
+
+    // Scroll to Top Click Event
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+</body>
+</html>

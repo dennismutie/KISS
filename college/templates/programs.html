@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs & Courses | KISS College</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .program-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../static/images/graduation2.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .school-header {
+      transition: all 0.3s ease;
+    }
+    .school-header:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 16px 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- HERO BANNER -->
+  <section class="program-hero h-screen flex items-center justify-center text-white text-center relative">
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-6">
+        <span class="text-yellow-300 text-sm font-semibold tracking-widest">K.I.S.S COLLEGE</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-none mb-6">Our Programs</h1>
+      <p class="text-2xl md:text-3xl font-light max-w-2xl mx-auto">
+        Practical, industry-aligned courses designed to turn your skills into your destiny
+      </p>
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="#all-schools"
+           class="bg-red-600 hover:bg-red-700 px-10 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 transition">
+          Explore All Schools
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="admissions.html"
+           class="border-2 border-white hover:bg-white hover:text-red-700 px-10 py-4 rounded-2xl font-semibold text-lg transition">
+          Apply Now – Intake Open
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <i class="fa-solid fa-chevron-down text-4xl"></i>
+    </div>
+  </section>
+
+  <!-- ALL SCHOOLS SECTION -->
+  <section id="all-schools" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Schools &amp; Programs</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        TVETA-accredited courses across 8 professional schools.
+        From certificates to diplomas — built for real-world success.
+      </p>
+    </div>
+
+    <!-- SCHOOL 1 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-blue-700 to-blue-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-blue-700 rounded-2xl flex items-center justify-center text-3xl">💻</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Computing &amp; Engineering</h3>
+          <p class="text-blue-100">Technology that powers the future</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Electrical &amp; Electronic Engineering</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Electrical Installation</td><td>Certificate / Artisan</td><td class="text-center">2 Years / 1 Year</td></tr>
+            <tr><td>Plumbing, Welding &amp; Fabrication</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>Computer Programming &amp; Graphics</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>ICT &amp; IT</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 2 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-red-700 to-red-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-red-700 rounded-2xl flex items-center justify-center text-3xl">🩺</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Health &amp; Applied Sciences</h3>
+          <p class="text-red-100">Caring for communities, saving lives</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Peri-operative Theatre Technology</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Nursing Assistant / Caregiving</td><td>Certificate</td><td class="text-center">1 Year</td></tr>
+            <tr><td>Nutrition &amp; Dietetics</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Medical Engineering</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Health Records &amp; IT</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Community Health / Applied Biology</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>HIV Testing &amp; Counselling</td><td>Short Course</td><td class="text-center">6 Months</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 3 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-amber-600 to-yellow-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-amber-700 rounded-2xl flex items-center justify-center text-3xl">💼</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Business Studies</h3>
+          <p class="text-amber-100">Building tomorrow’s leaders and entrepreneurs</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Business Management &amp; Administration</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Human Resource Management</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Sales &amp; Marketing</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Accounting &amp; Finance</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Banking &amp; Public Relations</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 4 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-emerald-700 to-teal-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-emerald-700 rounded-2xl flex items-center justify-center text-3xl">🍽️</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Hospitality &amp; Tourism</h3>
+          <p class="text-emerald-100">Hospitality that creates unforgettable experiences</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Catering &amp; Hospitality Management</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Food &amp; Beverage Production</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>Housekeeping &amp; Accommodation</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>Tourism Management</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Bakery Technology &amp; French</td><td>Short Course</td><td class="text-center">6–12 Months</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 5 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-pink-600 to-rose-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-pink-700 rounded-2xl flex items-center justify-center text-3xl">💇‍♀️</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Beauty &amp; Fashion Design</h3>
+          <p class="text-pink-100">Creativity meets professionalism</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Beauty Therapy &amp; Cosmetology</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+            <tr><td>Hairdressing &amp; Barbering</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>Nail Technology &amp; Manicure &amp; Pedicure</td><td>Short Course</td><td class="text-center">6–12 Months</td></tr>
+            <tr><td>Fashion Design &amp; Textile Technology</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 6 -->
+    <div class="mb-20">
+      <div class="school-header bg-gradient-to-r from-purple-700 to-indigo-600 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-purple-700 rounded-2xl flex items-center justify-center text-3xl">🤝</div>
+        <div>
+          <h3 class="text-3xl font-bold">School of Social Sciences &amp; Community Development</h3>
+          <p class="text-purple-100">Building stronger communities</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-left font-semibold text-gray-700">Level</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Social Work &amp; Community Development</td><td>Diploma</td><td class="text-center">3 Years</td></tr>
+            <tr><td>Criminology &amp; Disaster Management</td><td>Certificate</td><td class="text-center">2 Years</td></tr>
+            <tr><td>ECDE (Early Childhood Development)</td><td>Certificate / Diploma</td><td class="text-center">2–3 Years</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SHORT COURSES -->
+    <div>
+      <div class="school-header bg-gradient-to-r from-gray-800 to-gray-700 text-white rounded-3xl px-8 py-6 flex items-center gap-6 mb-8">
+        <div class="w-12 h-12 bg-white text-gray-700 rounded-2xl flex items-center justify-center text-3xl">⚡</div>
+        <div>
+          <h3 class="text-3xl font-bold">Short &amp; Professional Courses</h3>
+          <p class="text-gray-200">Quick skills. Immediate impact.</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-3xl shadow-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b">
+              <th class="text-left font-semibold text-gray-700">Course</th>
+              <th class="text-center font-semibold text-gray-700">Duration</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-gray-700">
+            <tr><td>Computer Packages &amp; ICDL</td><td class="text-center">3–6 Months</td></tr>
+            <tr><td>Web Design &amp; Graphic Design</td><td class="text-center">6 Months</td></tr>
+            <tr><td>CISCO &amp; Networking</td><td class="text-center">6 Months</td></tr>
+            <tr><td>Sign Language &amp; French</td><td class="text-center">3 Months</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="bg-red-700 py-16 text-white">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
+      <p class="text-2xl mb-8">January • May • September Intakes are open</p>
+      <a href="admissions.html" class="inline-block bg-white text-red-700 hover:bg-red-100 px-12 py-5 rounded-3xl font-semibold text-xl transition">
+        Apply Today – It’s Your Time
+      </a>
+    </div>
+  </div>
+<script>
+// Auto-scroll to searched course when coming from home
+window.addEventListener('load', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchTerm = urlParams.get('search');
+
+  if (searchTerm) {
+    // You can enhance this later to highlight the matching row
+    console.log('Searching for:', searchTerm);
+    // Optional: Scroll to top of programs or specific section
+    document.getElementById('all-schools').scrollIntoView({ behavior: 'smooth' });
+  }
+});
+</script>
+</body>
+</html>

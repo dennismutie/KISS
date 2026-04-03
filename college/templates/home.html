@@ -1,0 +1,1221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KISS Kenya Institute of Social Sciences | My Skills My Destiny</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .star { color: #fbbf24; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .nav-link { transition: all 0.2s ease; }
+    .nav-link:hover { color: #f3e8ff; transform: translateY(-1px); }
+    .dropdown-content { display: none; }
+    .dropdown:hover .dropdown-content { display: block; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+   <!-- Top Bar -->
+  <div class="bg-red-700 text-white text-xs py-2.5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-1">
+        <a href="tel:0741958940" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0741 958 940
+        </a>
+        <a href="tel:0726580464" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0726 580 464
+        </a>
+        <a href="mailto:kissje2009@gmail.com" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope"></i> kissje2009@gmail.com
+        </a>
+      </div>
+      <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
+         target="_blank" class="hover:text-gray-200 flex items-center gap-2">
+        <i class="fa-brands fa-facebook text-lg"></i>
+        <span class="hidden sm:inline">Facebook</span>
+      </a>
+    </div>
+  </div>
+
+   <!-- Navbar -->
+  <nav class="bg-red-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5">
+      <div class="flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="home.html" class="flex items-center gap-3">
+          <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-12 w-auto">
+          <div>
+            <span class="text-white text-2xl font-bold tracking-tight">KISS</span>
+            <p class="text-red-200 text-xs leading-none">Kenya Institute of Social Sciences</p>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-white font-medium">
+
+          <a href="home.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About Us</a>
+
+          <!-- Programs Dropdown -->
+          <div class="relative group dropdown">
+            <a href="programs.html" class="nav-link flex items-center gap-1">
+              Programs <i class="fa-solid fa-chevron-down text-xs"></i>
+            </a>
+    <div class="dropdown-content absolute bg-white text-gray-800 shadow-xl rounded-2xl py-4 w-72 mt-3 z-50">
+  <a href="{% url 'programs' %}#computing" class="block px-6 py-3 hover:bg-gray-100">School of Computing & Engineering</a>
+  <a href="{% url 'programs' %}#health" class="block px-6 py-3 hover:bg-gray-100">School of Health Sciences</a>
+  <a href="{% url 'programs' %}#business" class="block px-6 py-3 hover:bg-gray-100">School of Business Studies</a>
+  <a href="{% url 'programs' %}#hospitality" class="block px-6 py-3 hover:bg-gray-100">School of Hospitality & Tourism</a>
+  <a href="{% url 'programs' %}#beauty" class="block px-6 py-3 hover:bg-gray-100">School of Beauty & Fashion</a>
+  <a href="{% url 'programs' %}#social" class="block px-6 py-3 hover:bg-gray-100">School of Social Sciences</a>
+</div>
+          </div>
+
+          <!-- Short Courses Dropdown -->
+          <div class="relative group dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Short Courses <i class="fa-solid fa-chevron-down text-xs"></i>
+            </a>
+            <div class="dropdown-content absolute bg-white text-gray-800 shadow-xl rounded-2xl py-4 w-64 mt-3 z-50">
+              <a href="shortcourses.html" class="block px-6 py-3 hover:bg-gray-100">All Short Courses</a>
+              <a href="shortcourses.html#computer" class="block px-6 py-3 hover:bg-gray-100">Computer Packages & ICDL</a>
+              <a href="shortcourses.html#design" class="block px-6 py-3 hover:bg-gray-100">Web & Graphic Design</a>
+              <a href="shortcourses.html#beauty" class="block px-6 py-3 hover:bg-gray-100">Beauty & Nail Tech</a>
+            </div>
+          </div>
+
+          <a href="admissions.html" class="nav-link">Admissions</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="contact.html" class="nav-link">Contact Us</a>
+        </div>
+
+        <!-- Apply Button -->
+        <a href="admissions.html"
+           class="bg-white text-red-700 hover:bg-red-100 px-8 py-3 rounded-2xl font-semibold transition text-sm">
+          Apply Now
+        </a>
+
+        <!-- Mobile Menu Button (you can enhance later) -->
+        <button class="md:hidden text-white text-3xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+ <!-- HERO SECTION -->
+<section id="hero" class="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
+
+  <!-- Cycling Fixed Background Images -->
+  <div id="hero-bg"
+       class="absolute inset-0 bg-cover bg-center bg-fixed transition-all duration-1500 ease-in-out"
+       style="background: url('../static/images/graduation2.png') center/cover fixed; opacity: 1;">
+  </div>
+
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-4xl px-6">
+    <h1 id="hero-title" class="text-5xl md:text-6xl font-bold leading-tight">
+      <span class="hero-word inline-block" data-direction="left">A Factory of</span>
+      <span class="hero-word inline-block" data-direction="right">World Changers</span>
+    </h1>
+
+    <p id="hero-subtitle" class="mt-6 text-2xl font-light">
+      <span class="hero-word inline-block" data-direction="left">Empowering Kenya through</span>
+      <span class="hero-word inline-block" data-direction="right">Quality Technical &amp; Vocational Training</span>
+    </p>
+
+    <p id="hero-motto" class="mt-3 text-xl font-medium">"My Skills My Destiny"</p>
+
+    <div id="hero-buttons" class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="admissions.html"
+         class="bg-red-700 hover:bg-red-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
+        Apply Now – Intake Open
+      </a>
+      <a href="about.html"
+         class="border-2 border-white hover:bg-white hover:text-red-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300">
+        Learn More About Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VISION, MISSION & MOTTO CARDS -->
+<div class="max-w-7xl mx-auto px-6 -mt-12 relative z-20">
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- Vision - Blue Theme -->
+    <div class="bg-blue-50 border border-blue-200 rounded-3xl shadow-xl p-8 transition-all hover:shadow-2xl group">
+      <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🎯</div>
+      <h3 class="font-semibold text-2xl mb-4 text-blue-700">Our Vision</h3>
+      <p class="text-blue-800 leading-relaxed">To be the excellent Institute in provision of Quality Technical &amp; Vocational Training.</p>
+    </div>
+
+    <!-- Mission - Red Theme -->
+    <div class="bg-red-50 border border-red-200 rounded-3xl shadow-xl p-8 transition-all hover:shadow-2xl group">
+      <div class="w-14 h-14 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🚀</div>
+      <h3 class="font-semibold text-2xl mb-4 text-red-700">Our Mission</h3>
+      <p class="text-red-800 leading-relaxed">To go above and beyond in provision of Quality &amp; Relevant Technical Training.</p>
+    </div>
+
+    <!-- Motto - Blue Theme -->
+    <div class="bg-blue-50 border border-blue-200 rounded-3xl shadow-xl p-8 transition-all hover:shadow-2xl group">
+      <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🏆</div>
+      <h3 class="font-semibold text-2xl mb-4 text-blue-700">Our Motto</h3>
+      <p class="text-red-700 font-bold text-xl">"My Skills My Destiny"</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- JavaScript for Smooth Background + Text Animation -->
+<script>
+  // Background Images - Add your three images here
+  const backgrounds = [
+    "../static/images/graduation2.png",
+    "../static/images/beauty.png",           // Replace with your actual second image
+    "../static/images/graduation2.png"      // Replace with your actual third image
+  ];
+
+  let currentBg = 0;
+  const bgElement = document.getElementById('hero-bg');
+
+  function changeBackground() {
+    currentBg = (currentBg + 1) % backgrounds.length;
+
+    // Smooth fade out
+    bgElement.style.transition = 'opacity 1.2s ease-in-out';
+    bgElement.style.opacity = '0';
+
+    setTimeout(() => {
+      bgElement.style.background = `url('${backgrounds[currentBg]}') center/cover fixed`;
+      bgElement.style.opacity = '1';
+    }, 800);
+  }
+
+  // Change image every 3 seconds
+  setInterval(changeBackground, 3000);
+
+  // Text Animation Function
+  function animateHeroText() {
+    const words = document.querySelectorAll('.hero-word');
+    const motto = document.getElementById('hero-motto');
+    const buttons = document.getElementById('hero-buttons');
+
+    // Reset
+    words.forEach(word => {
+      word.style.transition = 'none';
+      word.style.opacity = '0';
+      word.style.transform = word.dataset.direction === 'left' ? 'translateX(-60px)' : 'translateX(60px)';
+    });
+    motto.style.transition = 'none';
+    motto.style.opacity = '0';
+    motto.style.transform = 'translateY(40px)';
+    buttons.style.transition = 'none';
+    buttons.style.opacity = '0';
+
+    // Trigger reflow
+    void bgElement.offsetWidth;
+
+    // Animate words (spread over ~3 seconds total)
+    setTimeout(() => {
+      words.forEach((word, index) => {
+        setTimeout(() => {
+          word.style.transition = 'all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          word.style.opacity = '1';
+          word.style.transform = 'translateX(0)';
+        }, index * 450);   // ~900ms between words
+      });
+    }, 200);
+
+    // Motto rises after words
+    setTimeout(() => {
+      motto.style.transition = 'all 0.9s ease-out';
+      motto.style.opacity = '1';
+      motto.style.transform = 'translateY(0)';
+    }, 1600);
+
+    // Buttons appear last
+    setTimeout(() => {
+      buttons.style.transition = 'opacity 1s ease-out';
+      buttons.style.opacity = '1';
+    }, 2400);
+  }
+
+  // Start animation and repeat every 9 seconds
+  window.addEventListener('load', () => {
+    animateHeroText();
+    setInterval(animateHeroText, 9000);
+  });
+</script>
+
+<br>
+<!-- SEARCH COURSES SECTION - Add this after Vision/Mission cards -->
+<section class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Find Your Perfect Course</h2>
+      <p class="text-xl text-gray-600">Search from our wide range of TVETA accredited programs</p>
+    </div>
+
+    <div class="relative max-w-2xl mx-auto">
+      <div class="relative group">
+        <label for="courseSearchInput"></label><input 
+          type="text" 
+          id="courseSearchInput"
+          placeholder="Search courses (e.g. Beauty Therapy, Electrical Engineering, Business Management...)"
+          class="w-full px-8 py-6 text-lg border-2 border-gray-200 rounded-3xl focus:border-red-600 focus:outline-none shadow-sm transition-all placeholder-gray-400"
+          autocomplete="off">
+
+        <button onclick="function performCourseSearch() {
+        
+        }
+        performCourseSearch()" 
+                class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-700 hover:bg-red-800 text-white px-10 py-4 rounded-3xl font-semibold transition-all">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+      </div>
+
+      <!-- Live Results Dropdown -->
+      <div id="searchResultsDropdown" 
+           class="hidden absolute mt-3 w-full bg-white rounded-3xl shadow-2xl border border-gray-100 max-h-[420px] overflow-auto z-50 py-2">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mt-8 text-sm">
+      <span onclick="function quickCourseSearch(beauty) {
+      
+      }
+      quickCourseSearch('Beauty')" class="cursor-pointer hover:text-red-600 px-4 py-2 bg-gray-100 hover:bg-red-50 rounded-2xl transition">Beauty Therapy</span>
+      <span onclick="quickCourseSearch('Electrical')" class="cursor-pointer hover:text-red-600 px-4 py-2 bg-gray-100 hover:bg-red-50 rounded-2xl transition">Electrical Engineering</span>
+      <span onclick="quickCourseSearch('Business')" class="cursor-pointer hover:text-red-600 px-4 py-2 bg-gray-100 hover:bg-red-50 rounded-2xl transition">Business Management</span>
+      <span onclick="quickCourseSearch('Hospitality')" class="cursor-pointer hover:text-red-600 px-4 py-2 bg-gray-100 hover:bg-red-50 rounded-2xl transition">Hospitality</span>
+    </div>
+  </div>
+</section>
+  <div class="h-1.5 w-24 bg-yellow-400 mx-auto my-4 rounded-full"></div>
+ <!-- News & Upcoming Events Section -->
+<section class="bg-blue-100 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12">
+
+      <!-- Left Side: Latest News -->
+      <div class="lg:col-span-8">
+        <h2 class="text-4xl font-bold text-gray-900 mb-10 flex items-center gap-3">
+          Latest News &amp; Updates
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <!-- News Item 1: Courses Offered -->
+          <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="../static/images/brochure2.png"
+                alt="Courses Offered at KISS"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                onclick="showImageModal(this)">
+            </div>
+            <div class="p-6">
+              <p class="text-red-700 text-xs font-medium mb-2">OUR PROGRAMS</p>
+              <h3 class="font-semibold text-lg leading-tight mb-3">Wide Range of Courses Offered</h3>
+              <p class="text-gray-600 text-sm line-clamp-3">Diploma, Certificate, Artisan, and Short Courses in Beauty, IT, Engineering, Business, Fashion, Hospitality, Social Work and more.</p>
+              <a href="admissions.html" class="text-red-700 text-sm font-medium mt-5 inline-block hover:underline">Explore Courses →</a>
+            </div>
+          </div>
+
+          <!-- News Item 2 -->
+          <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="../static/images/brochure.png"
+                alt="KISS Prospectus"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                onclick="showImageModal(this)">
+            </div>
+            <div class="p-6">
+              <p class="text-red-700 text-xs font-medium mb-2">NEW INTAKE</p>
+              <h3 class="font-semibold text-lg leading-tight mb-3">May 2026 Intake Now Open</h3>
+              <p class="text-gray-600 text-sm line-clamp-3">Secure your spot in our Diploma and Certificate programs. Limited spaces available in popular courses.</p>
+              <a href="admissions.html" class="text-red-700 text-sm font-medium mt-5 inline-block hover:underline">Apply Now →</a>
+            </div>
+          </div>
+
+          <!-- News Item 3 -->
+          <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="../static/images/graduation2.png"
+                alt="KISS Graduation Ceremony"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                onclick="showImageModal(this)">
+            </div>
+            <div class="p-6">
+              <p class="text-red-700 text-xs font-medium mb-2">EVENT HIGHLIGHT</p>
+              <h3 class="font-semibold text-lg leading-tight mb-3">Graduation Ceremony 2025</h3>
+              <p class="text-gray-600 text-sm line-clamp-3">Over 250 students celebrated their achievements. A memorable day filled with pride and inspiration.</p>
+              <a href="#" class="text-red-700 text-sm font-medium mt-5 inline-block hover:underline">View Gallery →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Sidebar: Upcoming Events -->
+      <div class="lg:col-span-4">
+        <div class="bg-white rounded-3xl shadow-sm p-8 sticky top-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-6">Upcoming Events</h3>
+
+          <div class="space-y-8">
+            <!-- Event 1 -->
+            <div class="border-b pb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="text-red-700 font-medium">MAY INTAKE 2026</p>
+                  <h4 class="font-semibold mt-1">New Student Orientation &amp; Registration</h4>
+                </div>
+                <div class="text-right text-sm">
+                  <p class="text-gray-500"> May 2026</p>
+                  <p class="text-gray-500">Machakos &amp; Mlolongo Campuses</p>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 mt-3">
+                Join us for orientation and secure your place in our Diploma and Certificate programs.
+              </p>
+            </div>
+
+            <!-- Event 2 -->
+            <div>
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="text-red-700 font-medium">OPEN DAY</p>
+                  <h4 class="font-semibold mt-1">Career &amp; Skills Expo</h4>
+                </div>
+                <div class="text-right text-sm">
+                  <p class="text-gray-500">April 2026</p>
+                  <p class="text-gray-500">Machakos Campus</p>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 mt-3">
+                Meet our lecturers, tour facilities, and learn about all available courses.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <a href="admissions.html"
+             class="mt-10 block w-full bg-red-700 hover:bg-red-800 text-white text-center py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-md">
+            Apply for May Intake Now
+          </a>
+          <p class="text-center text-xs text-gray-500 mt-4">
+            Limited slots available • Early application advised
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Image Modal (Lightbox) -->
+<div id="imageModal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50 p-4">
+  <div class="relative max-w-5xl w-full">
+    <button onclick="closeImageModal()"
+            class="absolute -top-4 -right-4 bg-white text-gray-900 rounded-full w-11 h-11 flex items-center justify-center text-3xl font-bold shadow-xl hover:bg-gray-100 transition z-10">
+      ×
+    </button>
+
+    <img id="modalImage"
+         src=""
+         alt="Enlarged view"
+         class="w-full max-h-[88vh] object-contain rounded-3xl shadow-2xl">
+  </div>
+</div>
+
+<!-- JavaScript for Image Modal -->
+<script>
+  function showImageModal(imgElement) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+
+    modalImg.src = imgElement.src;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeImageModal();
+  });
+
+  // Close when clicking outside image
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) closeImageModal();
+  });
+</script>
+<div class="h-2 bg-yellow-400 w-full"></div>
+  <!-- Areas of Training – Professional Grid Section -->
+<section id="areas-of-training" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="section-header text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+      Areas of Training
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Card 1 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <!-- Fixed Image Container - Image stays in place while scrolling -->
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/beauty.png"
+            alt="Hairdressing and Beauty Therapy"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Hairdressing &amp; Beauty Therapy</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Nail technology, cosmetology, beauty therapy, manicure &amp; pedicure.
+          </p>
+
+          <!-- Apply Button -->
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/it.png"
+            alt="Computing and IT"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Computing &amp; IT</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Computer packages, web design, graphic design, ICT &amp; engineering.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/finance.png"
+            alt="Accounting and Finance"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Accounting &amp; Finance</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Accounting, banking, financial management, KASNEB courses.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/welding.png"
+            alt="Electrical Engineering"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Electrical Engineering</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Electrical installation, plumbing, welding &amp; fabrication.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/fashion.png"
+            alt="Fashion and Design"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Fashion &amp; Design</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Fashion design, tailoring, and textile technology.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/catering.png"
+            alt="Catering and Hospitality Management"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Catering &amp; Hospitality Management</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Food production, house-keeping, tourism, and hotel management.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/community.png"
+            alt="Social Work and Community Development"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Social Work &amp; Community Development</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Counseling psychology, disaster management, criminology &amp; community health.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 flex flex-col h-full">
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img
+            src="../static/images/business.png"
+            alt="Business Studies"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <h4 class="font-semibold text-xl mb-3">Business Studies</h4>
+          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
+            Business management, human resource, sales &amp; marketing, public relations.
+          </p>
+          <a href="admissions.html"
+             class="mt-6 inline-flex items-center justify-center w-full px-6 py-3.5 bg-red-700 hover:bg-red-800 text-white font-medium text-base rounded-2xl transition-all duration-300">
+            Apply Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Permanent Fixed Background - Centered and Fully Visible -->
+<div class="fixed inset-0 bg-[url('../static/images/logo.jpg')]
+     bg-contain bg-no-repeat bg-center
+     bg-fixed z-[-1] flex items-center justify-center">
+
+  <!-- Slight Blue Overlay for clarity (optional but recommended) -->
+  <div class="absolute inset-0 bg-blue-900/30"></div>
+</div>
+
+  <!-- TESTIMONIALS -->
+  <div class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">What Our Students Say</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Testimonial 1 -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm">
+        <div class="flex gap-1 mb-4">
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+        </div>
+        <p class="text-gray-700 italic mb-6">
+          "KISS changed my life. The practical training in Social Work gave me the confidence to start community projects in my area. The lecturers are very supportive."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <div>
+            <p class="font-semibold">Mark Kioko</p>
+            <p class="text-sm text-gray-500">Diploma in Social Work &amp; Community Development</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm">
+        <div class="flex gap-1 mb-4">
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+        </div>
+        <p class="text-gray-700 italic mb-6">
+          "I joined with a D+ and now I'm confident in Beauty Therapy. The facilities are good and the course is very practical. I already have clients!"
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <div>
+            <p class="font-semibold">Faith Mwende</p>
+            <p class="text-sm text-gray-500">Certificate in Hairdressing &amp; Beauty Therapy</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white rounded-3xl p-8 shadow-sm">
+        <div class="flex gap-1 mb-4">
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+          <span class="star text-2xl">★</span><span class="star text-2xl">★</span>
+        </div>
+        <p class="text-gray-700 italic mb-6">
+          "The Computing &amp; IT course at KISS is top-notch. I learned web design and now I freelance. The environment is friendly and encouraging."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+          <div>
+            <p class="font-semibold">Hillary Jack</p>
+            <p class="text-sm text-gray-500">Diploma in Computing &amp; IT</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-<!-- Impact Stats Section - Permanent Fixed Background -->
+<section id="impact-stats" class="relative py-24 overflow-hidden">
+  <!-- Permanent Fixed Background Image (stays locked in place while scrolling) -->
+  <div class="absolute inset-0 bg-[url('../static/images/graduation2.png')] bg-fixed bg-cover bg-center z-0">
+    <!-- Semi-transparent Red Overlay -->
+    <div class="absolute inset-0 bg-red-700/70"></div>
+  </div>
+
+  <!-- Content Layer -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 text-white">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Our Impact at a Glance</h2>
+      <p class="mt-4 text-xl text-red-100">Transforming Lives Through Quality Technical &amp; Vocational Education</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+      <!-- Stat 1 -->
+      <div class="stat-item">
+        <div class="text-6xl md:text-7xl font-bold mb-1" id="examBodies">0</div>
+        <p class="text-3xl font-light">+</p>
+        <p class="text-red-100 mt-3 text-lg font-medium">Examination Bodies</p>
+        <p class="text-sm text-red-200 mt-1">TVETA, NITA, KNEC, KASNEB, ICM &amp; more</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stat-item">
+        <div class="text-6xl md:text-7xl font-bold mb-1" id="courses">0</div>
+        <p class="text-3xl font-light">+</p>
+        <p class="text-red-100 mt-3 text-lg font-medium">Courses Offered</p>
+        <p class="text-sm text-red-200 mt-1">Diploma, Certificate, Artisan &amp; Short Courses</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat-item">
+        <div class="text-6xl md:text-7xl font-bold mb-1" id="students">0</div>
+        <p class="text-3xl font-light">+</p>
+        <p class="text-red-100 mt-3 text-lg font-medium">Registered Students</p>
+        <p class="text-sm text-red-200 mt-1">Actively pursuing their dreams</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat-item">
+        <div class="text-6xl md:text-7xl font-bold mb-1" id="trainers">0</div>
+        <p class="text-3xl font-light">+</p>
+        <p class="text-red-100 mt-3 text-lg font-medium">Certified Trainers</p>
+        <p class="text-sm text-red-200 mt-1">Experienced and industry-aligned</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Updated JavaScript for Continuous Counting + Permanent Fixed Background -->
+<script>
+  function animateCounter(id, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const value = Math.floor(progress * (end - start) + start);
+      document.getElementById(id).textContent = value.toString();
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        document.getElementById(id).textContent = end;
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Continuous counting: triggers every time the section enters viewport
+  document.addEventListener("DOMContentLoaded", () => {
+    const statsSection = document.getElementById("impact-stats");
+    if (statsSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Reset all counters to 0 before re-animating (so it counts again on every visit)
+            document.getElementById("examBodies").textContent = "0";
+            document.getElementById("courses").textContent = "0";
+            document.getElementById("students").textContent = "0";
+            document.getElementById("trainers").textContent = "0";
+
+            // Start fresh animations
+            animateCounter("examBodies", 0, 5, 1200);
+            animateCounter("courses", 0, 40, 1500);
+            animateCounter("students", 0, 250, 1800);
+            animateCounter("trainers", 0, 50, 1400);
+          }
+        });
+      }, {
+        threshold: 0.4   // Triggers when 40% of the section is visible
+      });
+
+      observer.observe(statsSection);
+    }
+  });
+</script>
+<div class="h-1.5 w-24 bg-yellow-400 mx-auto my-4 rounded-full"></div>
+  <!-- Accreditations Section - Improved -->
+<div class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Accredited By</h2>
+
+    <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-12">
+
+      <!-- TVETA -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/tveta.png"
+             alt="TVETA"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">TVETA</span>
+      </div>
+
+      <!-- NITA -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/nita.png"
+             alt="NITA"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">NITA</span>
+      </div>
+
+      <!-- KASNEB -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/kasneb.png"
+             alt="KASNEB"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">KASNEB</span>
+      </div>
+
+      <!-- KNEC -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/Knec.png"
+             alt="KNEC"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">KNEC</span>
+      </div>
+
+      <!-- ICM -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/icm.png"
+             alt="ICM"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">ICM</span>
+      </div>
+
+      <!-- Ministry of Education -->
+      <div class="flex flex-col items-center">
+        <img src="../static/images/moe.png"
+             alt="Ministry of Education"
+             class="h-20 object-contain mb-3">
+        <span class="text-xs text-gray-500 font-medium text-center">Ministry of Education</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+<hr class="border-t-2 border-yellow-400 my-8 opacity-80">
+  <!-- Call to Action -->
+  
+  <div class="bg-red-700 text-white py-16">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-4xl font-bold mb-4">Ready to Shape Your Future?</h2>
+      <p class="text-xl mb-8">January, May &amp; September Intakes are now open</p>
+      <a href="admissions.html"
+         class="inline-block bg-white text-red-700 hover:bg-red-100 font-semibold px-12 py-5 rounded-2xl text-lg transition">
+        Apply Now – It's Easy &amp; Fast
+      </a>
+    </div>
+  </div>
+<section class="relative bg-white pt-20">
+    <div class="bg-red-700 relative">
+        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+              <div class="lg:col-span-5 text-white z-10">
+    <h2 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+        <span class="text-blue-400">Ready to</span>
+        <span class="text-yellow-400">Shape</span>
+        <br>
+        <span class="text-blue-400">Your</span>
+        <span class="text-yellow-400">Future?</span>
+    </h2>
+    <p class="text-lg lg:text-xl font-light opacity-90">
+        January, May & September Intakes <br> are now open
+    </p>
+</div>
+
+                <div class="hidden lg:block lg:col-span-3"></div>
+
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-end gap-6 z-10">
+                    <a href="admissions.html"
+                       class="group flex items-center justify-between bg-blue-900 hover:bg-blue-800 text-white w-full max-w-sm px-8 py-5 rounded-sm transition-all duration-300">
+                        <span class="text-lg font-semibold">Application Form</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                    </a>
+
+                    <div class="flex items-center gap-6 text-white text-sm font-medium">
+                        <a href="contact.html" class="hover:underline flex items-center gap-2">
+                           Contact us
+                        </a>
+                        <span class="h-6 w-[1px] bg-white/30"></span>
+                        <a href="programs.html" class="hover:underline flex items-center gap-2">
+                            Programs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md lg:max-w-xl pointer-events-none">
+
+          <img src="../static/images/img_1.png"
+                                                                               alt="Students"
+                                                                               class="w-full h-auto drop-shadow-2xl">
+        </div>
+
+        <div class="h-2 bg-yellow-400 w-full"></div>
+    </div>
+</section>
+
+<footer class="bg-blue-950 text-gray-300 pt-16 pb-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-5 gap-10">
+
+     <!-- Column 1: Logo Centered at Top -->
+<div class="flex flex-col items-center text-center">
+
+  <!-- Large Circular Logo -->
+  <div class="w-25 h-20  flex items-center justify-center p-4 shadow-2xl mb-6">
+    <img src="../static/images/logo.jpg"
+         alt="KISS Logo"
+         class="h-32 w-auto drop-shadow-md">
+  </div>
+
+  <!-- Institute Name -->
+<!--  <div class="mb-2">-->
+<!--    <span class="text-white text-5xl font-bold tracking-tighter">KISS</span>-->
+<!--  </div>-->
+
+  <!-- Full Institute Name -->
+  <p class="text-red-400 text-xl font-medium tracking-wide mb-6">
+    Kenya Institute of Social Sciences
+  </p>
+
+  <!-- Tagline -->
+ <p class="text-sm leading-relaxed">
+            Transforming lives through quality education and practical skills.<br>
+            My Skills – My Future
+          </p>
+          <p class="text-xs mt-4 text-gray-400">TVETA Registered • NITA Accredited</p>
+</div>
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Quick Links</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+          <li><a href="programs.html" class="hover:text-white transition">Our Programs</a></li>
+          <li><a href="shortcourses.html" class="hover:text-white transition">Short Courses</a></li>
+          <li><a href="admissions.html" class="hover:text-white transition">Admissions</a></li>
+          <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+          <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Campuses -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Our Campuses</h4>
+        <ul class="space-y-4 text-sm">
+          <li>
+            <strong class="text-white">Machakos Campus</strong><br>
+            <span class="text-gray-400">Ngwatanio Building, Next to Lau Guest House,<br>Opposite KWFT Bank</span>
+          </li>
+          <li>
+            <strong class="text-white">Mlolongo Campus</strong><br>
+            <span class="text-gray-400">Unaitas Building, Along Mombasa Road</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+    <h4 class="text-white font-semibold mb-6 text-lg">Get In Touch</h4>
+    <div class="space-y-4 text-sm">
+        <div class="flex gap-3">
+            <i class="fa-solid fa-phone mt-1 text-red-400"></i>
+            <div class="flex flex-col">
+                <a href="tel:0741958940" class="hover:text-white">0741 958 940</a>
+                <a href="tel:0726580464" class="hover:text-white">0726 580 464</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope text-red-400"></i>
+            <a href="mailto:kissje2009@gmail.com" class="hover:text-white">kissje2009@gmail.com</a>
+        </div>
+
+        <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-2xl text-white text-sm font-medium mt-3 transition-transform hover:scale-105">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+
+        <div class="mt-4">
+            <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
+               target="_blank"
+               class="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 font-medium animate-pulse-slow">
+                <i class="fa-brands fa-facebook text-xl"></i>
+                <span>Follow us on Facebook</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom Animation for the Facebook Link */
+@keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+.animate-pulse-slow {
+    animation: pulse-slow 2s infinite ease-in-out;
+}
+</style>
+      <!-- Column 5: Interactive Google Map -->
+      <div>
+        <h4 class="text-white font-semibold mb-6 text-lg">Visit Our Campus</h4>
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-700">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.85!2d37.2634!3d-1.5177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f8181bfbc2027%3A0x282a651d23750e0b!2sKenya%20Institute%20of%20Social%20Sciences!5e0!3m2!1sen!2ske!4v1710000000000"
+            width="100%"
+            height="240"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Kenya+Institute+of+Social+Sciences+Machakos"
+           target="_blank"
+           class="mt-4 inline-flex items-center gap-2 text-sm text-red-400 hover:text-red-300 transition">
+          <i class="fa-solid fa-directions"></i>
+          <span>Get Directions</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar - Larger & More Visible -->
+    <div class="border-t border-gray-800 mt-16 pt-10">
+      <div class="text-center">
+        <p class="text-gray-300 text-base font-medium">
+          © 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved.
+        </p>
+        <p class="text-red-400 text-sm mt-3 font-medium">
+<!--          TVETA Registered • NITA Accredited • Empowering Kenya Through Skills-->
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="fixed bottom-6 left-6 z-50">
+    <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
+       target="_blank"
+       class="flex items-center justify-center w-14 h-14 bg-green-600 text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+</div>
+
+<div id="backToTop" class="fixed bottom-6 right-6 z-50 cursor-pointer opacity-0 invisible transition-all duration-300 translate-y-10">
+    <div class="relative flex items-center justify-center w-14 h-14 group">
+        <svg class="absolute transform -rotate-90" width="56" height="56">
+            <circle
+                cx="28"
+                cy="28"
+                r="24"
+                stroke="currentColor"
+                stroke-width="3"
+                fill="transparent"
+                class="text-gray-200"
+            />
+            <circle
+                id="progressCircle"
+                cx="28"
+                cy="28"
+                r="24"
+                stroke="currentColor"
+                stroke-width="3"
+                fill="transparent"
+                stroke-dasharray="150.8"
+                stroke-dashoffset="150.8"
+                class="text-green-600 transition-all duration-150 ease-out"
+                stroke-linecap="round"
+            />
+        </svg>
+        <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md group-hover:bg-gray-50">
+            <i class="fa-solid fa-arrow-up text-green-600 text-lg"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    const backToTopBtn = document.getElementById('backToTop');
+    const progressCircle = document.getElementById('progressCircle');
+    const radius = progressCircle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    // Set initial dasharray
+    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = scrollTop / scrollHeight;
+
+        // Update Progress Circle
+        const offset = circumference - (scrollPercentage * circumference);
+        progressCircle.style.strokeDashoffset = offset;
+
+        // Show/Hide Button
+        if (scrollTop > 300) {
+            backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-10');
+            backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+            backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-10');
+            backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        }
+    });
+
+    // Scroll to Top Click Event
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+<script>
+// Course Database
+const allCourses = [
+  { name: "Beauty Therapy & Cosmetology", slug: "beauty-therapy" },
+  { name: "Hairdressing and Beauty Therapy", slug: "hairdressing" },
+  { name: "Electrical & Electronic Engineering", slug: "electrical-engineering" },
+  { name: "Electrical Installation", slug: "electrical-installation" },
+  { name: "Business Management", slug: "business-management" },
+  { name: "Human Resource Management", slug: "human-resource" },
+  { name: "Catering & Hospitality Management", slug: "hospitality-management" },
+  { name: "Social Work & Community Development", slug: "social-work" },
+  { name: "Nutrition & Dietetics", slug: "nutrition-dietetics" },
+  { name: "Computer Packages", slug: "computer-packages" },
+  { name: "Fashion Design", slug: "fashion-design" },
+  { name: "Plumbing, Welding & Fabrication", slug: "plumbing-welding" }
+];
+
+let performCourseSearch;
+performCourseSearch = () => {
+  const input = document.getElementById('courseSearchInput').value.trim();
+  if (input === "") return;
+  window.location.href = `programs.html?search=${encodeURIComponent(input)}`;
+};
+
+function quickCourseSearch(term) {
+  window.location.href = `programs.html?search=${encodeURIComponent(term)}`;
+}
+
+// Live Search
+document.getElementById('courseSearchInput').addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+  const dropdown = document.getElementById('searchResultsDropdown');
+
+  if (query.length < 2) {
+    dropdown.classList.add('hidden');
+    return;
+  }
+
+  const matches = allCourses.filter(course =>
+    course.name.toLowerCase().includes(query)
+  );
+
+  let html = '';
+  if (matches.length === 0) {
+    html = `<div class="p-6 text-center text-gray-500">No courses found</div>`;
+  } else {
+    matches.forEach(course => {
+      html += `
+        <div onclick="window.location.href='programs.html?search=${encodeURIComponent(course.name)}'"
+             class="px-6 py-4 hover:bg-gray-50 cursor-pointer border-b last:border-none">
+          ${course.name}
+        </div>`;
+    });
+  }
+
+  dropdown.innerHTML = html;
+  dropdown.classList.remove('hidden');
+});
+</script>
+</body>
+</html>

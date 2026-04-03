@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions | KISS Kenya Institute of Social Sciences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .form-section { transition: all 0.3s; }
+    .required::after { content: " *"; color: #9f1239; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- ==================== TOP BAR (Small Red) ==================== -->
+  <div class="bg-red-700 text-white text-xs py-2.5">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-1">
+        <a href="tel:0741958940" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0741 958 940
+        </a>
+        <a href="tel:0726580464" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-phone"></i> 0726 580 464
+        </a>
+        <a href="mailto:kissje2009@gmail.com" class="hover:underline flex items-center gap-1.5">
+          <i class="fa-solid fa-envelope"></i> kissje2009@gmail.com
+        </a>
+      </div>
+      <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
+         target="_blank" class="hover:text-gray-200 flex items-center gap-2">
+        <i class="fa-brands fa-facebook text-lg"></i>
+        <span class="hidden sm:inline">Facebook</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN NAVBAR (Red) ==================== -->
+  <nav class="bg-red-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-red-700 font-bold text-2xl shadow">K</div>
+          <div>
+            <span class="text-white text-xl font-bold tracking-tight">KISS</span>
+            <p class="text-red-200 text-xs leading-none">Kenya Institute of Social Sciences</p>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8 text-white font-medium">
+          <a href="home.html" class="hover:text-red-200 transition">Home</a>
+          <a href="about.html" class="hover:text-red-200 transition">About Us</a>
+          <a href="programs.html" class="hover:text-red-200 transition">Programs</a>
+          <a href="admissions.html" class="text-red-200 font-semibold">Admissions</a>
+          <a href="FAQ.html" class="hover:text-red-200 transition">FAQ</a>
+          <a href="contact.html" class="hover:text-red-200 transition">Contact Us</a>
+        </div>
+
+        <a href="admissions.html"
+           class="bg-white text-red-700 hover:bg-red-100 px-6 py-2.5 rounded-md font-semibold text-sm transition">
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <div class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Admissions &amp; Online Application</h1>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        Join Kenya Institute of Social Sciences – TVETA Registered &amp; NITA Accredited.<br>
+        January • May • September Intakes – Now Open
+      </p>
+      <div class="flex justify-center gap-4 mt-6">
+        <span class="bg-green-100 text-green-700 text-sm px-4 py-2 rounded-full font-medium">Open / Virtual / Distance Learning Available</span>
+        <span class="bg-red-100 text-red-700 text-sm px-4 py-2 rounded-full font-medium">Intake in Progress</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-12 gap-12">
+
+    <!-- Left Sidebar: Admission Process & Requirements -->
+    <div class="lg:col-span-4 space-y-8">
+
+      <div class="bg-white rounded-2xl shadow-sm p-8">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-circle-check text-red-700"></i> Admission Process
+        </h3>
+        <ol class="space-y-6 text-sm">
+          <li class="flex gap-4">
+            <span class="font-bold text-red-700 w-6">1.</span>
+            <div>Complete this online application form</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-bold text-red-700 w-6">2.</span>
+            <div>Upload KCSE certificate / result slip + ID copy (or bring during reporting)</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-bold text-red-700 w-6">3.</span>
+            <div>Pay application/registration fee (KSh 1,000) – details sent via WhatsApp</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-bold text-red-700 w-6">4.</span>
+            <div>Receive official <strong>Admission Letter</strong> within 3–7 working days</div>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-bold text-red-700 w-6">5.</span>
+            <div>Report to campus with original documents and pay first semester fees</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm p-8">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Entry Requirements</h3>
+        <ul class="text-sm space-y-3">
+          <li class="flex justify-between"><span>Diploma</span><span class="font-medium">KCSE C- and above</span></li>
+          <li class="flex justify-between"><span>Certificate</span><span class="font-medium">KCSE D plain and above</span></li>
+          <li class="flex justify-between"><span>Artisan</span><span class="font-medium">KCSE E and below / Primary</span></li>
+          <li class="flex justify-between"><span>Short Courses</span><span class="font-medium">Open to all</span></li>
+        </ul>
+        <p class="text-xs text-gray-500 mt-6">All programmes are examined by KNEC, KASNEB, NITA or ICM as applicable.</p>
+      </div>
+
+      <!-- Sample Admission Letter Preview -->
+      <div class="bg-white rounded-2xl shadow-sm p-8 border border-red-200">
+        <h4 class="text-red-700 font-semibold text-sm uppercase tracking-widest mb-3">Sample Official Admission Letter</h4>
+        <div class="text-xs bg-gray-50 p-5 rounded-lg font-mono leading-relaxed">
+          <strong>KENYA INSTITUTE OF SOCIAL SCIENCES</strong><br>
+          TVETA Registration No. TVETA/…<br>
+          Machakos | Mlolongo<br><br>
+          <strong>Admission Letter</strong><br>
+          Ref: KISS/ADM/2026/…<br><br>
+          Dear [Student Full Name],<br><br>
+          Congratulations! You have been admitted to pursue<br>
+          <strong>Diploma in Social Work &amp; Community Development</strong><br>
+          Intake: January 2026<br><br>
+          Reporting Date: 12th January 2026<br>
+          Tuition: KSh … (payable in installments)<br><br>
+          Bring: Original KCSE certificate, ID copy, 2 passport photos, medical certificate.<br><br>
+          Welcome to KISS – Where Skills Meet Impact.<br>
+          Principal
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Application Form -->
+    <div class="lg:col-span-8">
+      <div class="bg-white rounded-3xl shadow-sm p-10">
+        <h2 class="text-3xl font-semibold text-gray-900 mb-2">Online Application Form</h2>
+        <p class="text-gray-600 mb-10">Please fill all required fields accurately. Your application will be processed within 3–7 working days.</p>
+
+        <form id="admissionForm" class="space-y-10">
+
+          <!-- Section 1: Personal Information -->
+          <div class="form-section">
+            <h3 class="text-lg font-semibold border-b pb-2 mb-6">1. Personal Information</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium required">Full Name (as in KCSE)</label>
+                  <label for="fullName"></label><input type="text" id="fullName" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">Date of Birth</label>
+                  <label for="dob"></label><input type="date" id="dob" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">Gender</label>
+                  <label for="gender"></label><select id="gender" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">National ID / Passport Number</label>
+                  <label for="idNumber"></label><input type="text" id="idNumber" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Phone Number</label>
+                  <label for="phone"></label><input type="tel" id="phone" value="+254" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Email Address</label>
+                  <label for="email"></label><input type="email" id="email" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium required">Postal Address</label>
+                  <label for="postalAddress"></label><input type="text" id="postalAddress" placeholder="P.O. Box XXX, Town" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium required">Physical Address / Location</label>
+                  <label for="physicalAddress"></label><input type="text" id="physicalAddress" placeholder="Village / Estate, Sub-county, County" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Academic Information -->
+          <div class="form-section">
+            <h3 class="text-lg font-semibold border-b pb-2 mb-6">2. Academic Information (KCSE)</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div>
+                <label class="block text-sm font-medium required">KCSE Year</label>
+                  <label for="kcseYear"></label><input type="number" id="kcseYear" placeholder="2024" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">KCSE Index Number</label>
+                  <label for="kcseIndex"></label><input type="text" id="kcseIndex" placeholder="123456789/2024" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">Mean Grade</label>
+                  <label for="meanGrade"></label><select id="meanGrade" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option><option value="A-">A-</option><option value="B+">B+</option>
+                  <option value="B">B</option><option value="B-">B-</option><option value="C+">C+</option>
+                  <option value="C">C</option><option value="C-">C-</option><option value="D+">D+</option>
+                  <option value="D">D</option><option value="D-">D-</option><option value="E">E</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Programme Applied For -->
+          <div class="form-section">
+            <h3 class="text-lg font-semibold border-b pb-2 mb-6">3. Programme / Course Applied For</h3>
+            <div>
+              <label class="block text-sm font-medium required">Choose your course</label>
+                <label for="course"></label><select id="course" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none text-sm">
+                <option value="">Select a course...</option>
+                <optgroup label="School of Community Development &amp; Social Work">
+                  <option value="Diploma in Social Work and Community Development">Diploma in Social Work and Community Development</option>
+                  <option value="Diploma in Counselling Psychology">Diploma in Counselling Psychology</option>
+                  <option value="Certificate in Social Work">Certificate in Social Work</option>
+                  <option value="Disaster Management">Disaster Management</option>
+                </optgroup>
+                <optgroup label="School of Health and Applied Sciences">
+                  <option value="Diploma in Community Health">Diploma in Community Health</option>
+                  <option value="Nursing Assistant / Health Support Services">Nursing Assistant / Health Support Services</option>
+                  <option value="HIV Testing and Counselling (HTC)">HIV Testing and Counselling (HTC)</option>
+                </optgroup>
+                <optgroup label="School of Business Studies">
+                  <option value="Business Management">Business Management</option>
+                  <option value="Human Resource Management">Human Resource Management</option>
+                </optgroup>
+                <optgroup label="Other Programmes">
+                  <option value="ICT">ICT</option>
+                  <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+                  <option value="Hairdressing and Beauty Therapy">Hairdressing and Beauty Therapy</option>
+                  <option value="Short Professional Course">Short Professional Course (specify below)</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <!-- Section 4: Guardian / Next of Kin -->
+          <div class="form-section">
+            <h3 class="text-lg font-semibold border-b pb-2 mb-6">4. Guardian / Next of Kin Information</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium required">Full Name</label>
+                  <label for="guardianName"></label><input type="text" id="guardianName" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">Relationship</label>
+                  <label for="guardianRelation"></label><input type="text" id="guardianRelation" placeholder="Parent / Guardian / Sibling" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-medium required">Phone Number</label>
+                  <label for="guardianPhone"></label><input type="tel" id="guardianPhone" required class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Additional Information -->
+          <div class="form-section">
+            <h3 class="text-lg font-semibold border-b pb-2 mb-6">5. Additional Information</h3>
+            <div>
+              <label class="block text-sm font-medium">How did you hear about KISS?</label>
+                <label for="hearAbout"></label><select id="hearAbout" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none">
+                <option value="Facebook">Facebook</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Friend / Relative">Friend / Relative</option>
+                <option value="Radio / Poster">Radio / Poster</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mt-6">
+              <label class="block text-sm font-medium">Any special needs or additional information?</label>
+                <label for="additionalInfo"></label><textarea id="additionalInfo" rows="3" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:border-red-700 outline-none resize-y"></textarea>
+            </div>
+          </div>
+
+          <!-- Declaration -->
+          <div class="bg-red-50 border border-red-200 rounded-2xl p-6">
+            <label class="flex items-start gap-3">
+              <input type="checkbox" required class="mt-1 accent-red-700">
+              <span class="text-sm text-gray-700">
+                I declare that the information provided is true and correct. I agree to abide by the rules and regulations of Kenya Institute of Social Sciences.
+                I understand that submission of false information may lead to automatic disqualification.
+              </span>
+            </label>
+          </div>
+
+          <button type="button" onclick="submitAdmissionForm()"
+                  class="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-5 rounded-2xl flex items-center justify-center gap-3 text-lg transition">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            SUBMIT APPLICATION VIA WHATSAPP
+          </button>
+
+          <p class="text-center text-xs text-gray-500">
+            Your details will be sent directly to our Admissions Office on <strong>0741 958 940</strong>.<br>
+            You will receive an official Admission Letter within 3–7 working days.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER (Dark Blue) ==================== -->
+  <footer class="bg-blue-950 text-gray-300 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-700 font-bold text-2xl">K</div>
+            <span class="text-white text-2xl font-bold">KISS</span>
+          </div>
+          <p class="text-sm leading-relaxed">
+            Transforming lives through quality education and practical skills in Social Sciences and related fields.
+          </p>
+          <p class="text-xs mt-4 text-gray-400">TVETA Registered • NITA Accredited</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="about.html" class="hover:text-white">About Us</a></li>
+            <li><a href="programs.html" class="hover:text-white">Our Programs</a></li>
+            <li><a href="admissions.html" class="hover:text-white">Admissions</a></li>
+            <li><a href="FAQ.html" class="hover:text-white">FAQ</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Our Campuses</h4>
+          <ul class="space-y-3 text-sm">
+            <li><strong>Machakos Campus</strong><br><span class="text-gray-400 text-xs">Ngwatanio Building, Machakos</span></li>
+            <li><strong>Mlolongo Campus</strong><br><span class="text-gray-400 text-xs">Unaitas Building, Mlolongo</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contact Us</h4>
+          <div class="space-y-3 text-sm">
+            <div class="flex gap-2">
+              <i class="fa-solid fa-phone mt-1"></i>
+              <div>
+                <a href="tel:0741958940" class="hover:text-white">0741 958 940</a><br>
+                <a href="tel:0726580464" class="hover:text-white">0726 580 464</a>
+              </div>
+            </div>
+            <div>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:kissje2009@gmail.com" class="hover:text-white ml-2">kissje2009@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-6 text-center text-xs text-gray-500">
+        &copy; 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function submitAdmissionForm() {
+      const name = document.getElementById('fullName').value;
+      const course = document.getElementById('course').value;
+      const phone = document.getElementById('phone').value;
+
+      const message = encodeURIComponent(
+        `*KISS Online Application*\n\n` +
+        `Name: ${name}\n` +
+        `Course: ${course}\n` +
+        `Phone: ${phone}\n` +
+        `I have submitted my full application form. Please process my Admission Letter.`
+      );
+
+      window.open(`https://wa.me/254741958940?text=${message}`, '_blank');
+
+      alert("✅ Application submitted! WhatsApp has been opened to our Admissions Office. You will receive your official Admission Letter soon.");
+    }
+  </script>
+</body>
+</html>

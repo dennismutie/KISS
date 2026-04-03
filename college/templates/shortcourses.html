@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Courses | KISS Kenya Institute of Social Sciences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+
+  <!-- Top Bar & Navbar (use the updated navbar code above) -->
+
+  <!-- Page Header -->
+  <div class="bg-white border-b py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl font-bold text-gray-900">Short Professional Courses</h1>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        Flexible, practical and industry-focused short courses. Available in <strong>Full-time</strong>, <strong>Part-time</strong>, and <strong>Online / Virtual</strong> modes.
+      </p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- Mode Filters -->
+    <div class="flex flex-wrap gap-3 mb-10 justify-center">
+      <button onclick="filterCourses('all')" class="active-filter px-6 py-2 rounded-full border border-red-700 text-red-700 font-medium">All Modes</button>
+      <button onclick="filterCourses('fulltime')" class="px-6 py-2 rounded-full border hover:bg-red-50">Full-time</button>
+      <button onclick="filterCourses('parttime')" class="px-6 py-2 rounded-full border hover:bg-red-50">Part-time (Evening/Weekend)</button>
+      <button onclick="filterCourses('online')" class="px-6 py-2 rounded-full border hover:bg-red-50">Online / Virtual</button>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesContainer">
+
+      <!-- Course Card 1 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">Computer Packages & ICT</div>
+        <div class="p-6">
+          <ul class="text-sm space-y-2 text-gray-600">
+            <li>• MS Office (Word, Excel, PowerPoint, Access)</li>
+            <li>• Internet & Email</li>
+            <li>• Basic Computer Maintenance</li>
+          </ul>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">4 – 8 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('Computer Packages')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 2 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">HIV Testing and Counselling (HTC)</div>
+        <div class="p-6">
+          <p class="text-sm text-gray-600">Professional training for community health workers and counsellors. NASCOP approved.</p>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">3 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('HIV Testing & Counselling')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 3 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="parttime,online">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">Web Design & Graphics Design</div>
+        <div class="p-6">
+          <ul class="text-sm space-y-2 text-gray-600">
+            <li>• HTML, CSS & JavaScript</li>
+            <li>• Adobe Photoshop & Illustrator</li>
+            <li>• Website Development</li>
+          </ul>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">6 – 10 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('Web Design & Graphics')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 4 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">Criminology & Security Studies</div>
+        <div class="p-6">
+          <p class="text-sm text-gray-600">Ideal for those interested in private security, county policing, and investigation.</p>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">4 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('Criminology & Security')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 5 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="online,parttime">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">Disaster Management & Risk Reduction</div>
+        <div class="p-6">
+          <p class="text-sm text-gray-600">Training in emergency response, preparedness, and community resilience.</p>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">3 – 5 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('Disaster Management')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 6 -->
+      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
+        <div class="bg-red-700 text-white text-center py-3 font-medium">Public Relations & Customer Care</div>
+        <div class="p-6">
+          <p class="text-sm text-gray-600">Professional skills for front office, receptionists, and public relations officers.</p>
+          <div class="mt-6 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-gray-500">Duration</span><br>
+              <span class="font-semibold">4 Weeks</span>
+            </div>
+            <button onclick="applyForShortCourse('Public Relations & Customer Care')"
+                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer (use the same dark blue footer from previous pages) -->
+
+  <script>
+    function filterCourses(mode) {
+      const cards = document.querySelectorAll('.course-card');
+      cards.forEach(card => {
+        if (mode === 'all') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = card.getAttribute('data-mode').includes(mode) ? 'block' : 'none';
+        }
+      });
+    }
+
+    function applyForShortCourse(courseName) {
+      const message = encodeURIComponent(
+        `*Short Course Application - KISS*\n\n` +
+        `Course: ${courseName}\n` +
+        `I am interested in enrolling. Please send me details and admission process.`
+      );
+      window.open(`https://wa.me/254741958940?text=${message}`, '_blank');
+    }
+  </script>
+</body>
+</html>
