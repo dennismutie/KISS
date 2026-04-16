@@ -14,7 +14,7 @@ def programs_view(request):
 
 # Short Courses View
 def short_courses_view(request):
-    return render(request, 'short_courses.html')
+    return render(request, 'shortcourses.html')
 
 # Admission/Application View
 def admission_view(request):
@@ -28,3 +28,17 @@ def faq_view(request):
 def contact_view(request):
     # Logic for handling contact form POST requests can go here
     return render(request, 'contact.html')
+
+
+def programs_view(request):
+    # Get the search term from the URL (e.g., /programs/?search=Electrical)
+    query = request.GET.get('search', '')
+
+    # If you have a Course model, you would filter it here:
+    # courses = Course.objects.filter(name__icontains=query) if query else Course.objects.all()
+
+    context = {
+        'search_query': query,
+        # 'courses': courses,
+    }
+    return render(request, 'programs.html', context)

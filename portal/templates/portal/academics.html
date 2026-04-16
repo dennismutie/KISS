@@ -1,0 +1,16 @@
+{% extends 'portal/dashboard.html' %}
+{% block content %}
+<div class="p-6 md:p-12">
+    <h2 class="text-2xl font-black text-blue-900 uppercase mb-8">My Enrollment</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white border-l-8 border-blue-900 p-8 shadow-sm">
+            <p class="text-[10px] font-bold text-gray-400 uppercase">Assigned School</p>
+            <p class="text-xl font-black text-blue-950">{{ user.get_school_display|default:"NOT ASSIGNED" }}</p>
+        </div>
+        <div class="bg-white border-l-8 border-red-700 p-8 shadow-sm">
+            <p class="text-[10px] font-bold text-gray-400 uppercase">Program/Course</p>
+            <p class="text-xl font-black text-blue-950">{{ user.course|default:"PENDING REGISTRATION" }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

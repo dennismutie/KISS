@@ -1,340 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | KISS Kenya Institute of Social Sciences</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.65)); }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15); }
-    .section-header { position: relative; }
-    .section-header::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: #9f1239;
-      border-radius: 9999px;
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | KISS Kenya Institute of Social Sciences{% endblock %}
+
+{% block content %}
+<style>
+    /* 1. Subtle Global Fixed Background */
+    .global-parallax {
+        background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+                    url("../static/images/graduation2.png") center / cover fixed no-repeat;
     }
-  </style>
-</head>
-<body class="bg-gray-50">
 
-  <!-- ==================== TOP BAR (Small Red) ==================== -->
-  <div class="bg-red-700 text-white text-xs py-2.5">
-    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-1">
-        <a href="tel:0741958940" class="hover:underline flex items-center gap-1.5">
-          <i class="fa-solid fa-phone"></i> 0741 958 940
-        </a>
-        <a href="tel:0726580464" class="hover:underline flex items-center gap-1.5">
-          <i class="fa-solid fa-phone"></i> 0726 580 464
-        </a>
-        <a href="mailto:kissje2009@gmail.com" class="hover:underline flex items-center gap-1.5">
-          <i class="fa-solid fa-envelope"></i> kissje2009@gmail.com
-        </a>
-      </div>
-      <a href="https://www.facebook.com/p/Kenya-institute-of-social-sciences-100077401526154/"
-         target="_blank" class="hover:text-gray-200 flex items-center gap-2">
-        <i class="fa-brands fa-facebook text-lg"></i>
-        <span class="hidden sm:inline">Facebook</span>
-      </a>
-    </div>
-  </div>
+    .section-layer {
+        background-color: white;
+        position: relative;
+        z-index: 10;
+    }
 
-  <!-- ==================== MAIN NAVBAR (Red) ==================== -->
-  <nav class="bg-red-800 shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-5">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-red-700 font-bold text-2xl shadow">K</div>
-          <div>
-            <span class="text-white text-xl font-bold tracking-tight">KISS</span>
-            <p class="text-red-200 text-xs leading-none">Kenya Institute of Social Sciences</p>
-          </div>
+    /* 2. Reduced Gap Size */
+    .parallax-gap {
+        height: 140px; /* Reduced from 300px */
+        background: transparent;
+    }
+
+    /* 3. Permanent Side Image for Who We Are */
+    .fixed-side-img {
+        background: url("../static/images/graduation.png") center / cover fixed no-repeat;
+        height: 100%;
+        min-height: 450px;
+    }
+
+    .card-sharp { border-radius: 0; }
+
+    /* Institutional Typography */
+    .heading-accent {
+        border-left: 6px solid #b91c1c; /* Red Accent */
+        padding-left: 1.5rem;
+    }
+</style>
+
+<div class="global-parallax">
+
+    <section class="h-[55vh] flex items-center justify-center text-white text-center">
+        <div class="max-w-4xl px-6">
+            <span class="inline-block bg-yellow-400 text-blue-900 px-4 py-1 mb-6 uppercase tracking-widest text-[10px] font-black">
+                Est. 2009 • TVET Registered
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">Our Institution</h1>
+            <div class="h-1 w-20 bg-red-700 mx-auto"></div>
+            <p class="text-xl md:text-2xl font-light mt-6 italic opacity-80">"My Skills My Destiny"</p>
         </div>
+    </section>
 
-        <div class="hidden md:flex items-center gap-8 text-white font-medium">
-          <a href="home.html" class="hover:text-red-200 transition">Home</a>
-          <a href="about.html" class="text-red-200 font-semibold">About Us</a>
-          <a href="programs.html" class="hover:text-red-200 transition">Programs</a>
-          <a href="shortcourses.html" class="hover:text-red-200 transition">Short Courses</a>
-          <a href="admissions.html" class="hover:text-red-200 transition">Admissions</a>
-          <a href="FAQ.html" class="hover:text-red-200 transition">FAQ</a>
-          <a href="contact.html" class="hover:text-red-200 transition">Contact Us</a>
-        </div>
-
-        <a href="admissions.html"
-           class="bg-white text-red-700 hover:bg-red-100 px-6 py-2.5 rounded-md font-semibold text-sm transition">
-          Apply Now
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ==================== HERO / GRADUATION IMAGE (Top - Full Width) ==================== -->
-  <div class="relative">
-    <img src="../static/images/graduation.png"
-         alt="KISS Graduation Ceremony - Machakos Campus"
-         class="w-full h-[520px] object-cover">
-    <div class="hero-overlay absolute inset-0"></div>
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white px-6">
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight">About KISS</h1>
-      <p class="mt-4 text-xl max-w-2xl mx-auto">Empowering Communities Through Quality Education &amp; Practical Skills Since Inception</p>
-    </div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 py-16">
-
-    <!-- Who We Are Section (Exactly like Uwezo College layout) -->
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <!-- Left: Image -->
-      <div class="md:col-span-5">
-        <img src="../static/images/graduation.png"
-             alt="KISS Students at Graduation"
-             class="rounded-3xl shadow-2xl w-full h-full object-cover">
-      </div>
-
-      <!-- Right: Text Content -->
-      <div class="md:col-span-7 space-y-6">
-        <h2 class="text-3xl font-bold text-gray-900">Who We Are</h2>
-        <p class="text-gray-700 leading-relaxed">
-          Kenya Institute of Social Sciences (KISS) is a fast-growing, TVETA-registered and NITA-accredited Technical and Vocational Education and Training (TVET) institution.
-          We are dedicated to delivering practical, industry-driven education that transforms lives and builds strong communities.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-          Located in Machakos Town and Mlolongo, our modern campuses offer a wide range of Diploma, Certificate, Artisan and Short Professional Courses in Social Sciences, Health Sciences, Business Studies, Hospitality, ICT, Engineering, Beauty &amp; Fashion, and more.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-          At KISS, we live by the motto <strong>“My Skills – My Future”</strong>. We are more than a college — we are a launchpad for changemakers, skilled professionals and community leaders who make a real impact in Kenya and beyond.
-        </p>
-
-        <!-- Vision & Mission -->
-        <div class="grid md:grid-cols-2 gap-8 pt-6 border-t">
-          <div>
-            <span class="uppercase text-red-700 text-sm font-semibold tracking-widest">Our Vision</span>
-            <p class="mt-2 text-gray-700">To be a centre of excellence in skills development and social empowerment in Kenya and beyond.</p>
-          </div>
-          <div>
-            <span class="uppercase text-red-700 text-sm font-semibold tracking-widest">Our Mission</span>
-            <p class="mt-2 text-gray-700">To provide high-quality technical and vocational education that produces competent graduates ready for the job market and community service.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Core Values -->
-    <div class="mt-20">
-      <h2 class="section-header text-3xl font-bold text-center text-gray-900 mb-12">Our Core Values</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">🌟</div>
-          <h4 class="font-semibold text-xl">Excellence &amp; Innovation</h4>
-        </div>
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">🛡️</div>
-          <h4 class="font-semibold text-xl">Integrity</h4>
-        </div>
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">🔍</div>
-          <h4 class="font-semibold text-xl">Transparency</h4>
-        </div>
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">📊</div>
-          <h4 class="font-semibold text-xl">Accountability</h4>
-        </div>
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">🤝</div>
-          <h4 class="font-semibold text-xl">Teamwork</h4>
-        </div>
-        <div class="bg-white rounded-3xl p-8 text-center card-hover">
-          <div class="w-16 h-16 mx-auto bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">🤲</div>
-          <h4 class="font-semibold text-xl">Honesty</h4>
-        </div>
-      </div>
-    </div>
-
-    <!-- Areas of Training – Professional Grid (4 cards per row) -->
-    <div class="mt-20">
-      <h2 class="section-header text-3xl font-bold text-center text-gray-900 mb-12">Areas of Training</h2>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/beauty.png" alt="Hairdressing and Beauty Therapy" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Hairdressing &amp; Beauty Therapy</h4>
-            <p class="text-gray-600 text-sm">Nail technology, cosmetology, beauty therapy, manicure &amp; pedicure.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/it.png" alt="Computing and IT" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Computing &amp; IT</h4>
-            <p class="text-gray-600 text-sm">Computer packages, web design, graphic design, ICT &amp; engineering.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/finance.png" alt="Accounting and Finance" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Accounting &amp; Finance</h4>
-            <p class="text-gray-600 text-sm">Accounting, banking, financial management, KASNEB courses.</p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/welding.png" alt="Electrical Engineering" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Electrical Engineering</h4>
-            <p class="text-gray-600 text-sm">Electrical installation, plumbing, welding &amp; fabrication.</p>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/fashion.png" alt="Fashion and Design" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Fashion &amp; Design</h4>
-            <p class="text-gray-600 text-sm">Fashion design, tailoring, and textile technology.</p>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/catering.png" alt="Catering and Hospitality Management" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Catering &amp; Hospitality Management</h4>
-            <p class="text-gray-600 text-sm">Food production, house-keeping, tourism, and hotel management.</p>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/community.png" alt="Social Work and Community Development" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Social Work &amp; Community Development</h4>
-            <p class="text-gray-600 text-sm">Counseling psychology, disaster management, criminology &amp; community health.</p>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover">
-          <img src="../static/images/business.png" alt="Business Studies" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="font-semibold text-xl mb-2">Business Studies</h4>
-            <p class="text-gray-600 text-sm">Business management, human resource, sales &amp; marketing, public relations.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- Partners & Accreditations -->
-<div class="mt-20 bg-white rounded-3xl py-12 px-10">
-  <h2 class="section-header text-3xl font-bold text-center text-gray-900 mb-12">Our Partners &amp; Accreditations</h2>
-  <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-10">
-
-    <!-- TVETA -->
-    <img src="../static/images/tveta.png"
-         alt="TVETA"
-         class="h-16 object-contain">
-
-    <!-- NITA -->
-    <img src="../static/images/nita.png"
-         alt="NITA"
-         class="h-16 object-contain">
-
-    <!-- KASNEB -->
-    <img src="../static/images/kasneb.png"
-         alt="KASNEB"
-         class="h-16 object-contain">
-
-    <!-- KNEC -->
-    <img src="../static/images/Knec.png"
-         alt="KNEC"
-         class="h-16 object-contain">
-
-    <!-- ICM -->
-    <img src="../static/images/icm.png"
-         alt="ICM"
-         class="h-16 object-contain">
-
-    <!-- Ministry of Education -->
-    <img src="../static/images/moe.png"
-         alt="Ministry of Education"
-         class="h-16 object-contain">
-
-  </div>
-</div>
-      </div>
-  <!-- ==================== FOOTER (Dark Blue) ==================== -->
-  <footer class="bg-blue-950 text-gray-300 pt-12 pb-8">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-10">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-700 font-bold text-2xl">K</div>
-            <span class="text-white text-2xl font-bold">KISS</span>
-          </div>
-          <p class="text-sm leading-relaxed">
-            Transforming lives through quality education and practical skills.<br>
-            My Skills – My Future
-          </p>
-          <p class="text-xs mt-4 text-gray-400">TVETA Registered • NITA Accredited</p>
-        </div>
-
-        <div>
-          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="about.html" class="hover:text-white">About Us</a></li>
-            <li><a href="programs.html" class="hover:text-white">Our Programs</a></li>
-            <li><a href="shortcourses.html" class="hover:text-white">Short Courses</a></li>
-            <li><a href="admissions.html" class="hover:text-white">Admissions</a></li>
-            <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-white font-semibold mb-4">Our Campuses</h4>
-          <ul class="space-y-3 text-sm">
-            <li><strong>Machakos Campus</strong><br><span class="text-gray-400 text-xs">Ngwatanio Building, Machakos</span></li>
-            <li><strong>Mlolongo Campus</strong><br><span class="text-gray-400 text-xs">Unaitas Building, Mlolongo</span></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-white font-semibold mb-4">Contact Us</h4>
-          <div class="space-y-3 text-sm">
-            <div class="flex gap-2">
-              <i class="fa-solid fa-phone mt-1"></i>
-              <div>
-                <a href="tel:0741958940" class="hover:text-white">0741 958 940</a><br>
-                <a href="tel:0726580464" class="hover:text-white">0726 580 464</a>
-              </div>
-            </div>
+    <section class="section-layer py-20 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <i class="fa-solid fa-envelope"></i>
-              <a href="mailto:kissje2009@gmail.com" class="hover:text-white ml-2">kissje2009@gmail.com</a>
+                <div class="heading-accent mb-8">
+                    <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">Who We Are</h2>
+                </div>
+                <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                    The <strong>Kenya Institute of Social Sciences (KISS)</strong> is a center of excellence in Technical and Vocational Training. We are dedicated to bridging the gap between classroom theory and industry requirements through hands-on, practical education.
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    As a **TVETA registered** and **NITA accredited** college, we operate under strict quality standards to ensure our graduates are competitive in both local and international job markets. Our dual-campus presence in Machakos and Mlolongo serves as a hub for innovation and skill-building.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-6 border-b-4 border-blue-900">
+                        <span class="block text-3xl font-black text-blue-950 uppercase">TVETA</span>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">PRIVATE/TVC/0014/2016</span>
+                    </div>
+                    <div class="bg-red-50 p-6 border-b-4 border-red-700">
+                        <span class="block text-3xl font-black text-red-800 uppercase">NITA</span>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">NITA/TRN/965</span>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="h-[500px] overflow-hidden shadow-2xl relative border-4 border-white hidden lg:block">
+                <div class="fixed-side-img"></div>
+                <div class="absolute inset-0 bg-blue-950/10"></div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="border-t border-gray-800 mt-12 pt-6 text-center text-xs text-gray-500">
-        &copy; 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved.
-      </div>
-    </div>
-  </footer>
+    <div class="parallax-gap"></div>
 
-</body>
-</html>
+    <section class="section-layer py-20 bg-gray-50 border-y">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-0 shadow-2xl">
+                <div class="bg-blue-900 p-12 text-white card-sharp transition-all hover:bg-blue-950">
+                    <div class="text-5xl mb-8 text-yellow-400"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3 class="text-xl font-black uppercase mb-4 tracking-widest">Our Vision</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        To be the excellent Institute in provision of Quality Technical & Vocational Training within the region and beyond.
+                    </p>
+                </div>
+                <div class="bg-red-700 p-12 text-white card-sharp transition-all hover:bg-red-800 border-x border-red-600 md:border-x-0">
+                    <div class="text-5xl mb-8 text-yellow-400"><i class="fa-solid fa-flag-checkered"></i></div>
+                    <h3 class="text-xl font-black uppercase mb-4 tracking-widest">Our Mission</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        To go above and beyond in provision of Quality & Relevant Technical Training that empowers our students.
+                    </p>
+                </div>
+                <div class="bg-white p-12 text-blue-900 card-sharp border-b-8 border-yellow-400 md:border-b-0 md:border-r-8">
+                    <div class="text-5xl mb-8 text-red-700"><i class="fa-solid fa-star"></i></div>
+                    <h3 class="text-xl font-black uppercase mb-4 tracking-widest">Our Motto</h3>
+                    <p class="text-red-700 font-black text-3xl tracking-tighter leading-none">
+                        MY SKILLS<br>MY DESTINY
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-gap"></div>
+
+    <section class="section-layer py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-blue-900 uppercase mb-20 tracking-tighter">Why Professionals Choose KISS</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="group">
+                    <div class="h-20 w-20 bg-white text-blue-900 flex items-center justify-center text-3xl mx-auto mb-8 border-2 border-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-all duration-500 card-sharp"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <h4 class="font-black uppercase text-sm mb-4 text-gray-800">Holistic Training</h4>
+                    <p class="text-[11px] text-gray-500 uppercase font-bold tracking-widest leading-loose">We focus on both technical proficiency and professional ethics.</p>
+                </div>
+                <div class="group">
+                    <div class="h-20 w-20 bg-white text-red-700 flex items-center justify-center text-3xl mx-auto mb-8 border-2 border-red-700 group-hover:bg-red-700 group-hover:text-white transition-all duration-500 card-sharp"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <h4 class="font-black uppercase text-sm mb-4 text-gray-800">Practical Labs</h4>
+                    <p class="text-[11px] text-gray-500 uppercase font-bold tracking-widest leading-loose">Equipped workshops for Beauty, Engineering, and ICT.</p>
+                </div>
+                <div class="group">
+                    <div class="h-20 w-20 bg-white text-blue-900 flex items-center justify-center text-3xl mx-auto mb-8 border-2 border-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-all duration-500 card-sharp"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h4 class="font-black uppercase text-sm mb-4 text-gray-800">Digital Access</h4>
+                    <p class="text-[11px] text-gray-500 uppercase font-bold tracking-widest leading-loose">E-learning portals for distant and working professional students.</p>
+                </div>
+                <div class="group">
+                    <div class="h-20 w-20 bg-white text-red-700 flex items-center justify-center text-3xl mx-auto mb-8 border-2 border-red-700 group-hover:bg-red-700 group-hover:text-white transition-all duration-500 card-sharp"><i class="fa-solid fa-handshake"></i></div>
+                    <h4 class="font-black uppercase text-sm mb-4 text-gray-800">Industry Links</h4>
+                    <p class="text-[11px] text-gray-500 uppercase font-bold tracking-widest leading-loose">Strong partnerships for industrial attachment and internships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 text-center relative overflow-hidden border-t-8 border-yellow-400">
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-white text-5xl font-black uppercase mb-10 tracking-tighter drop-shadow-2xl">
+                Your Sure Way To Your Destiny
+            </h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="/admission" class="bg-red-700 text-white px-12 py-5 font-black uppercase hover:bg-white hover:text-red-700 transition shadow-2xl card-sharp text-lg">
+                    Begin Application
+                </a>
+                <a href="https://wa.me/254741958940" class="bg-white text-blue-900 px-12 py-5 font-black uppercase hover:bg-yellow-400 transition shadow-2xl card-sharp text-lg">
+                    Inquire via WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-blue-950/80"></div>
+    </section>
+
+</div>
+{% endblock %}

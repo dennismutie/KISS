@@ -1,180 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Short Courses | KISS Kenya Institute of Social Sciences</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-<body class="bg-gray-50">
+{% extends 'base.html' %}
+{% load static %}
 
-  <!-- Top Bar & Navbar (use the updated navbar code above) -->
+{% block title %}Short Professional Courses | KISS College Kenya{% endblock %}
 
-  <!-- Page Header -->
-  <div class="bg-white border-b py-12">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-4xl font-bold text-gray-900">Short Professional Courses</h1>
-      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-        Flexible, practical and industry-focused short courses. Available in <strong>Full-time</strong>, <strong>Part-time</strong>, and <strong>Online / Virtual</strong> modes.
-      </p>
-    </div>
+{% block extra_css %}
+<style>
+  /* Fixed Parallax Background */
+  .short-hero {
+    background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(185, 28, 28, 0.85)),
+                url("../static/images/beauty.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  /* Sharp Card Design */
+  .course-card {
+    border: 1px solid #e5e7eb;
+    border-top: 4px solid #1e3a8a; /* Professional Blue Top */
+    transition: all 0.3s ease;
+  }
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-top-color: #b91c1c; /* Red on hover */
+  }
+
+  .btn-sharp { border-radius: 0; }
+  .section-anchor { scroll-margin-top: 120px; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+ <section class="short-hero h-[50vh] flex items-center justify-center text-red-700 text-center">
+  <div class="max-w-4xl px-6">
+    <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Short Professional Courses</h1>
+    <p class="text-xl font-light opacity-90 italic">Quick Skills. Immediate Impact. Professional Certification.</p>
+    <div class="h-1.5 w-32 bg-yellow-400 mx-auto mt-6"></div>
   </div>
+</section>
 
-  <div class="max-w-7xl mx-auto px-6 py-16">
+  <section class="max-w-7xl mx-auto px-6 py-20">
 
-    <!-- Mode Filters -->
-    <div class="flex flex-wrap gap-3 mb-10 justify-center">
-      <button onclick="filterCourses('all')" class="active-filter px-6 py-2 rounded-full border border-red-700 text-red-700 font-medium">All Modes</button>
-      <button onclick="filterCourses('fulltime')" class="px-6 py-2 rounded-full border hover:bg-red-50">Full-time</button>
-      <button onclick="filterCourses('parttime')" class="px-6 py-2 rounded-full border hover:bg-red-50">Part-time (Evening/Weekend)</button>
-      <button onclick="filterCourses('online')" class="px-6 py-2 rounded-full border hover:bg-red-50">Online / Virtual</button>
+    <div id="computer-packages" class="section-anchor mb-20">
+      <div class="flex items-center gap-4 mb-10">
+        <div class="h-12 w-2 bg-blue-800"></div>
+        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">ICT & Digital Skills</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="course-card bg-white p-8">
+          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">Computer Packages (ICDL)</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Master MS Office (Word, Excel, Access), Internet, and Operating Systems. Essential for every career.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-blue-900 uppercase">1 - 2 Months</span>
+            <a href="https://wa.me/254741958940?text=Hi%20KISS%2C%20I%20want%20to%20enroll%20for%20Computer%20Packages." class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
+
+        <div id="web-design" class="course-card bg-white p-8 section-anchor">
+          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">Web & Graphics Design</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Learn HTML, CSS, Photoshop, and Illustrator. Create stunning websites and professional brand identities.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-blue-900 uppercase">3 Months</span>
+            <a href="#" class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
+
+        <div class="course-card bg-white p-8">
+          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">CISCO & Networking</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Professional networking skills. Learn to set up, configure, and troubleshoot corporate networks.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-blue-900 uppercase">3 Months</span>
+            <a href="#" class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Courses Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesContainer">
-
-      <!-- Course Card 1 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">Computer Packages & ICT</div>
-        <div class="p-6">
-          <ul class="text-sm space-y-2 text-gray-600">
-            <li>• MS Office (Word, Excel, PowerPoint, Access)</li>
-            <li>• Internet & Email</li>
-            <li>• Basic Computer Maintenance</li>
-          </ul>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">4 – 8 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('Computer Packages')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
-        </div>
+    <div id="technical" class="section-anchor mb-20">
+      <div class="flex items-center gap-4 mb-10">
+        <div class="h-12 w-2 bg-red-700"></div>
+        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">Technical & Trade Skills</h2>
       </div>
 
-      <!-- Course Card 2 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">HIV Testing and Counselling (HTC)</div>
-        <div class="p-6">
-          <p class="text-sm text-gray-600">Professional training for community health workers and counsellors. NASCOP approved.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">3 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('HIV Testing & Counselling')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
+          <h4 class="font-bold text-gray-900 mb-2">Plumbing & Fabrication</h4>
+          <p class="text-xs text-gray-500">Practical workshop-based training.</p>
+        </div>
+        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
+          <h4 class="font-bold text-gray-900 mb-2">Electrical Installation</h4>
+          <p class="text-xs text-gray-500">NITA accredited short-module.</p>
+        </div>
+        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
+          <h4 class="font-bold text-gray-900 mb-2">Phone Repair & CCTV</h4>
+          <p class="text-xs text-gray-500">Immediate income-generating skill.</p>
+        </div>
+        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
+          <h4 class="font-bold text-gray-900 mb-2">Nail Technology</h4>
+          <p class="text-xs text-gray-500">Manicure, Pedicure & Art.</p>
         </div>
       </div>
-
-      <!-- Course Card 3 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="parttime,online">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">Web Design & Graphics Design</div>
-        <div class="p-6">
-          <ul class="text-sm space-y-2 text-gray-600">
-            <li>• HTML, CSS & JavaScript</li>
-            <li>• Adobe Photoshop & Illustrator</li>
-            <li>• Website Development</li>
-          </ul>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">6 – 10 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('Web Design & Graphics')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Course Card 4 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">Criminology & Security Studies</div>
-        <div class="p-6">
-          <p class="text-sm text-gray-600">Ideal for those interested in private security, county policing, and investigation.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">4 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('Criminology & Security')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Course Card 5 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="online,parttime">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">Disaster Management & Risk Reduction</div>
-        <div class="p-6">
-          <p class="text-sm text-gray-600">Training in emergency response, preparedness, and community resilience.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">3 – 5 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('Disaster Management')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Course Card 6 -->
-      <div class="course-card bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100" data-mode="fulltime,parttime,online">
-        <div class="bg-red-700 text-white text-center py-3 font-medium">Public Relations & Customer Care</div>
-        <div class="p-6">
-          <p class="text-sm text-gray-600">Professional skills for front office, receptionists, and public relations officers.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <div>
-              <span class="text-xs text-gray-500">Duration</span><br>
-              <span class="font-semibold">4 Weeks</span>
-            </div>
-            <button onclick="applyForShortCourse('Public Relations & Customer Care')"
-                    class="bg-red-700 text-white px-5 py-2 rounded-lg text-sm hover:bg-red-800">
-              Apply Now
-            </button>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <!-- Footer (use the same dark blue footer from previous pages) -->
+    <div id="languages" class="section-anchor mb-20">
+      <div class="flex items-center gap-4 mb-10">
+        <div class="h-12 w-2 bg-yellow-500"></div>
+        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">Languages & Health</h2>
+      </div>
 
-  <script>
-    function filterCourses(mode) {
-      const cards = document.querySelectorAll('.course-card');
-      cards.forEach(card => {
-        if (mode === 'all') {
-          card.style.display = 'block';
-        } else {
-          card.style.display = card.getAttribute('data-mode').includes(mode) ? 'block' : 'none';
-        }
-      });
-    }
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="course-card bg-white p-8">
+          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">KSL (Sign Language)</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Bridge the communication gap. Perfect for social workers and educators.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-red-700 uppercase">Flexible Hours</span>
+            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
 
-    function applyForShortCourse(courseName) {
-      const message = encodeURIComponent(
-        `*Short Course Application - KISS*\n\n` +
-        `Course: ${courseName}\n` +
-        `I am interested in enrolling. Please send me details and admission process.`
-      );
-      window.open(`https://wa.me/254741958940?text=${message}`, '_blank');
-    }
-  </script>
-</body>
-</html>
+        <div class="course-card bg-white p-8">
+          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">HIV Testing & Counselling</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">NASCOP approved curriculum for healthcare professionals and counselors.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-red-700 uppercase">3 Weeks</span>
+            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
+
+        <div class="course-card bg-white p-8">
+          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">Foreign Languages (French)</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Expand your horizons. Introductory to advanced levels available.</p>
+          <div class="flex justify-between items-center border-t pt-4">
+            <span class="text-xs font-bold text-red-700 uppercase">3 - 6 Months</span>
+            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="bg-red-700 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-white">
+        <h2 class="text-3xl font-black uppercase tracking-tighter">Limited Time Offer!</h2>
+        <p class="text-red-100">Get a <span class="font-bold text-yellow-400 text-2xl">50% DISCOUNT</span> on selected short courses this month.</p>
+      </div>
+      <a href="/contact" class="bg-white text-red-700 px-10 py-4 font-black uppercase shadow-xl hover:bg-yellow-400 hover:text-blue-900 transition btn-sharp">Claim Discount</a>
+    </div>
+  </section>
+
+{% endblock %}

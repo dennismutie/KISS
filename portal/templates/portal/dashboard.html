@@ -1,10 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}Student Dashboard | KISS{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen bg-gray-50">
+
+    <aside class="w-72 bg-blue-950 flex-shrink-0 hidden md:flex flex-col border-r border-blue-900">
+        <div class="p-8 text-center border-b border-blue-800/50">
+            <img src="{% static 'images/logo.jpg' %}" class="h-12 mx-auto mb-3" alt="logo">
+             <span class="text-white text-[10px] font-black tracking-[0.3em] uppercase opacity-70">Student Portal</span>
+        </div>
+
+        <nav class="flex-1 mt-6">
+            <a href="{% url 'student_dashboard' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all bg-red-700 text-white border-l-8 border-yellow-400">
+                <i class="fa-solid fa-gauge-high mr-4"></i> Dashboard
+            </a>
+
+            <a href="{% url 'student_financials' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <i class="fa-solid fa-money-bill-transfer mr-4"></i> Financials
+            </a>
+
+            <a href="{% url 'academics' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <i class="fa-solid fa-book-open mr-4"></i> Academic Units
+            </a>
+
+            <a href="{% url 'exam_results' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <i class="fa-solid fa-file-lines mr-4"></i> Exam Results
+            </a>
+
+            <a href="{% url 'view_transcript' %}" class="flex items-center justify-between px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <span><i class="fa-solid fa-file-invoice mr-4"></i> Transcript</span>
+                {% if user.fee_balance > 0 %}
+                    <i class="fa-solid fa-lock text-xs text-red-500"></i>
+                {% else %}
+                    <i class="fa-solid fa-circle-check text-xs text-green-500"></i>
+                {% endif %}
+            </a>
+
+            <a href="{% url 'portal_logout' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-red-400 hover:bg-red-900/50 mt-12">
+                <i class="fa-solid fa-right-from-bracket mr-4"></i> Logout
+            </a>
+        </nav>
+        <div class="p-6 text-center text-[9px] text-blue-400 font-bold uppercase tracking-widest border-t border-blue-900">
+            © 2026 Brightline Creations
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header class="bg-white md:hidden p-4 flex justify-between items-center shadow-md z-10">
+            <img src="{% static 'images/logo.jpg' %}" class="h-10" alt="logo">
+            <button class="text-blue-900 text-2xl"><i class="fa-solid fa-bars"></i></button>
+        </header>
+
+        <div class="bg-white border-b px-6 py-8 md:px-12 md:py-12 flex flex-col lg:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="relative group">
+                        {% if user.profile_photo and user.profile_photo.name %}
+                            <img src="{{ user.profile_photo.url }}" class="w-32 h-32 rounded-none border-4 border-red-700 shadow-2xl object-cover">
+                        {% else %}
+                            <img src="{% static 'images/logo.jpg' %}" class="w-32 h-32 rounded-none border-4 border-gray-300 shadow-2xl object-cover opacity-50">
+                        {% endif %}
+
+                        <form action="{% url 'update_photo' %}" method="POST" enctype="multipart/form-data" id="photoUploadForm">
+                            {% csrf_token %}
+                            <label class="absolute bottom-0 right-0 bg-blue-900 text-white p-2.5 rounded-none text-xs shadow-xl cursor-pointer hover:bg-red-700 transition-all border-2 border-white">
+                                <i class="fa-solid fa-camera"></i>
+                                <input type="file" name="photo" class="hidden" onchange="document.getElementById('photoUploadForm').submit()">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-black text-blue-900 uppercase tracking-tighter">Welcome back, {{ user.full_name }}</h1>
+                    <p class="text-gray-500 font-bold text-sm mt-1 uppercase tracking-widest">
+                        ID: {{ user.id_number }} | ADM: {{ user.admission_number|default:'PENDING' }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-red-50 border-l-8 border-red-700 p-6 w-full lg:w-72 shadow-inner">
+                <p class="text-[10px] font-black text-red-900 uppercase tracking-widest mb-1 opacity-70">Fee Balance</p>
+                <p class="text-3xl font-black text-red-700">KES {{ user.fee_balance }}</p>
+            </div>
+        </div>
+
+        <div class="px-6 md:px-12 pt-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="{% url 'view_transcript' %}" class="bg-white border-2 border-slate-200 p-6 text-center hover:border-red-700 transition-all group shadow-sm">
+                    <i class="fa-solid fa-file-invoice text-3xl text-slate-300 group-hover:text-red-700 mb-3 block"></i>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900">View Transcript</span>
+                </a>
+                </div>
+        </div>
+
+        <div class="p-6 md:p-12 overflow-y-auto">
+            <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Latest Announcements</h3>
+            <div class="grid gap-6">
+                {% for item in announcements %}
+                <div class="bg-white p-8 border border-gray-100 shadow-sm relative overflow-hidden group rounded-none">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-900 group-hover:bg-red-700 transition-colors"></div>
+                    <p class="text-[10px] font-bold text-gray-400 mb-3 uppercase tracking-widest">{{ item.date_posted|date:"d M Y" }}</p>
+                    <h4 class="text-xl font-black text-blue-950 mb-3">{{ item.title }}</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">{{ item.content }}</p>
+                </div>
+                {% empty %}
+                <p class="text-center text-gray-400 uppercase text-xs font-bold">No announcements yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
