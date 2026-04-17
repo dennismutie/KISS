@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Staff Dashboard | KISS{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen bg-gray-100">
+
+    <aside class="w-72 bg-[#003366] flex-shrink-0 hidden md:flex flex-col border-r border-blue-900">
+        <div class="p-8 text-center border-b border-blue-800/50">
+            <img src="{% static 'images/logo.jpg' %}" class="h-12 mx-auto mb-3" alt="logo">
+            <span class="text-white text-[10px] font-black tracking-[0.3em] uppercase opacity-70">Staff Portal</span>
+        </div>
+
+        <nav class="flex-1 mt-6">
+            <a href="{% url 'staff_dashboard' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all bg-red-700 text-white border-l-8 border-yellow-400">
+                <i class="fa-solid fa-chalkboard-user mr-4"></i> Staff Home
+            </a>
+            <a href="{% url 'bulk_mark_entry' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <i class="fa-solid fa-pen-to-square mr-4"></i> Bulk Mark Entry
+            </a>
+            <a href="{% url 'print_student_list' %}" target="_blank" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
+                <i class="fa-solid fa-print mr-4"></i> Print Class List
+            </a>
+            <a href="javascript:void(0)"
+       onclick="let code = prompt('Enter Unit Code to Print:'); if(code) window.location.href='/portal/print-marks/'+code+'/'"
+       class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white cursor-pointer">
+        <i class="fa-solid fa-list-check mr-4"></i> Print Unit Marks
+    </a>
+            <a href="{% url 'portal_logout' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-red-400 hover:bg-red-900/50 mt-12">
+                <i class="fa-solid fa-right-from-bracket mr-4"></i> Logout
+            </a>
+        </nav>
+        <div class="p-6 text-center text-[9px] text-blue-400 font-bold uppercase tracking-widest border-t border-blue-900">
+            © 2026 Brightline Creations
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <div class="bg-white border-b px-6 py-8 md:px-12 flex flex-col lg:flex-row justify-between items-center gap-8 shadow-sm">
+            <div class="flex items-center gap-6">
+
+                <div class="relative group flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full border-4 border-red-700 shadow-2xl overflow-hidden bg-slate-100">
+                        {% if user.profile_photo and user.profile_photo.url and 'lec.png' not in user.profile_photo.name %}
+                            <img src="{{ user.profile_photo.url }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <img src="{% static 'images/lec.png' %}" class="w-full h-full object-cover opacity-80" alt="Lecturer icon">
+                        {% endif %}
+                    </div>
+
+                    <div class="absolute inset-0 flex items-center justify-center rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex gap-4">
+                            <button onclick="document.getElementById('photoInput').click();" title="Change Photo" class="text-white hover:text-yellow-400 transition-colors">
+                                <i class="fa-solid fa-camera text-lg"></i>
+                            </button>
+
+                            {% if user.profile_photo and 'lec.png' not in user.profile_photo.name %}
+                            <a href="{% url 'delete_photo' %}" title="Delete Photo" class="text-white hover:text-red-500 transition-colors">
+                                <i class="fa-solid fa-trash-can text-lg"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <form id="photoForm" action="{% url 'update_photo' %}" method="POST" enctype="multipart/form-data" class="hidden">
+                        {% csrf_token %}
+                        <input type="file" id="photoInput" name="photo" accept="image/*" onchange="document.getElementById('photoForm').submit();">
+                    </form>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3">
+                        <h1 class="text-3xl font-black text-[#003366] uppercase tracking-tighter italic">Lecturer Portal</h1>
+                        {% if user.is_superuser %}
+                        <span class="bg-yellow-400 text-[#003366] text-[9px] px-2 py-0.5 font-black uppercase rounded">Admin View</span>
+                        {% endif %}
+                    </div>
+                    <p class="text-gray-500 font-bold text-sm uppercase tracking-widest">
+                        {{ user.full_name }} | <span class="text-red-700 font-extrabold">{{ user.get_school_display }}</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="{% url 'bulk_mark_entry' %}" class="bg-red-700 text-white px-8 py-4 rounded-none font-black uppercase text-xs tracking-widest hover:bg-[#002244] transition-all shadow-lg active:scale-95">
+                    <i class="fa-solid fa-plus mr-2"></i> Record New Marks
+                </a>
+            </div>
+        </div>
+
+        <div class="p-6 md:p-12 grid lg:grid-cols-3 gap-8 overflow-y-auto h-full">
+
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white border-t-4 border-[#003366] shadow-md">
+                    <div class="p-6 border-b flex justify-between items-center bg-slate-50/50">
+                        <div>
+                            <h3 class="font-black text-sm uppercase tracking-widest text-gray-800">Assigned Students</h3>
+                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">Department: {{ user.get_school_display }}</p>
+                        </div>
+                        <span class="text-[10px] font-black bg-blue-100 text-blue-800 px-3 py-1 uppercase tracking-widest border border-blue-200">{{ my_students.count }} Total</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 text-[10px] uppercase font-black text-gray-400 border-b">
+                                <tr>
+                                    <th class="px-6 py-4">Student Name</th>
+                                    <th class="px-6 py-4">Reg Number</th>
+                                    <th class="px-6 py-4 text-right">Fee Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y text-sm">
+                                {% for student in my_students %}
+                                <tr class="hover:bg-blue-50/50 transition cursor-default">
+                                    <td class="px-6 py-4 font-bold text-gray-800 uppercase tracking-tight">{{ student.full_name }}</td>
+                                    <td class="px-6 py-4 font-mono text-xs text-slate-500">{{ student.admission_number|default:student.id_number }}</td>
+                                    <td class="px-6 py-4 text-right">
+                                        {% if student.fee_balance > 0 %}
+                                            <div class="inline-block">
+                                                <span class="text-[9px] bg-red-50 text-red-700 border border-red-200 px-2 py-1 font-black uppercase italic">Debt: KES {{ student.fee_balance }}</span>
+                                            </div>
+                                        {% else %}
+                                            <span class="text-[9px] bg-green-50 text-green-700 border border-green-200 px-2 py-1 font-black uppercase italic">Cleared</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="3" class="p-16 text-center text-gray-400 italic">No students registered in this school.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-[#003366] p-8 text-white shadow-xl relative overflow-hidden">
+                    <i class="fa-solid fa-bullhorn absolute -right-6 -bottom-6 text-9xl opacity-10"></i>
+
+                    <h3 class="text-xs font-black uppercase tracking-[0.25em] mb-8 border-b border-blue-800 pb-4 flex justify-between items-center">
+                        <span>Staff Memos</span>
+                        <i class="fa-solid fa-paper-plane text-yellow-400"></i>
+                    </h3>
+
+                    <div class="space-y-8 relative z-10">
+                        {% if announcements %}
+                            {% for item in announcements %}
+                                <div class="border-l-4 border-red-600 pl-4 py-1">
+                                    <p class="text-[9px] font-bold text-blue-300 uppercase mb-1">{{ item.date_posted|date:"d M Y" }}</p>
+                                    <h4 class="font-bold text-sm leading-tight text-white group-hover:text-yellow-400 transition-colors">{{ item.title }}</h4>
+                                    <p class="text-[11px] text-blue-100/70 mt-2 leading-relaxed italic">{{ item.content|truncatechars:100 }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="text-center py-6 border border-blue-800 border-dashed">
+                                <p class="text-xs font-bold text-blue-400 uppercase">No new notices</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+           <div class="bg-white border-2 border-dashed border-gray-200 p-8 text-center hover:border-blue-300 transition-colors">
+    <div class="w-12 h-12 bg-slate-50 mx-auto mb-4 flex items-center justify-center border border-slate-100 rounded-full">
+        <i class="fa-solid fa-microchip text-slate-400"></i>
+    </div>
+    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Technical Support</p>
+    <p class="text-[11px] text-gray-600 leading-relaxed font-medium">
+        Experiencing data lag? Contact the Developer team at <br>
+        <a href="https://wa.me/254711238972?text=Hello%20Brightline%20Creations%2C%20I%20am%20reaching%20out%20from%20the%20KISS%20College%20Staff%20Portal%20regarding%20a%20technical%20inquiry."
+           target="_blank"
+           class="text-[#003366] font-bold underline hover:text-green-600 transition-colors">
+            Brightline Creations
+        </a>
+    </p>
+</div>
+            </div>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

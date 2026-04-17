@@ -1,104 +1,107 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.shortcuts import render
+from django.urls import reverse
 from .models import Student, Announcement, FeePayment, ExamResult
 
 
-# --- INLINES ---
+# --- CUSTOM PRINT ACTIONS ---
 
-class FeePaymentInline(admin.TabularInline):
-    model = FeePayment
-    extra = 0  # Don't clutter the page with empty rows
-    readonly_fields = ('date_paid',)  # Prevent accidental back-dating
-    classes = ['collapse']  # Keeps the page neat, admin can expand if needed
-
-
-class ExamResultInline(admin.TabularInline):
-    model = ExamResult
-    extra = 0
-    fields = ('subject_name', 'unit_code', 'marks', 'grade', 'semester')
-    readonly_fields = ('grade',)  # Auto-calculated by model
-    classes = ['collapse']
+def print_as_register(modeladmin, request, queryset):
+    """Prints a professional student register based on current selection/filter"""
+    return render(request, 'portal/print_student_list.html', {
+        'students': queryset,
+        'user': request.user
+    })
 
 
-# --- MODEL ADMINS ---
+print_as_register.short_description = "🖨️ Print Selected as Register"
 
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
-    # Professional list view with colored balance status
-    list_display = ('admission_number', 'full_name', 'phone_number', 'school', 'course', 'get_balance_status',
-                    'is_active')
-    search_fields = ('full_name', 'phone_number', 'id_number', 'admission_number')
-    list_filter = ('school', 'is_staff', 'is_active')
-    actions = ['print_student_reports']  # Custom Print Action
 
-    # Organizing the Edit Page into sharp sections
-    fieldsets = (
-        ('Personal Information', {
-            'fields': ('full_name', 'phone_number', 'id_number', 'profile_photo')
-        }),
-        ('Academic Records', {
-            'fields': ('admission_number', 'school', 'course')
-        }),
-        ('Financial Status', {
-            'fields': ('fee_balance',),
-            'description': '<b>Note:</b> Balance is auto-calculated when payments are added below.'
-        }),
-        ('Permissions', {
-            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups'),
-            'classes': ('collapse',)
-        }),
-    )
+def print_academic_report(modeladmin, request, queryset):
+    """Prints a mark sheet for selected exam results"""
+    # Group by unit code if printing marks
+    return render(request, 'portal/print_marks_list.html', {
+        'results': queryset,
+        'unit_code': queryset.first().unit_code if queryset.exists() else "N/A",
+        'subject_name': queryset.first().subject_name if queryset.exists() else "N/A",
+        'user': request.user
+    })
 
-    inlines = [FeePaymentInline, ExamResultInline]
 
-    # Visual Fee Status (Red if owing, Green if cleared)
-    def get_balance_status(self, obj):
+print_academic_report.short_description = "📊 Print Academic Mark Sheet"
+
+
+# --- PROXY MODELS ---
+
+class StudentUser(Student):
+    class Meta:
+        proxy = True
+        verbose_name = "Student"
+        verbose_name_plural = "1. Students"
+
+
+class StaffUser(Student):
+    class Meta:
+        proxy = True
+        verbose_name = "Staff Member"
+        verbose_name_plural = "2. Staff & Lecturers"
+
+
+# --- ADMIN CLASSES ---
+
+@admin.register(StudentUser)
+class StudentUserAdmin(admin.ModelAdmin):
+    # Added 'gender' and 'semester' assuming they exist in your Student model
+    list_display = ('admission_number', 'full_name', 'school', 'fee_balance', 'get_status_badge', 'is_active')
+    list_filter = ('school', 'semester', 'gender', 'is_active', 'fee_balance')
+    search_fields = ('full_name', 'admission_number', 'id_number')
+    actions = [print_as_register, 'reset_passwords_to_id']
+
+    def get_status_badge(self, obj):
         if obj.fee_balance > 0:
-            return format_html('<b style="color: #991b1b;">KSh {} (Owing)</b>', obj.fee_balance)
-        elif obj.fee_balance < 0:
-            return format_html('<b style="color: #166534;">KSh {} (Credit)</b>', abs(obj.fee_balance))
-        return format_html('<b style="color: #166534;">Cleared</b>')
+            return format_html('<span style="color: red;">OWING</span>')
+        return format_html('<span style="color: green;">CLEARED</span>')
 
-    get_balance_status.short_description = "Fee Balance"
+    get_status_badge.short_description = "Fin Status"
 
-    # Custom Action to "Print Details"
-    def print_student_reports(self, request, queryset):
-        # In a real Django setup, you'd redirect to a specific URL that generates a PDF or Print view
-        # For now, this prepares the admin to know which students to "Report" on
-        from django.http import HttpResponseRedirect
-        from django.urls import reverse
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(is_staff=False, is_superuser=False)
 
-        # We can pass the IDs to a custom print view we create
-        selected = queryset.values_list('pk', flat=True)
-        return HttpResponseRedirect(f"/portal/print-reports/?ids={','.join(map(str, selected))}")
+    def reset_passwords_to_id(self, request, queryset):
+        for user in queryset:
+            user.set_password(user.id_number)
+            user.save()
+        self.message_user(request, "Passwords reset to ID Numbers.")
 
-    print_student_reports.short_description = "🖨️ Print Selected Student Reports"
+
+@admin.register(StaffUser)
+class StaffUserAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'school', 'phone_number', 'is_staff', 'is_active')
+    list_filter = ('school', 'is_active')
+    actions = [print_as_register]  # Can print a staff list too
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(is_staff=True, is_superuser=False)
 
 
 @admin.register(ExamResult)
 class ExamResultAdmin(admin.ModelAdmin):
-    list_display = ('student', 'subject_name', 'unit_code', 'marks', 'grade', 'semester')
-    list_filter = ('semester', 'grade', 'student__school')
-    search_fields = ('student__full_name', 'subject_name', 'unit_code')
+    list_display = ('student', 'subject_name', 'unit_code', 'marks', 'grade', 'is_published', 'date_entered')
+    list_filter = ('is_published', 'grade', 'semester', 'student__school')
+    list_editable = ('is_published',)  # Quick verify directly from the list!
+    actions = [print_academic_report, 'verify_marks']
+    search_fields = ('student__full_name', 'unit_code')
 
+    def verify_marks(self, request, queryset):
+        queryset.update(is_published=True)
+        self.message_user(request, "Selected marks have been approved and published to students.")
 
-@admin.register(FeePayment)
-class FeePaymentAdmin(admin.ModelAdmin):
-    list_display = ('reference_code', 'student', 'amount', 'method', 'date_paid')
-    search_fields = ('reference_code', 'student__full_name')
-    list_filter = ('method', 'date_paid')
-
-    # Allows admin to quickly see student's current total debt when adding a payment
-    readonly_fields = ('get_current_balance',)
-
-    def get_current_balance(self, obj):
-        return f"KSh {obj.student.fee_balance}"
-
-    get_current_balance.short_description = "Student's Current Balance"
+    verify_marks.short_description = "✅ Approve & Publish Selected Marks"
 
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_priority', 'date_posted')
-    list_editable = ('is_priority',)  # Can toggle priority directly from the list
-    search_fields = ('title',)
+    list_display = ('title', 'audience', 'is_priority', 'date_posted')
+    list_editable = ('is_priority',)
+    # Priority announcements show up with a Red Badge/Pulse in the user dashboard

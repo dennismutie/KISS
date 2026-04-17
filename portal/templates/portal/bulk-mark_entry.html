@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bulk Mark Entry | KISS{% endblock %}
+
+{% block content %}
+<style>
+    /* KISS Professional Corner-to-Corner Diagonal Watermark */
+    .print-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .print-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        /* Tiling the text diagonally across the whole area */
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='150px' width='500px'><text x='0' y='100' fill='rgba(0, 51, 102, 0.03)' font-size='50' font-family='Arial, Helvetica, sans-serif' font-weight='900' transform='rotate(-35)'>KISS COLLEGE</text></svg>");
+        background-repeat: repeat;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Print Optimization */
+    @media print {
+        .no-print { display: none !important; }
+        body { background: white !important; padding: 0 !important; }
+        .print-container {
+            box-shadow: none !important;
+            border: none !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 10mm !important;
+        }
+        .print-container::before {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='150px' width='500px'><text x='0' y='100' fill='rgba(0, 0, 0, 0.06)' font-size='50' font-family='Arial, Helvetica, sans-serif' font-weight='900' transform='rotate(-35)'>KISS COLLEGE</text></svg>");
+        }
+        table { position: relative; z-index: 10; background: transparent !important; }
+        th, td { border: 1px solid #000 !important; }
+        @page { size: A4; margin: 1cm; }
+    }
+
+    .mark-input {
+        border: 2px solid #e2e8f0;
+        text-align: center;
+        font-weight: 900;
+        z-index: 20;
+    }
+    .mark-input:focus {
+        border-color: #b91c1c;
+        outline: none;
+        background-color: #fff;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+</style>
+
+<div class="min-h-screen bg-slate-100 py-10 px-4 sm:px-8">
+    <div class="max-w-6xl mx-auto">
+
+        <div class="max-w-4xl mx-auto mb-6 no-print flex justify-between items-center bg-slate-800 p-4 text-white shadow-lg">
+            <div>
+                <h2 class="font-black uppercase text-xs tracking-widest text-red-500">KISS Result Registry</h2>
+                <p class="text-[10px] opacity-70 italic font-bold">Authenticated Session: {{ user.full_name }}</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="{% url 'staff_dashboard' %}" class="bg-slate-700 hover:bg-slate-600 px-4 py-2 font-bold uppercase text-[10px] tracking-widest transition-all">Back</a>
+                <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 font-black uppercase text-xs tracking-widest transition-all shadow-md active:scale-95">
+                    <i class="fa-solid fa-print mr-2"></i> Print Preview
+                </button>
+            </div>
+        </div>
+
+        <div class="print-container bg-white shadow-2xl overflow-hidden mx-auto" style="max-width: 850px; padding: 45px; border: 1px solid #eee;">
+
+            <form action="{% url 'bulk_mark_entry' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="flex justify-between items-center pb-6 mb-6 relative z-10 border-b-4 border-[#003366]">
+                    <div class="flex items-center gap-4">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="h-16 w-16 object-contain border p-1 bg-white">
+                        <div>
+                            <h1 class="text-xl font-black uppercase text-slate-900 leading-tight">Kenya Institute of Social Sciences</h1>
+                            <p class="text-[10px] font-bold text-red-700 uppercase tracking-[0.2em]">Internal Result Assessment Registry</p>
+                        </div>
+                    </div>
+                    <div class="text-right border-l pl-4 border-slate-200">
+                        <p class="text-[9px] font-black uppercase text-slate-900 mb-1">Entry Metadata</p>
+                        <p class="text-[9px] font-bold text-slate-500">DATE: {% now "d F Y" %}</p>
+                        <p class="text-[9px] font-bold text-slate-500">TIME: {% now "H:i" %} EAT</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 mb-8 text-[11px] border-y-2 py-6 border-slate-900 border-double relative z-10 bg-slate-50/50">
+                    <div class="space-y-2 px-2">
+                        <label class="font-black uppercase text-slate-400 block tracking-widest">Unit Title</label>
+                        <input type="text" name="subject_name" placeholder="E.G. PYTHON DEVELOPMENT" required
+                               class="w-full bg-white border border-slate-300 p-2 font-bold uppercase focus:border-red-700 outline-none shadow-sm">
+                    </div>
+                    <div class="space-y-2 px-2">
+                        <label class="font-black uppercase text-slate-400 block tracking-widest">Unit Code</label>
+                        <input type="text" name="unit_code" placeholder="E.G. ICT-202" required
+                               class="w-full bg-white border border-slate-300 p-2 font-bold uppercase focus:border-red-700 outline-none shadow-sm">
+                    </div>
+                    <div class="space-y-2 px-2">
+                        <label class="font-black uppercase text-slate-400 block tracking-widest">Semester</label>
+                        <select name="semester" required class="w-full bg-white border border-slate-300 p-2 font-bold focus:border-red-700 outline-none shadow-sm cursor-pointer">
+                            <option value="Sem 1">Semester 01</option>
+                            <option value="Sem 2">Semester 02</option>
+                            <option value="Sem 3">Semester 03</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="w-full text-left border-collapse border border-slate-900 relative z-10">
+                    <thead>
+                        <tr class="bg-slate-100 uppercase text-[8px] font-black text-slate-600">
+                            <th class="p-2 border border-slate-900 w-8 text-center">S/N</th>
+                            <th class="p-2 border border-slate-900">Student Name</th>
+                            <th class="p-2 border border-slate-900 text-center">Reg Number</th>
+                            <th class="p-2 border border-slate-900 text-center w-24">Mark/100</th>
+                            <th class="p-2 border border-slate-900 text-center w-12">Grade</th>
+                            <th class="p-2 border border-slate-900 text-center">Classification</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[10px] bg-white/70">
+                        {% for student in students %}
+                        <tr class="hover:bg-red-50/20 transition-all">
+                            <td class="p-2 border border-slate-900 text-center font-bold text-slate-400">{{ forloop.counter }}</td>
+                            <td class="p-2 border border-slate-900 font-bold uppercase text-slate-800">{{ student.full_name }}</td>
+                            <td class="p-2 border border-slate-900 text-center font-mono text-slate-500">{{ student.admission_number|default:student.id_number }}</td>
+                            <td class="p-1 border border-slate-900">
+                                <input type="number" name="marks_{{ student.id }}" min="0" max="100"
+                                       oninput="updateGradeDisplay(this)"
+                                       class="mark-input w-full p-2 bg-slate-50 text-slate-900 shadow-inner" placeholder="—">
+                            </td>
+                            <td class="p-2 border border-slate-900 text-center">
+                                <span id="grade_{{ student.id }}" class="font-black text-slate-300">—</span>
+                            </td>
+                            <td class="p-2 border border-slate-900 text-center">
+                                <span id="class_{{ student.id }}" class="font-black uppercase text-[8px] text-slate-300">PENDING</span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="mt-12 flex flex-col md:flex-row justify-between items-center gap-8 no-print bg-[#003366] p-6 shadow-xl">
+                    <div class="flex items-center gap-4 text-white">
+                        <i class="fa-solid fa-triangle-exclamation text-yellow-400 text-xl animate-pulse"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-tight leading-tight max-w-sm">
+                            Ensure all marks are verified. Results are held in <span class="text-red-400 underline italic">Draft Mode</span> for Registrar Approval.
+                        </p>
+                    </div>
+                    <button type="submit" class="bg-red-700 hover:bg-white hover:text-red-700 text-white px-10 py-4 font-black uppercase tracking-[0.2em] text-[11px] transition-all border-2 border-transparent hover:border-red-700 shadow-lg active:scale-95">
+                        Commit Marks to Portal
+                    </button>
+                </div>
+
+                <div class="mt-24 grid grid-cols-2 gap-20 relative z-10">
+                    <div class="border-t-2 border-slate-900 pt-3 text-center">
+                        <p class="text-[10px] font-black uppercase text-slate-900 tracking-widest">Lecturer Signature</p>
+                        <p class="text-[9px] text-slate-400 mt-1 italic font-bold">Date: ____/____/20____</p>
+                    </div>
+                    <div class="border-t-2 border-slate-900 pt-3 text-center">
+                        <p class="text-[10px] font-black uppercase text-slate-900 tracking-widest">Registrar / HOD Seal</p>
+                        <p class="text-[9px] text-slate-400 mt-1 italic font-bold">Date: ____/____/20____</p>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-center pt-4 border-t border-dashed border-slate-200 relative z-10">
+                    <p class="text-[8px] text-slate-400 font-bold uppercase tracking-[0.5em]">KISS System Generated &bullet; Brightline Creations</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateGradeDisplay(input) {
+        const val = parseInt(input.value);
+        const rowId = input.name.split('_')[1];
+        const gradeSpan = document.getElementById('grade_' + rowId);
+        const classSpan = document.getElementById('class_' + rowId);
+
+        if (!input.value || isNaN(val)) {
+            gradeSpan.innerText = "—";
+            gradeSpan.className = "font-black text-slate-300";
+            classSpan.innerText = "PENDING";
+            classSpan.className = "font-black uppercase text-[8px] text-slate-300";
+            return;
+        }
+
+        let grade = 'E';
+        let classification = 'FAIL';
+        let colorClass = 'text-red-600';
+
+        if (val >= 80) { grade = 'A'; classification = 'DISTINCTION'; colorClass = 'text-green-600'; }
+        else if (val >= 65) { grade = 'B'; classification = 'CREDIT'; colorClass = 'text-blue-600'; }
+        else if (val >= 50) { grade = 'C'; classification = 'PASS'; colorClass = 'text-orange-600'; }
+        else if (val >= 40) { grade = 'D'; classification = 'SUPP'; colorClass = 'text-yellow-600'; }
+
+        gradeSpan.innerText = grade;
+        gradeSpan.className = "font-black " + colorClass;
+        classSpan.innerText = classification;
+        classSpan.className = "font-black uppercase text-[8px] " + colorClass;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Internal Marks Register | {{ unit_code }}{% endblock %}
+
+{% block content %}
+<style>
+    .print-container {
+        max-width: 850px;
+        margin: 30px auto;
+        background: white;
+        padding: 50px;
+        border: 1px solid #ddd;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* KISS Professional Watermark */
+    .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 70px;
+        font-weight: 900;
+        color: rgba(0, 51, 102, 0.04);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+    }
+
+    @media print {
+        .no-print { display: none !important; }
+        body { background: white !important; }
+        .print-container {
+            border: none !important;
+            margin: 0 !important;
+            padding: 5mm !important;
+            width: 100% !important;
+        }
+        .watermark { color: rgba(0, 0, 0, 0.06) !important; }
+        table { width: 100% !important; border-collapse: collapse !important; position: relative; z-index: 10; }
+        th, td { border: 1px solid #000 !important; padding: 10px !important; font-size: 11px !important; }
+        @page { size: A4; margin: 1cm; }
+    }
+</style>
+
+<div class="max-w-4xl mx-auto mt-8 no-print flex justify-between items-center bg-[#003366] p-5 text-white shadow-lg">
+    <div>
+        <h2 class="font-black uppercase text-sm tracking-widest">Marks Sheet Generator</h2>
+        <p class="text-[10px] opacity-70 italic">Generated: {% now "d M Y, H:i" %} EAT</p>
+    </div>
+    <div class="flex gap-4">
+        <a href="{% url 'staff_dashboard' %}" class="bg-blue-800 hover:bg-blue-700 px-5 py-2 font-bold uppercase text-[10px] transition-all">Back</a>
+        <button onclick="window.print()" class="bg-red-700 hover:bg-red-800 px-8 py-2 font-black uppercase text-[10px] tracking-widest transition-all">
+            <i class="fa-solid fa-print mr-2"></i> Print Sheet
+        </button>
+    </div>
+</div>
+
+<div class="print-container">
+    <div class="watermark">KISS COLLEGE</div>
+
+    <div class="flex justify-between items-center border-b-4 border-double border-slate-900 pb-6 mb-8 relative z-10">
+        <div class="flex items-center gap-4">
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="h-20 w-20 object-contain p-1 border border-slate-100">
+            <div>
+                <h1 class="text-2xl font-black uppercase tracking-tighter text-slate-900">Kenya Institute of Social Sciences</h1>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] text-red-700 mt-1">Internal Academic Mark Sheet</p>
+            </div>
+        </div>
+        <div class="text-right text-[10px] font-bold uppercase text-slate-500">
+            <p>Serial: KISS/MR/{% now "Y" %}/{{ unit_code }}</p>
+            <p>Printed: {% now "d/m/Y H:i" %}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-x-12 gap-y-4 text-[11px] mb-8 uppercase font-bold relative z-10">
+        <div class="flex gap-2"><span class="text-slate-400 italic">Subject/Unit:</span><span class="text-slate-900 border-b border-slate-300 flex-1">{{ subject_name }}</span></div>
+        <div class="flex gap-2"><span class="text-slate-400 italic">Unit Code:</span><span class="text-slate-900 border-b border-slate-300 flex-1">{{ unit_code }}</span></div>
+        <div class="flex gap-2"><span class="text-slate-400 italic">Lecturer:</span><span class="text-slate-900 border-b border-slate-300 flex-1">{{ user.full_name }}</span></div>
+        <div class="flex gap-2"><span class="text-slate-400 italic">Department:</span><span class="text-slate-900 border-b border-slate-300 flex-1">{{ user.get_school_display }}</span></div>
+    </div>
+
+    <table class="w-full text-left border-collapse relative z-10">
+        <thead>
+            <tr class="bg-slate-100 text-[10px] font-black uppercase">
+                <th class="p-3 border border-slate-900 w-10">S/N</th>
+                <th class="p-3 border border-slate-900">Student Name</th>
+                <th class="p-3 border border-slate-900">Reg Number</th>
+                <th class="p-3 border border-slate-900 text-center">Score</th>
+                <th class="p-3 border border-slate-900 text-center">Remarks</th>
+                <th class="p-3 border border-slate-900 text-center">Status</th>
+            </tr>
+        </thead>
+        <tbody class="text-[11px]">
+            {% for res in results %}
+            <tr class="hover:bg-slate-50">
+                <td class="p-3 border border-slate-300 text-center">{{ forloop.counter }}</td>
+                <td class="p-3 border border-slate-300 font-bold uppercase text-slate-800">{{ res.student.full_name }}</td>
+                <td class="p-3 border border-slate-300 font-mono text-slate-600">{{ res.student.admission_number|default:res.student.id_number }}</td>
+                <td class="p-3 border border-slate-300 text-center font-black text-lg">{{ res.marks }}</td>
+                <td class="p-3 border border-slate-300 text-center font-bold">
+                    {% if res.marks >= 80 %} DISTINCTION
+                    {% elif res.marks >= 65 %} CREDIT
+                    {% elif res.marks >= 50 %} PASS
+                    {% else %} FAIL
+                    {% endif %}
+                </td>
+                <td class="p-3 border border-slate-300 text-center text-[9px] font-black italic">
+                    {% if res.is_published %} VERIFIED {% else %} PENDING {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-6 text-[9px] text-slate-500 font-bold italic">
+        * KEY: 80-100: Distinction | 65-79: Credit | 50-64: Pass | 0-49: Fail
+    </div>
+
+    <div class="mt-20 grid grid-cols-2 gap-20 relative z-10">
+        <div class="border-t-2 border-slate-900 pt-3 text-center">
+            <p class="text-[9px] font-black uppercase">Lecturer's Signature & Date</p>
+            <p class="text-[8px] mt-1 text-slate-400 italic">Date: ____/____/20____</p>
+        </div>
+        <div class="border-t-2 border-slate-900 pt-3 text-center">
+            <p class="text-[9px] font-black uppercase">Dean / Registrar (STAMP)</p>
+            <p class="text-[8px] mt-1 text-slate-400 italic">Date: ____/____/20____</p>
+        </div>
+    </div>
+
+    <div class="mt-16 text-center border-t border-dashed border-slate-200 pt-4">
+        <p class="text-[8px] text-slate-400 font-bold uppercase tracking-[0.4em]">Official Academic Record &bullet; Brightline Creations</p>
+    </div>
+</div>
+{% endblock %}
