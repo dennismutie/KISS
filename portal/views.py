@@ -17,15 +17,11 @@ def portal_login(request):
         if user is not None:
             login(request, user)
 
-            # 1. ADMIN REDIRECT: Superuser goes to the management site
-            if user.is_superuser:
-                return redirect('/admin/')
-
-            # 2. LECTURER REDIRECT: Staff goes to the winning dashboard
-            if user.is_staff:
+            # Admin & Lecturers both use the Staff Dashboard for marks entry
+            if user.is_superuser or user.is_staff:
                 return redirect('staff_dashboard')
 
-            # 3. STUDENT REDIRECT
+            # Student Redirect
             return redirect('student_dashboard')
         else:
             messages.error(request, "Invalid Phone Number or ID Number")
@@ -41,11 +37,12 @@ def portal_logout(request):
 # --- STUDENT VIEWS ---
 
 def student_dashboard(request):
-    if not request.user.is_authenticated or request.user.is_staff:
-        # Prevent lecturers/admins from seeing the student dashboard layout
-        if request.user.is_authenticated:
-            return redirect('staff_dashboard') if request.user.is_staff else redirect('/admin/')
+    if not request.user.is_authenticated:
         return redirect('portal_login')
+
+    # Redirect privileged users away from student layout
+    if request.user.is_staff or request.user.is_superuser:
+        return redirect('staff_dashboard')
 
     all_announcements = Announcement.objects.all().order_by('-date_posted')
     announcements = [
@@ -76,8 +73,8 @@ def exam_results(request):
         messages.warning(request, f"Access Denied: Please clear your balance of KSh {request.user.fee_balance}.")
         return redirect('student_financials')
 
-    all_results = ExamResult.objects.filter(student=request.user).order_by('semester')
-    results = [r for r in all_results if getattr(r, 'is_published', False)]
+    # Now fetching all results directly since is_published defaults to True
+    results = ExamResult.objects.filter(student=request.user, is_published=True).order_by('semester')
 
     return render(request, 'portal/results.html', {'results': results})
 
@@ -90,8 +87,8 @@ def view_transcript(request):
         messages.error(request, "Transcript blocked. Please clear your fee balance first.")
         return redirect('student_financials')
 
-    all_results = ExamResult.objects.filter(student=request.user).order_by('semester')
-    results = [r for r in all_results if getattr(r, 'is_published', False)]
+    # Direct access to published results
+    results = ExamResult.objects.filter(student=request.user, is_published=True).order_by('semester')
 
     context = {'results': results, 'student': request.user}
     return render(request, 'portal/transcript.html', context)
@@ -100,7 +97,7 @@ def view_transcript(request):
 # --- STAFF / LECTURER VIEWS ---
 
 def staff_dashboard(request):
-    # Allow BOTH Superusers and Staff to view this dashboard if they want
+    # BOTH Superusers and Staff can manage marks here
     if not request.user.is_authenticated or (not request.user.is_staff and not request.user.is_superuser):
         return redirect('portal_login')
 
@@ -110,9 +107,8 @@ def staff_dashboard(request):
         if getattr(a, 'audience', 'ALL') in ['ALL', 'STAFF']
     ]
 
-    # Filter students by the staff member's school
     if request.user.is_superuser:
-        my_students = Student.objects.filter(is_staff=False).order_by('full_name')
+        my_students = Student.objects.filter(is_staff=False, is_superuser=False).order_by('full_name')
     else:
         my_students = Student.objects.filter(school=request.user.school, is_staff=False).order_by('full_name')
 
@@ -124,33 +120,30 @@ def staff_dashboard(request):
 
 
 def bulk_mark_entry(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
+    # Allow Superusers and Staff to enter marks
+    if not request.user.is_authenticated or not (request.user.is_staff or request.user.is_superuser):
         return redirect('portal_login')
 
-    # 1. Logic to determine which students this user can grade
     if request.user.is_superuser:
-        students = Student.objects.filter(is_staff=False).order_by('full_name')
+        students = Student.objects.filter(is_staff=False, is_superuser=False).order_by('full_name')
     else:
-        # Filter by the lecturer's school
         students = Student.objects.filter(school=request.user.school, is_staff=False).order_by('full_name')
 
-    # 2. Handle Data Submission (POST)
     if request.method == "POST":
         sub_name = request.POST.get('subject_name')
         u_code = request.POST.get('unit_code')
         sem = request.POST.get('semester')
 
-        # Validation: Ensure subject info isn't empty
         if not sub_name or not u_code:
             messages.error(request, "Subject Name and Unit Code are required!")
             return render(request, 'portal/bulk_mark_entry.html', {'students': students})
 
         count = 0
         for student in students:
-            # Use .get() to avoid MultiValueDictKeyError if a field is missing
             mark_value = request.POST.get(f'marks_{student.id}')
 
-            if mark_value and mark_value.strip():  # Only save if a mark was actually typed
+            if mark_value and mark_value.strip():
+                # Direct entry: is_published is set to True automatically
                 ExamResult.objects.create(
                     student=student,
                     subject_name=sub_name,
@@ -158,15 +151,15 @@ def bulk_mark_entry(request):
                     marks=int(mark_value),
                     semester=sem,
                     entered_by=request.user,
-                    is_published=False
+                    is_published=True  # Reflects immediately
                 )
                 count += 1
 
-        messages.success(request, f"Successfully saved {count} marks for {sub_name}.")
+        messages.success(request, f"Successfully committed {count} marks for {sub_name}.")
         return redirect('staff_dashboard')
 
-    # 3. Handle Initial Page Load (GET)
     return render(request, 'portal/bulk-mark_entry.html', {'students': students})
+
 
 # --- PHOTO MANAGEMENT ---
 
@@ -175,48 +168,50 @@ def update_photo(request):
         return redirect('portal_login')
 
     if request.method == "POST" and request.FILES.get('photo'):
-        student = request.user
-        if student.profile_photo and student.profile_photo.name != 'students/default.png':
-            if os.path.exists(student.profile_photo.path):
-                os.remove(student.profile_photo.path)
+        user = request.user
+        if user.profile_photo and 'lec.png' not in user.profile_photo.name:
+            if os.path.exists(user.profile_photo.path):
+                os.remove(user.profile_photo.path)
 
-        student.profile_photo = request.FILES['photo']
-        student.save()
+        user.profile_photo = request.FILES['photo']
+        user.save()
         messages.success(request, "Profile photo updated successfully!")
 
-    if request.user.is_superuser: return redirect('/admin/')
-    return redirect('staff_dashboard') if request.user.is_staff else redirect('student_dashboard')
+    if request.user.is_superuser or request.user.is_staff:
+        return redirect('staff_dashboard')
+    return redirect('student_dashboard')
 
 
 def delete_photo(request):
     if not request.user.is_authenticated:
         return redirect('portal_login')
 
-    student = request.user
-    if student.profile_photo and student.profile_photo.name != 'students/lec.png':
-        if os.path.exists(student.profile_photo.path):
-            os.remove(student.profile_photo.path)
+    user = request.user
+    if user.profile_photo and 'lec.png' not in user.profile_photo.name:
+        if os.path.exists(user.profile_photo.path):
+            os.remove(user.profile_photo.path)
 
-    student.profile_photo = 'students/lec.png'
-    student.save()
+    user.profile_photo = 'students/lec.png'
+    user.save()
     messages.success(request, "Profile photo removed.")
 
-    if request.user.is_superuser: return redirect('/admin/')
-    return redirect('staff_dashboard') if request.user.is_staff else redirect('student_dashboard')
+    if request.user.is_superuser or request.user.is_staff:
+        return redirect('staff_dashboard')
+    return redirect('student_dashboard')
 
 
 # --- UTILITIES ---
 
 def print_student_list(request):
-    if not request.user.is_staff:
+    if not (request.user.is_staff or request.user.is_superuser):
         return redirect('portal_login')
 
     if request.user.is_superuser:
-        students = Student.objects.filter(is_staff=False)
+        students = Student.objects.filter(is_staff=False, is_superuser=False)
     else:
         students = Student.objects.filter(school=request.user.school, is_staff=False)
 
-    return render(request, 'portal/print_student_list.html', {'students': students})
+    return render(request, 'portal/print_student_list.html', {'students': students.order_by('full_name')})
 
 
 def academic_units(request):
@@ -227,27 +222,24 @@ def academic_units(request):
 
 
 def print_marks_list(request, unit_code):
-    if not request.user.is_staff:
+    if not (request.user.is_staff or request.user.is_superuser):
         return redirect('portal_login')
 
-    # Fetch marks for this unit within the lecturer's department
-    # We use select_related to make the query faster
-    results = ExamResult.objects.filter(
-        unit_code=unit_code,
-        student__school=request.user.school
-    ).select_related('student').order_by('student__full_name')
+    results = ExamResult.objects.filter(unit_code=unit_code)
+
+    if not request.user.is_superuser:
+        results = results.filter(student__school=request.user.school)
+
+    results = results.select_related('student').order_by('student__full_name')
 
     if not results:
         messages.warning(request, f"No marks found for Unit Code: {unit_code}")
         return redirect('staff_dashboard')
 
-    # Get the subject name from the first result for the header
-    subject_name = results[0].subject_name
-
     context = {
         'results': results,
         'unit_code': unit_code,
-        'subject_name': subject_name,
+        'subject_name': results[0].subject_name,
         'count': results.count()
     }
     return render(request, 'portal/print_marks_list.html', context)

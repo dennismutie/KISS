@@ -30,8 +30,6 @@ class Student(AbstractBaseUser, PermissionsMixin):
         ('SCI', 'School of Computing & IT'),
         ('SHS', 'School of Health Sciences'),
     ]
-
-    # New Choices for Admin Filtering
     GENDER_CHOICES = [('M', 'Male'), ('F', 'Female')]
     SEMESTER_CHOICES = [('Sem 1', 'Semester 1'), ('Sem 2', 'Semester 2'), ('Sem 3', 'Semester 3')]
 
@@ -43,8 +41,6 @@ class Student(AbstractBaseUser, PermissionsMixin):
     school = models.CharField(max_length=100, choices=SCHOOL_CHOICES, null=True, blank=True)
     course = models.CharField(max_length=100, null=True, blank=True)
     profile_photo = models.ImageField(upload_to='students/', default='students/lec.png', null=True, blank=True)
-
-    # FIXED: Added missing fields that the Admin was looking for
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
     semester = models.CharField(max_length=10, choices=SEMESTER_CHOICES, default='Sem 1')
 
@@ -61,18 +57,14 @@ class Student(AbstractBaseUser, PermissionsMixin):
         return f"{self.full_name} ({self.admission_number or self.id_number})"
 
     def save(self, *args, **kwargs):
-        # Professional Auto-Password Logic
         if not self.pk or not self.password:
             self.set_password(self.id_number)
-
         if self.password and not self.password.startswith(('pbkdf2_sha256$', 'bcrypt$', 'argon2')):
             self.set_password(self.password)
-
         if not self.admission_number and not self.is_staff:
             year = 2026
             rand_id = random.randint(1000, 9999)
             self.admission_number = f"KISS/{year}/{rand_id}"
-
         super().save(*args, **kwargs)
 
 
@@ -91,9 +83,6 @@ class FeePayment(models.Model):
             student.save()
         super().save(*args, **kwargs)
 
-    def __str__(self):
-        return f"{self.reference_code} - {self.student.full_name}"
-
 
 class ExamResult(models.Model):
     SEMESTER_CHOICES = [('Sem 1', 'Semester 1'), ('Sem 2', 'Semester 2'), ('Sem 3', 'Semester 3')]
@@ -103,19 +92,19 @@ class ExamResult(models.Model):
     unit_code = models.CharField(max_length=20)
     marks = models.PositiveIntegerField()
     grade = models.CharField(max_length=2, blank=True)
-
-    # New Field for Professional Remarks
     classification = models.CharField(max_length=20, blank=True)
-
     semester = models.CharField(max_length=50, choices=SEMESTER_CHOICES, default="Sem 1")
     year = models.IntegerField(default=2026)
-    is_published = models.BooleanField(default=False)
+
+    # UPDATED: Changed default to True for instant results
+    is_published = models.BooleanField(default=True)
+
     entered_by = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True, limit_choices_to={'is_staff': True},
                                    related_name='marks_entered')
     date_entered = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        # Updated Grading Logic to match Kenyan College Standards
+        # Professional Kenyan Grading Scale
         if self.marks >= 80:
             self.grade = 'A'
             self.classification = 'DISTINCTION'

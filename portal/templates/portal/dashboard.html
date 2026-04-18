@@ -4,113 +4,251 @@
 {% block title %}Student Dashboard | KISS{% endblock %}
 
 {% block content %}
-<div class="flex min-h-screen bg-gray-50">
+<link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
+<script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
 
-    <aside class="w-72 bg-blue-950 flex-shrink-0 hidden md:flex flex-col border-r border-blue-900">
-        <div class="p-8 text-center border-b border-blue-800/50">
-            <img src="{% static 'images/logo.jpg' %}" class="h-12 mx-auto mb-3" alt="logo">
-             <span class="text-white text-[10px] font-black tracking-[0.3em] uppercase opacity-70">Student Portal</span>
+<style>
+    /* Centered Floating Robot Assistant */
+    .assistant-trigger {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        cursor: pointer;
+    }
+    /* Customizing the Intro.js Tooltip for Breitling Professionalism */
+    .introjs-tooltip {
+        border-radius: 0;
+        border-top: 5px solid #b91c1c;
+        font-family: 'Inter', sans-serif;
+    }
+    .introjs-nextbutton, .introjs-donebutton {
+        background: #001f3f !important;
+        text-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+</style>
+
+<div class="flex min-h-screen bg-[#F3F4F6]">
+
+    <aside class="w-72 bg-[#001f3f] flex-shrink-0 hidden md:flex flex-col border-r border-blue-900 shadow-2xl">
+        <div class="p-8 text-center border-b border-white/10">
+            <img src="{% static 'images/logo.jpg' %}" class="h-14 mx-auto mb-3 rounded-sm shadow-lg" alt="logo">
+             <span class="text-white text-[10px] font-black tracking-[0.4em] uppercase opacity-60">Student Registry</span>
         </div>
 
         <nav class="flex-1 mt-6">
-            <a href="{% url 'student_dashboard' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all bg-red-700 text-white border-l-8 border-yellow-400">
-                <i class="fa-solid fa-gauge-high mr-4"></i> Dashboard
+            <a href="{% url 'student_dashboard' %}" class="flex items-center px-8 py-5 text-xs font-black uppercase tracking-widest transition-all bg-red-700 text-white border-l-8 border-yellow-400">
+                <i class="fa-solid fa-house-chimney mr-4 text-lg"></i> Overview
+            </a>
+            <a href="{% url 'student_financials' %}" data-intro="Access your detailed fee statements and payment history here." data-step="4" class="flex items-center px-8 py-5 text-xs font-black uppercase tracking-widest transition-all text-blue-200 hover:bg-blue-900 hover:text-white border-l-8 border-transparent hover:border-red-600">
+                <i class="fa-solid fa-credit-card mr-4 text-lg"></i> Financials
+            </a>
+            <a href="{% url 'academics' %}" data-intro="View your registered units and course materials for the current semester." data-step="7" class="flex items-center px-8 py-5 text-xs font-black uppercase tracking-widest transition-all text-blue-200 hover:bg-blue-900 hover:text-white border-l-8 border-transparent hover:border-red-600">
+                <i class="fa-solid fa-graduation-cap mr-4 text-lg"></i> My Units
+            </a>
+            <a href="{% url 'exam_results' %}" class="flex items-center px-8 py-5 text-xs font-black uppercase tracking-widest transition-all text-blue-200 hover:bg-blue-900 hover:text-white border-l-8 border-transparent hover:border-red-600">
+                <i class="fa-solid fa-chart-line mr-4 text-lg"></i> Exam Results
             </a>
 
-            <a href="{% url 'student_financials' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
-                <i class="fa-solid fa-money-bill-transfer mr-4"></i> Financials
-            </a>
-
-            <a href="{% url 'academics' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
-                <i class="fa-solid fa-book-open mr-4"></i> Academic Units
-            </a>
-
-            <a href="{% url 'exam_results' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
-                <i class="fa-solid fa-file-lines mr-4"></i> Exam Results
-            </a>
-
-            <a href="{% url 'view_transcript' %}" class="flex items-center justify-between px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-gray-300 hover:bg-blue-900 hover:text-white">
-                <span><i class="fa-solid fa-file-invoice mr-4"></i> Transcript</span>
-                {% if user.fee_balance > 0 %}
-                    <i class="fa-solid fa-lock text-xs text-red-500"></i>
-                {% else %}
-                    <i class="fa-solid fa-circle-check text-xs text-green-500"></i>
-                {% endif %}
-            </a>
-
-            <a href="{% url 'portal_logout' %}" class="flex items-center px-8 py-4 text-sm font-bold uppercase tracking-tight transition-all text-red-400 hover:bg-red-900/50 mt-12">
-                <i class="fa-solid fa-right-from-bracket mr-4"></i> Logout
+            <a href="{% url 'portal_logout' %}" data-intro="Click here to securely end your session and sign out of the portal." data-step="10" class="flex items-center px-8 py-6 text-xs font-black uppercase tracking-widest text-red-400 hover:bg-red-950/30 transition-all mt-10">
+                <i class="fa-solid fa-power-off mr-4"></i> Sign Out
             </a>
         </nav>
-        <div class="p-6 text-center text-[9px] text-blue-400 font-bold uppercase tracking-widest border-t border-blue-900">
-            © 2026 Brightline Creations
+
+        <div class="p-6 border-t border-white/5" data-intro="Our technical engineering team is available via this direct link for support." data-step="9">
+            <a href="https://wa.me/254711238972?text=Hello%20Breitling%20Creations%2C%20I%20am%20contacting%20you%20from%20the%20KISS%20College%20Student%20Portal."
+               target="_blank" class="block group text-center bg-blue-900/20 p-4 hover:bg-red-700 transition-all border border-blue-800/50">
+                <p class="text-[8px] font-black text-blue-400 group-hover:text-white uppercase tracking-[0.3em] mb-1">Engineering Credit</p>
+                <p class="text-xs font-black text-white uppercase tracking-widest">Breitling <span class="text-red-500 group-hover:text-white">Creations</span></p>
+            </a>
         </div>
     </aside>
 
     <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <header class="bg-white md:hidden p-4 flex justify-between items-center shadow-md z-10">
-            <img src="{% static 'images/logo.jpg' %}" class="h-10" alt="logo">
-            <button class="text-blue-900 text-2xl"><i class="fa-solid fa-bars"></i></button>
-        </header>
 
-        <div class="bg-white border-b px-6 py-8 md:px-12 md:py-12 flex flex-col lg:flex-row justify-between items-center gap-8">
-            <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-                <div class="flex flex-col items-center gap-2">
-                    <div class="relative group">
-                        {% if user.profile_photo and user.profile_photo.name %}
-                            <img src="{{ user.profile_photo.url }}" class="w-32 h-32 rounded-none border-4 border-red-700 shadow-2xl object-cover">
+        <header class="bg-white border-b px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-8 shadow-sm">
+            <div class="flex items-center gap-6">
+                <div class="relative group" data-intro="This is your secure profile. You can update or delete your profile photo using these controls." data-step="1">
+                    <div class="w-20 h-20 rounded-full border-4 border-red-700 shadow-xl overflow-hidden bg-slate-100">
+                        {% if user.profile_photo and 'lec.png' not in user.profile_photo.name %}
+                            <img src="{{ user.profile_photo.url }}" class="w-full h-full object-cover">
                         {% else %}
-                            <img src="{% static 'images/logo.jpg' %}" class="w-32 h-32 rounded-none border-4 border-gray-300 shadow-2xl object-cover opacity-50">
+                            <img src="{% static 'images/logo.jpg' %}" class="w-full h-full object-cover opacity-40">
                         {% endif %}
-
-                        <form action="{% url 'update_photo' %}" method="POST" enctype="multipart/form-data" id="photoUploadForm">
-                            {% csrf_token %}
-                            <label class="absolute bottom-0 right-0 bg-blue-900 text-white p-2.5 rounded-none text-xs shadow-xl cursor-pointer hover:bg-red-700 transition-all border-2 border-white">
-                                <i class="fa-solid fa-camera"></i>
-                                <input type="file" name="photo" class="hidden" onchange="document.getElementById('photoUploadForm').submit()">
-                            </label>
-                        </form>
                     </div>
+                    <div class="absolute inset-0 flex items-center justify-center rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <div class="flex gap-3">
+                            <button onclick="document.getElementById('photoInput').click();" title="Change Photo" class="text-white hover:text-yellow-400">
+                                <i class="fa-solid fa-camera text-xs"></i>
+                            </button>
+                            {% if user.profile_photo and 'lec.png' not in user.profile_photo.name %}
+                            <a href="{% url 'delete_photo' %}" title="Delete Photo" class="text-white hover:text-red-500">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <form id="photoForm" action="{% url 'update_photo' %}" method="POST" enctype="multipart/form-data" class="hidden">
+                        {% csrf_token %}
+                        <input type="file" id="photoInput" name="photo" accept="image/*" onchange="document.getElementById('photoForm').submit();">
+                    </form>
                 </div>
 
-                <div>
-                    <h1 class="text-3xl md:text-4xl font-black text-blue-900 uppercase tracking-tighter">Welcome back, {{ user.full_name }}</h1>
-                    <p class="text-gray-500 font-bold text-sm mt-1 uppercase tracking-widest">
-                        ID: {{ user.id_number }} | ADM: {{ user.admission_number|default:'PENDING' }}
+                <div data-intro="Personal Welcome: Your Registration, ID, and Contact details are summarized here for easy reference." data-step="2">
+                    <h2 class="text-3xl font-black text-blue-950 uppercase tracking-tighter leading-none italic">Welcome back, {{ user.full_name }}</h2>
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-2 max-w-2xl leading-relaxed">
+                        We are delighted to have you. This platform gives you access to your academic information, course materials, and important updates. Stay connected and stay informed.
                     </p>
                 </div>
             </div>
 
-            <div class="bg-red-50 border-l-8 border-red-700 p-6 w-full lg:w-72 shadow-inner">
-                <p class="text-[10px] font-black text-red-900 uppercase tracking-widest mb-1 opacity-70">Fee Balance</p>
-                <p class="text-3xl font-black text-red-700">KES {{ user.fee_balance }}</p>
+            <div class="hidden lg:flex items-center gap-8 border-l-2 border-slate-100 pl-8">
+                <div class="text-left">
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Registration & ID</p>
+                    <p class="text-[11px] font-black text-blue-900 uppercase">REG: {{ user.admission_number|default:'PENDING' }}</p>
+                    <p class="text-[11px] font-black text-slate-600 uppercase italic">ID: {{ user.id_number }}</p>
+                    <p class="text-[11px] font-black text-blue-900 uppercase">{{ user.phone_number|default:'Not Linked' }}</p>
+                </div>
             </div>
+        </header>
+
+        <div class="assistant-trigger no-print" onclick="startGuidedTour()">
+            <div class="bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all border-4 border-white">
+                <i class="fa-solid fa-robot text-xl"></i>
+            </div>
+            <p class="text-[8px] font-black text-slate-400 uppercase mt-2 text-center">Guide Assistant</p>
         </div>
 
-        <div class="px-6 md:px-12 pt-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="{% url 'view_transcript' %}" class="bg-white border-2 border-slate-200 p-6 text-center hover:border-red-700 transition-all group shadow-sm">
-                    <i class="fa-solid fa-file-invoice text-3xl text-slate-300 group-hover:text-red-700 mb-3 block"></i>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-slate-900">View Transcript</span>
+        <div class="p-8 overflow-y-auto space-y-8 h-full">
+
+            <div class="grid lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-2 bg-[#001f3f] p-10 text-white relative overflow-hidden shadow-2xl border-l-[12px] border-red-700" data-intro="Live Finance: View your current fee balance and check your full payment history here." data-step="3">
+                    <i class="fa-solid fa-money-check-dollar absolute -right-6 -bottom-6 text-[150px] opacity-10 rotate-12"></i>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-[11px] font-black uppercase tracking-[0.5em] text-blue-300/80">Fee Obligation Status</p>
+                            {% if user.fee_balance == 0 %}
+                                <span class="bg-green-600 text-[9px] px-3 py-1 font-black uppercase tracking-widest">Cleared</span>
+                            {% else %}
+                                <span class="bg-red-700 text-[9px] px-3 py-1 font-black uppercase tracking-widest animate-pulse">Outstanding Balance</span>
+                            {% endif %}
+                        </div>
+                        <h3 class="text-5xl font-black italic mb-6">KES {{ user.fee_balance }}</h3>
+                        <div class="flex items-center gap-4 mt-6">
+                            <a href="{% url 'student_financials' %}" class="bg-white text-blue-950 hover:bg-red-700 hover:text-white text-[10px] font-black uppercase tracking-widest px-8 py-4 transition-all shadow-xl">
+                                <i class="fa-solid fa-clock-rotate-left mr-2"></i> Payment History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#3b82f6] p-10 text-white relative overflow-hidden shadow-2xl border-l-[12px] border-yellow-400">
+                    <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-6 text-[150px] opacity-10 rotate-12"></i>
+                    <div class="relative z-10">
+                        <p class="text-[11px] font-black uppercase tracking-[0.5em] text-blue-100 mb-4">Current Enrollment</p>
+                        <h4 class="text-lg font-black uppercase tracking-tighter leading-tight mb-2">{{ user.course|default:"Not Assigned" }}</h4>
+                        <p class="text-[11px] font-bold text-yellow-300 uppercase italic tracking-widest">{{ user.get_school_display }}</p>
+                    </div>
+                </div>
+
+                <a href="{% url 'exam_results' %}" data-intro="View your latest exam scores and performance breakdown by semester." data-step="5" class="bg-white p-10 border-b-8 border-red-700 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all group relative overflow-hidden">
+                    <i class="fa-solid fa-square-poll-vertical absolute -right-4 -bottom-4 text-9xl opacity-5 text-red-700"></i>
+                    <div class="relative z-10">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Performance</p>
+                        <h4 class="text-xl font-black text-blue-950 uppercase italic mb-8">Exam Portal</h4>
+                        <span class="text-[9px] font-black uppercase text-red-700 group-hover:underline">Access Results →</span>
+                    </div>
                 </a>
-                </div>
-        </div>
 
-        <div class="p-6 md:p-12 overflow-y-auto">
-            <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Latest Announcements</h3>
-            <div class="grid gap-6">
-                {% for item in announcements %}
-                <div class="bg-white p-8 border border-gray-100 shadow-sm relative overflow-hidden group rounded-none">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-900 group-hover:bg-red-700 transition-colors"></div>
-                    <p class="text-[10px] font-bold text-gray-400 mb-3 uppercase tracking-widest">{{ item.date_posted|date:"d M Y" }}</p>
-                    <h4 class="text-xl font-black text-blue-950 mb-3">{{ item.title }}</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">{{ item.content }}</p>
+                <a href="{% url 'view_transcript' %}" data-intro="Official Transcript: Generate and print your formal academic record as a PDF." data-step="6" class="bg-white p-10 border-b-8 border-blue-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all group relative overflow-hidden">
+                    <i class="fa-solid fa-file-contract absolute -right-4 -bottom-4 text-9xl opacity-5 text-blue-900"></i>
+                    <div class="relative z-10">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Official Record</p>
+                        <h4 class="text-xl font-black text-blue-950 uppercase italic mb-8">Academic Transcripts</h4>
+                        <span class="text-[9px] font-black uppercase text-blue-950 group-hover:underline">Generate Report →</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em] flex items-center" data-intro="Important Memos: Stay updated with institutional broadcasts and urgent notices." data-step="8">
+                            <i class="fa-solid fa-bullhorn text-red-700 mr-4 text-xl"></i> General Memo Board
+                        </h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        {% for item in announcements %}
+                        <div class="bg-white border-l-[10px] {% if item.is_priority %}border-red-700{% else %}border-blue-950{% endif %} p-10 shadow-sm group hover:shadow-lg transition-all">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="text-[10px] font-black {% if item.is_priority %}bg-red-50 text-red-700{% else %}bg-blue-50 text-blue-900{% endif %} px-4 py-2 uppercase tracking-widest border border-current">
+                                    {% if item.is_priority %}Priority Notice{% else %}Standard Update{% endif %}
+                                </span>
+                                <p class="text-[11px] font-black text-slate-400 uppercase italic">{{ item.date_posted|date:"d M Y" }}</p>
+                            </div>
+                            <h4 class="text-2xl font-black text-blue-950 uppercase tracking-tighter group-hover:text-red-700 transition-colors mb-4">{{ item.title }}</h4>
+                            <p class="text-slate-800 text-sm leading-relaxed font-semibold opacity-90">{{ item.content }}</p>
+                        </div>
+                        {% empty %}
+                        <div class="bg-white border-2 border-dashed border-slate-200 p-20 text-center">
+                            <i class="fa-solid fa-folder-open text-6xl text-slate-100 mb-4 block"></i>
+                            <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">No Broadcasts currently active</p>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% empty %}
-                <p class="text-center text-gray-400 uppercase text-xs font-bold">No announcements yet.</p>
-                {% endfor %}
+
+                <div class="space-y-6">
+                    <h3 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em] flex items-center">
+                        <i class="fa-solid fa-headset text-blue-900 mr-4 text-xl"></i> Technical Support
+                    </h3>
+
+                    <div class="bg-white p-10 shadow-sm border border-slate-100 text-center group">
+                        <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-slate-100 group-hover:rotate-12 transition-transform shadow-sm">
+                            <i class="fa-solid fa-comments text-3xl text-slate-400 group-hover:text-red-700"></i>
+                        </div>
+                        <h4 class="text-xs font-black text-blue-950 uppercase tracking-widest mb-2">Helpdesk Active</h4>
+                        <p class="text-[11px] text-slate-500 leading-relaxed font-medium mb-8">Having trouble with your credentials or missing results? Contact us instantly via WhatsApp.</p>
+                        <a href="https://wa.me/254711238972?text=KISS%20Support:%20My%20ID%20is%20{{ user.id_number }}.%20Help%20needed%20with:" class="block bg-blue-950 hover:bg-red-700 text-white text-[10px] font-black uppercase tracking-widest py-5 transition-all shadow-xl">
+                            Request Assistance
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <footer class="mt-auto bg-white border-t px-8 py-6 text-center">
+            <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.8em]">KISS ENTERPRISE &bullet; SYSTEM ARCHITECTURE BY BREITLING CREATIONS</p>
+        </footer>
     </main>
 </div>
+
+<script>
+    function startGuidedTour() {
+        introJs().setOptions({
+            showProgress: true,
+            exitOnOverlayClick: false,
+            nextLabel: 'Next Step',
+            prevLabel: 'Previous',
+            doneLabel: 'Start My Journey',
+            theme: 'modern'
+        }).start();
+    }
+
+    // Auto-start for first-time users
+    window.addEventListener('load', function() {
+        if (!localStorage.getItem('tour_completed')) {
+            setTimeout(startGuidedTour, 1000); // Small delay for effect
+            localStorage.setItem('tour_completed', 'true');
+        }
+    });
+</script>
 {% endblock %}
