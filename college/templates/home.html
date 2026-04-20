@@ -50,8 +50,59 @@
       </a>
     </div>
   </div>
+
+
+</section>
+<!--<div class="max-w-4xl mx-auto px-6">-->
+
+<section class="relative z-20 -mt-10 md:-mt-12 lg:-mt-14 px-6">
+  <div class="max-w-7xl mx-auto flex justify-center">
+
+    <div class="w-full md:w-3/4 bg-[#003366] p-2 shadow-2xl flex flex-col md:flex-row gap-2">
+
+      <div class="hidden lg:flex items-center px-6 gap-4 border-r border-blue-800">
+        <i class="fa-solid fa-magnifying-glass text-white text-xl"></i>
+        <div class="leading-none">
+            <p class="text-white text-[10px] font-black uppercase tracking-widest">Search</p>
+            <p class="text-blue-300 text-[9px] font-bold uppercase">Course</p>
+        </div>
+      </div>
+
+      <div class="flex-grow">
+        <label for="courseSearchInput" class="hidden">Search Course</label>
+        <input
+          type="text"
+          id="courseSearchInput"
+          placeholder="What course are you looking for? (e.g. Social Work, Business, Beauty...)"
+          class="w-full h-14 md:h-16 px-6 text-sm md:text-base border-none rounded-none focus:outline-none bg-white placeholder-slate-400 font-medium"
+          autocomplete="off">
+      </div>
+
+      <button onclick="performCourseSearch()"
+              class="bg-red-700 hover:bg-red-800 text-white px-10 md:px-14 h-14 md:h-16 rounded-none font-black transition-all uppercase text-xs tracking-[0.2em] shadow-inner active:scale-95">
+        Search
+      </button>
+    </div>
+
+  </div>
 </section>
 
+<script>
+  function performCourseSearch() {
+    const query = document.getElementById('courseSearchInput').value;
+    // Standard Breitling Productions redirect logic
+    window.location.href = `/programs/?search=${encodeURIComponent(query)}`;
+  }
+
+  // Event listener for the Enter key
+  document.getElementById('courseSearchInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      performCourseSearch();
+    }
+  });
+</script>
+
+<br><br><br>
 <div class="max-w-7xl mx-auto px-6 -mt-16 relative z-30">
   <div class="grid md:grid-cols-3 gap-4">
 
@@ -86,8 +137,8 @@
   // Background Images - Add your three images here
   const backgrounds = [
     "../static/images/graduation2.png",
-    "../static/images/beauty.png",           // Replace with your actual second image
-    "../static/images/graduation2.png"      // Replace with your actual third image
+    "../static/images/professor.png",           // Replace with your actual second image
+    "../static/images/graduate1.png"      // Replace with your actual third image
   ];
 
   let currentBg = 0;
@@ -163,67 +214,96 @@
 </script>
 
 <br>
-<!-- SEARCH COURSES SECTION - Add this after Vision/Mission cards -->
-<section class="py-20 bg-slate-50 border-y-2 border-red-700">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-black text-[#003366] mb-2 uppercase tracking-tighter">Find Your Perfect Course</h2>
-      <p class="text-slate-600 font-bold uppercase text-xs tracking-widest">TVETA Accredited Programs</p>
-    </div>
 
-    <div class="relative max-w-2xl mx-auto shadow-2xl">
-      <div class="flex">
-        <label for="courseSearchInput"></label><input
-          type="text"
-          id="courseSearchInput"
-          placeholder="Search courses (e.g. Beauty, Electrical, Business...)"
-          class="w-full px-6 py-5 text-lg border-2 border-red-700 rounded-none focus:bg-white focus:outline-none transition-all placeholder-slate-400 bg-white shadow-inner"
-          autocomplete="off">
-
-        <button onclick="performCourseSearch()"
-                class="bg-red-700 hover:bg-red-800 text-white px-10 py-5 rounded-none font-black transition-all uppercase tracking-widest flex items-center gap-2">
-          <i class="fa-solid fa-magnifying-glass text-xl"></i>
-          <span class="hidden md:inline">Search</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap justify-center gap-3 mt-10">
-      <p class="w-full text-center text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">Quick Access:</p>
-
-      <button onclick="quickCourseSearch('Beauty')" class="px-5 py-2 bg-white border-2 border-red-700 text-red-700 font-bold text-xs uppercase rounded-none hover:bg-red-700 hover:text-white transition">Beauty Therapy</button>
-      <button onclick="quickCourseSearch('Electrical')" class="px-5 py-2 bg-white border-2 border-red-700 text-red-700 font-bold text-xs uppercase rounded-none hover:bg-red-700 hover:text-white transition">Electrical</button>
-      <button onclick="quickCourseSearch('Business')" class="px-5 py-2 bg-white border-2 border-red-700 text-red-700 font-bold text-xs uppercase rounded-none hover:bg-red-700 hover:text-white transition">Business</button>
-      <button onclick="quickCourseSearch('Social Work')" class="px-5 py-2 bg-white border-2 border-red-700 text-red-700 font-bold text-xs uppercase rounded-none hover:bg-red-700 hover:text-white transition">Social Work</button>
-    </div>
-  </div>
-</section>
-
-<script>
-  // Redirect to programs page with query
-  function performCourseSearch() {
-    const query = document.getElementById('courseSearchInput').value;
-    if (query.trim() !== "") {
-      // Correct Django URL path from your screenshot (Point #5: programs/)
-      window.location.href = `/programs/?search=${encodeURIComponent(query)}`;
-    } else {
-        window.location.href = `/programs/`;
-    }
-  }
-
-  // Quick tags function
-  function quickCourseSearch(term) {
-    window.location.href = `/programs/?search=${encodeURIComponent(term)}`;
-  }
-
-  // Allow pressing "Enter" to search
-  document.getElementById('courseSearchInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      performCourseSearch();
-    }
-  });
-</script>
   <div class="h-1.5 w-24 bg-yellow-400 mx-auto my-4 rounded-full"></div>
+<style>
+    /* Continuous Professional Floating Animation */
+    @keyframes floating {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    .animate-continuous {
+        animation: floating 4s ease-in-out infinite;
+    }
+
+    /* Refined Title Size */
+    .institutional-title {
+        font-size: clamp(1.875rem, 4vw, 2.5rem); /* Responsive smaller size */
+        line-height: 1.1;
+    }
+</style>
+
+<section class="py-24 bg-white overflow-hidden" id="about-section">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+            <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                <div class="mb-8">
+                    <span class="inline-block text-red-700 font-black text-xs uppercase tracking-[0.4em] mb-4">
+                        Discover Our Story
+                    </span>
+                    <h2 class="institutional-title font-black text-[#003366] uppercase tracking-tighter mb-6">
+                        Kenya Institute of <br>
+                        <span class="text-red-700 italic">Social Sciences.</span>
+                    </h2>
+                    <div class="w-20 h-1.5 bg-yellow-400"></div>
+                </div>
+
+                <div class="space-y-8">
+                    <p class="text-xl text-gray-800 font-semibold leading-relaxed border-l-4 border-gray-100 pl-6 italic">
+                        "Empowering the next generation of transformative leaders through skill-based excellence and moral integrity."
+                    </p>
+
+                    <div class="text-gray-600 leading-relaxed text-lg space-y-4 font-medium">
+                        <p>
+                            Founded in 2009, the Kenya Institute of Social Sciences (KISS) has evolved into a premier destination for holistic education. We believe that true learning transcends the classroom, integrating technical mastery with the character required to excel in a global landscape.
+                        </p>
+                        <p>
+                            With a strategic presence across <span class="text-[#003366] font-bold">Machakos, Mlolongo, and Malili</span>, we serve as an innovation hub where students from diverse backgrounds converge to turn their passions into professional destinies.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-gray-100">
+                    <div>
+                        <span class="block text-3xl font-black text-[#003366]">15+</span>
+                        <span class="text-[9px] uppercase font-bold text-gray-400 tracking-widest">Years Experience</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-black text-[#003366]">3</span>
+                        <span class="text-[9px] uppercase font-bold text-gray-400 tracking-widest">Modern Campuses</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-black text-red-700">100%</span>
+                        <span class="text-[9px] uppercase font-bold text-gray-400 tracking-widest">Practical Focus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative lg:pl-10" data-aos="fade-left" data-aos-duration="1200">
+                <i class="fa-solid fa-quote-right absolute -top-10 -right-10 text-[180px] text-gray-50 -z-10"></i>
+
+                <div class="relative z-10">
+                    <div class="border-[15px] border-slate-50 shadow-2xl overflow-hidden group">
+                        <img src="{% static 'images/graduation.png' %}"
+                             alt="KISS Institutional Excellence"
+                             class="w-full h-[600px] object-cover group-hover:scale-110 transition-transform duration-[2000ms]">
+                    </div>
+
+                    <div class="absolute -bottom-6 -left-6 bg-red-700 text-white p-8 shadow-2xl animate-continuous">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] mb-2 opacity-80 text-yellow-400">Institutional Motto</p>
+                        <h4 class="text-2xl font-black tracking-tighter italic">"My Skills, My Destiny"</h4>
+                    </div>
+                </div>
+
+                <div class="absolute top-20 -right-10 w-full h-full bg-[#003366]/5 -z-10"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<hr class="border-t-2 border-yellow-400 my-8 opacity-80">
  <!-- News & Upcoming Events Section -->
 <section class="bg-blue-100 py-20">
   <div class="max-w-7xl mx-auto px-6">
@@ -404,7 +484,7 @@
         <!-- Fixed Image Container - Image stays in place while scrolling -->
         <div class="relative h-56 overflow-hidden flex-shrink-0">
           <img
-            src="../static/images/beauty.png"
+            src="../static/images/img.png"
             alt="Hairdressing and Beauty Therapy"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
         </div>
@@ -717,7 +797,7 @@
             // Start fresh animations
             animateCounter("examBodies", 0, 5, 1200);
             animateCounter("courses", 0, 40, 1500);
-            animateCounter("students", 0, 250, 1800);
+            animateCounter("students", 0, 2500, 1700);
             animateCounter("trainers", 0, 50, 1400);
           }
         });
@@ -790,63 +870,43 @@
   </div>
 </div>
 <hr class="border-t-2 border-yellow-400 my-8 opacity-80">
-  <!-- Call to Action -->
-  
-  <div class="bg-red-700 text-white py-16">
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h2 class="text-4xl font-bold mb-4">Ready to Shape Your Future?</h2>
-      <p class="text-xl mb-8">January, May &amp; September Intakes are now open</p>
-      <a href="admissions.html"
-         class="inline-block bg-white text-red-700 hover:bg-red-100 font-semibold px-12 py-5 rounded-2xl text-lg transition">
-        Apply Now – It's Easy &amp; Fast
-      </a>
-    </div>
-  </div>
-<section class="relative bg-white pt-20">
+ <section class="relative bg-white pt-10">
     <div class="bg-red-700 relative">
-        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="max-w-7xl mx-auto px-6 py-6 lg:py-10"> <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-              <div class="lg:col-span-5 text-white z-10">
-    <h2 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-        <span class="text-blue-400">Ready to</span>
-        <span class="text-yellow-400">Shape</span>
-        <br>
-        <span class="text-blue-400">Your</span>
-        <span class="text-yellow-400">Future?</span>
-    </h2>
-    <p class="text-lg lg:text-xl font-light opacity-90">
-        January, May & September Intakes <br> are now open
-    </p>
-</div>
+                <div class="lg:col-span-5 text-white z-10">
+                    <h2 class="text-3xl lg:text-5xl font-bold leading-tight mb-4">
+                        <span class="text-blue-400">Ready to</span>
+                        <span class="text-yellow-400">Shape</span>
+                        <br>
+                        <span class="text-blue-400">Your</span>
+                        <span class="text-yellow-400">Future?</span>
+                    </h2>
+                    <p class="text-base lg:text-lg font-light opacity-90">
+                        January, May & September Intakes <br> are now open
+                    </p>
+                </div>
 
-                <div class="hidden lg:block lg:col-span-3"></div>
+                <div class="hidden lg:flex lg:col-span-3 justify-center items-end relative h-full">
+                    <img src="../static/images/img_1.png"
+                         alt="KISS Students"
+                         class="w-auto h-56 lg:h-72 object-contain drop-shadow-2xl mb-[-24px] lg:mb-[-40px] transform hover:scale-105 transition-transform duration-500">
+                </div>
 
-                <div class="lg:col-span-4 flex flex-col items-center lg:items-end gap-6 z-10">
+                <div class="lg:col-span-4 flex flex-col items-center lg:items-end gap-4 z-10">
                     <a href="/admission"
-                       class="group flex items-center justify-between bg-blue-900 hover:bg-blue-800 text-white w-full max-w-sm px-8 py-5 rounded-sm transition-all duration-300">
+                       class="group flex items-center justify-between bg-blue-900 hover:bg-blue-800 text-white w-full max-w-sm px-8 py-4 rounded-sm transition-all duration-300">
                         <span class="text-lg font-semibold">Application Form</span>
                         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
                     </a>
 
                     <div class="flex items-center gap-6 text-white text-sm font-medium">
-                        <a href="/contact" class="hover:underline flex items-center gap-2">
-                           Contact us
-                        </a>
+                        <a href="/contact" class="hover:underline">Contact us</a>
                         <span class="h-6 w-[1px] bg-white/30"></span>
-                        <a href="/programs" class="hover:underline flex items-center gap-2">
-                            Programs
-                        </a>
+                        <a href="/programs" class="hover:underline">Programs</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md lg:max-w-xl pointer-events-none">
-
-          <img src="../static/images/img_1.png"
-                                                                               alt="Students"
-                                                                               class="w-full h-auto drop-shadow-2xl">
         </div>
 
         <div class="h-2 bg-yellow-400 w-full"></div>
@@ -854,82 +914,75 @@
 </section>
 
 
-<div class="fixed bottom-6 left-6 z-50">
-    <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
-       target="_blank"
-       class="flex items-center justify-center w-14 h-14 bg-green-600 text-white rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-</div>
 
-<div id="backToTop" class="fixed bottom-6 right-6 z-50 cursor-pointer opacity-0 invisible transition-all duration-300 translate-y-10">
-    <div class="relative flex items-center justify-center w-14 h-14 group">
-        <svg class="absolute transform -rotate-90" width="56" height="56">
-            <circle
-                cx="28"
-                cy="28"
-                r="24"
-                stroke="currentColor"
-                stroke-width="3"
-                fill="transparent"
-                class="text-gray-200"
-            />
-            <circle
-                id="progressCircle"
-                cx="28"
-                cy="28"
-                r="24"
-                stroke="currentColor"
-                stroke-width="3"
-                fill="transparent"
-                stroke-dasharray="150.8"
-                stroke-dashoffset="150.8"
-                class="text-green-600 transition-all duration-150 ease-out"
-                stroke-linecap="round"
-            />
-        </svg>
-        <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md group-hover:bg-gray-50">
-            <i class="fa-solid fa-arrow-up text-green-600 text-lg"></i>
-        </div>
-    </div>
-</div>
+<!--<div id="backToTop" class="fixed bottom-6 right-6 z-50 cursor-pointer opacity-0 invisible transition-all duration-300 translate-y-10">-->
+<!--    <div class="relative flex items-center justify-center w-14 h-14 group">-->
+<!--        <svg class="absolute transform -rotate-90" width="56" height="56">-->
+<!--            <circle-->
+<!--                cx="28"-->
+<!--                cy="28"-->
+<!--                r="24"-->
+<!--                stroke="currentColor"-->
+<!--                stroke-width="3"-->
+<!--                fill="transparent"-->
+<!--                class="text-gray-200"-->
+<!--            />-->
+<!--            <circle-->
+<!--                id="progressCircle"-->
+<!--                cx="28"-->
+<!--                cy="28"-->
+<!--                r="24"-->
+<!--                stroke="currentColor"-->
+<!--                stroke-width="3"-->
+<!--                fill="transparent"-->
+<!--                stroke-dasharray="150.8"-->
+<!--                stroke-dashoffset="150.8"-->
+<!--                class="text-green-600 transition-all duration-150 ease-out"-->
+<!--                stroke-linecap="round"-->
+<!--            />-->
+<!--        </svg>-->
+<!--        <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md group-hover:bg-gray-50">-->
+<!--            <i class="fa-solid fa-arrow-up text-green-600 text-lg"></i>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<script>
-    const backToTopBtn = document.getElementById('backToTop');
-    const progressCircle = document.getElementById('progressCircle');
-    const radius = progressCircle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
+<!--<script>-->
+<!--    const backToTopBtn = document.getElementById('backToTop');-->
+<!--    const progressCircle = document.getElementById('progressCircle');-->
+<!--    const radius = progressCircle.r.baseVal.value;-->
+<!--    const circumference = 2 * Math.PI * radius;-->
 
-    // Set initial dasharray
-    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+<!--    // Set initial dasharray-->
+<!--    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;-->
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercentage = scrollTop / scrollHeight;
+<!--    window.addEventListener('scroll', () => {-->
+<!--        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;-->
+<!--        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;-->
+<!--        const scrollPercentage = scrollTop / scrollHeight;-->
 
-        // Update Progress Circle
-        const offset = circumference - (scrollPercentage * circumference);
-        progressCircle.style.strokeDashoffset = offset;
+<!--        // Update Progress Circle-->
+<!--        const offset = circumference - (scrollPercentage * circumference);-->
+<!--        progressCircle.style.strokeDashoffset = offset;-->
 
-        // Show/Hide Button
-        if (scrollTop > 300) {
-            backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-10');
-            backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
-        } else {
-            backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-10');
-            backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
-        }
-    });
+<!--        // Show/Hide Button-->
+<!--        if (scrollTop > 300) {-->
+<!--            backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-10');-->
+<!--            backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');-->
+<!--        } else {-->
+<!--            backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-10');-->
+<!--            backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');-->
+<!--        }-->
+<!--    });-->
 
-    // Scroll to Top Click Event
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-</script>
+<!--    // Scroll to Top Click Event-->
+<!--    backToTopBtn.addEventListener('click', () => {-->
+<!--        window.scrollTo({-->
+<!--            top: 0,-->
+<!--            behavior: 'smooth'-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 <script>
 // Course Database
@@ -990,6 +1043,20 @@ document.getElementById('courseSearchInput').addEventListener('input', function(
   dropdown.classList.remove('hidden');
 });
 </script>
+
+<!--{% if not user.is_staff %}-->
+<!--    <script type="text/javascript">-->
+<!--    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();-->
+<!--    (function(){-->
+<!--    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];-->
+<!--    s1.async=true;-->
+<!--    s1.src='https://embed.tawk.to/69e45edd65fc181c3553aea8/default';-->
+<!--    s1.charset='UTF-8';-->
+<!--    s1.setAttribute('crossorigin','*');-->
+<!--    s0.parentNode.insertBefore(s1,s0);-->
+<!--    })();-->
+<!--    </script>-->
+<!--    {% endif %}-->
 </body>
 </html>
 {% endblock %}

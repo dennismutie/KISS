@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Admissions | KISS Kenya Institute of Social Sciences{% endblock %}
+{% block title %}Admissions | KISS College Kenya{% endblock %}
 
 {% block content %}
 <div class="min-h-screen bg-gradient-to-br from-[#002244] to-[#004488] py-12 px-4 sm:px-6">
@@ -8,18 +8,16 @@
 
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow-md">
-                Admissions <span class="text-yellow-400">&</span> Online Application
+                Join KISS College
             </h1>
             <p class="mt-4 text-xl text-blue-100 max-w-2xl mx-auto font-light">
-                Secure your future with Kenya Institute of Social Sciences<br>
-                <span class="inline-block mt-2 bg-yellow-400 text-blue-900 px-4 py-1 rounded-full font-bold uppercase tracking-widest text-xs">
-                    January • May • September Intakes – Now Open
-                </span>
+                Simple &amp; Fast Application • January • May • September Intakes Now Open
             </p>
         </div>
 
         <div class="grid lg:grid-cols-12 gap-8">
 
+            <!-- Sidebar -->
             <aside class="lg:col-span-4 space-y-6">
                 <div class="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 p-8 text-white shadow-2xl">
                     <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
@@ -31,19 +29,15 @@
                     <ul class="space-y-4 text-sm">
                         <li class="flex justify-between border-b border-white/10 pb-2">
                             <span class="opacity-70">Diploma</span>
-                            <span class="font-bold">KCSE C- & above</span>
+                            <span class="font-bold">KCSE C- &amp; above</span>
                         </li>
                         <li class="flex justify-between border-b border-white/10 pb-2">
-                            <span class="opacity-70">Certificate</span>
-                            <span class="font-bold">KCSE D Plain & above</span>
+                            <span class="opacity-70">Certificate / Artisan</span>
+                            <span class="font-bold">KCSE D Plain &amp; above</span>
                         </li>
-                        <li class="flex justify-between border-b border-white/10 pb-2">
-                            <span class="opacity-70">Artisan</span>
-                            <span class="font-bold">KCSE E / Primary</span>
-                        </li>
-                        <li class="flex justify-between border-b border-white/10 pb-2">
+                        <li class="flex justify-between">
                             <span class="opacity-70">Short Courses</span>
-                            <span class="font-bold text-yellow-400 italic">Open to All</span>
+                            <span class="font-bold text-yellow-400 italic">Open Entry</span>
                         </li>
                     </ul>
                 </div>
@@ -53,140 +47,140 @@
                     <div class="space-y-4 text-sm text-slate-600">
                         <div class="flex items-start gap-4">
                             <i class="fa-solid fa-location-crosshairs text-red-600 text-lg"></i>
-                            <p><strong>Mlolongo:</strong> Unaitas Building, 1st Floor, Near Impala Driving School</p>
+                            <p><strong>Machakos Town</strong><br>Along Nairobi Highway, near Lysack Haven Hotel</p>
                         </div>
                         <div class="flex items-start gap-4">
                             <i class="fa-solid fa-location-crosshairs text-red-600 text-lg"></i>
-                            <p><strong>Machakos:</strong> Along Nairobi Highway, Near Lysack Haven Hotel</p>
+                            <p><strong>Mlolongo</strong><br>Unaitas Building, 1st Floor</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-crosshairs text-red-600 text-lg"></i>
+                            <p><strong>Malili Campus</strong><br>Malili Shopping Centre, 7km off Mombasa Road</p>
                         </div>
                     </div>
                 </div>
             </aside>
 
+            <!-- Main Simple Form -->
             <main class="lg:col-span-8">
                 <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/50">
-                    <div class="bg-slate-50 border-b border-slate-100 px-10 py-8 flex justify-between items-center">
-                        <div>
-                            <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Application Portal</h2>
-                            <p class="text-slate-500 text-sm italic font-serif">"Empowering People with Educational & Technical Skills"</p>
-                        </div>
-                        <div class="hidden md:block bg-blue-50 text-blue-700 px-4 py-2 rounded-2xl text-xs font-bold">
-                            3-7 DAY PROCESSING
-                        </div>
+                    <div class="bg-slate-50 border-b border-slate-100 px-10 py-8">
+                        <h2 class="text-3xl font-black text-slate-900">Application Form</h2>
+                        <p class="text-slate-500">Takes less than 2 minutes • We reply within 24 hours</p>
                     </div>
 
-                    <form id="admissionForm" class="p-10 space-y-12">
-                        <div class="space-y-6">
-                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-[0.2em] flex items-center gap-3">
-                                <span class="w-12 h-0.5 bg-blue-800"></span> 1. Personal Profile
-                            </h3>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Full Legal Name</label>
-                                    <input type="text" id="fullName" required placeholder="As per KCSE Certificate" class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Date of Birth</label>
-                                    <input type="date" id="dob" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Phone Number</label>
-                                    <input type="tel" id="phone" value="+254" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Email Address</label>
-                                    <input type="email" id="email" required placeholder="name@example.com" class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">National ID / Passport</label>
-                                    <input type="text" id="idNumber" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Current Residence</label>
-                                    <input type="text" id="physicalAddress" placeholder="County, Town, Estate" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                </div>
-                            </div>
-                        </div>
+                    <form id="admissionForm" class="p-10 space-y-10">
 
-                        <div class="space-y-6 pt-6 border-t border-slate-50">
-                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-[0.2em] flex items-center gap-3">
-                                <span class="w-12 h-0.5 bg-blue-800"></span> 2. Course Enrollment
+                        <!-- 1. Personal Information -->
+                        <div>
+                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-5 flex items-center gap-3">
+                                <span class="flex-1 h-px bg-blue-200"></span>
+                                Personal Details
+                                <span class="flex-1 h-px bg-blue-200"></span>
                             </h3>
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">School/Department</label>
-                                    <select id="schoolSelect" onchange="updateCourses()" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-blue-50 bg-blue-50/50 focus:border-blue-800 outline-none transition-all font-bold text-blue-900">
-                                        <option value="">-- Select Department --</option>
-                                        <option value="school_soc">School of Community Dev & Social Work</option>
-                                        <option value="school_bus">School of Business Studies</option>
-                                        <option value="school_health">School of Health & Applied Sciences</option>
-                                        <option value="school_ict">School of ICT & Engineering</option>
-                                        <option value="school_cat">School of Catering & Hospitality</option>
-                                        <option value="school_beauty">School of Beauty & Fashion Design</option>
-                                        <option value="school_short">Short Professional Courses</option>
-                                    </select>
+                                    <label class="text-sm font-medium text-slate-900">Full Name <span class="text-red-500">*</span></label>
+                                    <input type="text" id="fullName" required placeholder="As it appears on your ID"
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
                                 </div>
                                 <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase required">Select Your Course</label>
-                                    <select id="courseSelect" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                        <option value="">-- Choose School First --</option>
-                                    </select>
+                                    <label class="text-sm font-medium text-slate-900">Phone Number <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="phone" value="+254" required
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
                                 </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase">KCSE Index (Optional)</label>
-                                    <input type="text" id="kcseIndex" placeholder="123456789/2025" class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-400 uppercase">Mean Grade</label>
-                                    <select id="meanGrade" class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                        <option value="">Select Grade</option>
-                                        <option>A</option><option>A-</option><option>B+</option><option>B</option><option>B-</option>
-                                        <option>C+</option><option>C</option><option>C-</option><option>D+</option><option>D</option><option>D-</option><option>E</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="space-y-6 pt-6 border-t border-slate-50">
-                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-[0.2em] flex items-center gap-3">
-                                <span class="w-12 h-0.5 bg-blue-800"></span> 3. Additional Details
-                            </h3>
-                            <div class="grid md:grid-cols-2 gap-6">
                                 <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-500 uppercase">Result Slip / ID Copy (Optional)</label>
-                                    <input type="file" id="studentDocs" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-blue-800 file:text-white hover:file:bg-blue-900 cursor-pointer">
+                                    <label class="text-sm font-medium text-slate-900">Age <span class="text-red-500">*</span></label>
+                                    <input type="number" id="age" required min="16" max="60" placeholder="e.g. 22"
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
                                 </div>
                                 <div class="space-y-1">
-                                    <label class="text-[11px] font-bold text-slate-500 uppercase required">Where did you find us?</label>
-                                    <select id="hearAbout" required class="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-blue-800 outline-none transition-all">
-                                        <option value="">Select Source</option>
-                                        <option value="Website">Website</option>
-                                        <option value="Facebook">Facebook</option>
-                                        <option value="WhatsApp">WhatsApp</option>
-                                        <option value="Google Search">Google Search</option>
-                                        <option value="Referral/Friend">Referral / Friend</option>
-                                        <option value="Radio/Poster">Radio / Poster</option>
+                                    <label class="text-sm font-medium text-slate-900">Gender <span class="text-red-500">*</span></label>
+                                    <select id="gender" required class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
+
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">Email Address <span class="text-slate-400 text-xs">(optional)</span></label>
+                                    <input type="email" id="email" placeholder="you@email.com"
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">National ID / Passport <span class="text-slate-400 text-xs">(optional)</span></label>
+                                    <input type="text" id="idNumber" placeholder="12345678"
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="pt-10 border-t border-slate-100 space-y-6 text-center">
-                            <label class="flex items-start justify-center gap-4 cursor-pointer group">
-                                <input type="checkbox" required class="mt-1 w-5 h-5 rounded accent-blue-800">
-                                <span class="text-xs text-slate-500 text-left max-w-md group-hover:text-slate-700 transition">
-                                    I certify that the information provided is correct. I understand false info leads to automatic disqualification.
+                        <!-- 2. Course Interest -->
+                        <div>
+                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-5 flex items-center gap-3">
+                                <span class="flex-1 h-px bg-blue-200"></span>
+                                Course Interest
+                                <span class="flex-1 h-px bg-blue-200"></span>
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">Course You Want to Study <span class="text-red-500">*</span></label>
+                                    <input type="text" id="course" required placeholder="e.g. Nursing Aide, Business Management, Hairdressing..."
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">Preferred Campus</label>
+                                    <select id="campus" class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                        <option value="">Any Campus</option>
+                                        <option value="Machakos">Machakos Town</option>
+                                        <option value="Mlolongo">Mlolongo</option>
+                                        <option value="Malili">Malili </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Guardian / Sponsor -->
+                        <div>
+                            <h3 class="text-xs font-bold text-blue-800 uppercase tracking-widest mb-5 flex items-center gap-3">
+                                <span class="flex-1 h-px bg-blue-200"></span>
+                                Parent / Guardian Details
+                                <span class="flex-1 h-px bg-blue-200"></span>
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">Parent / Guardian Name <span class="text-red-500">*</span></label>
+                                    <input type="text" id="guardianName" required placeholder="Full name"
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-slate-900">Guardian Phone Number <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="guardianPhone" value="+254" required
+                                           class="w-full px-6 py-4 rounded-2xl border border-slate-200 focus:border-blue-600 outline-none text-lg">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Declaration & Submit -->
+                        <div class="pt-8 border-t border-slate-100">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" required class="mt-1 w-5 h-5 accent-blue-700">
+                                <span class="text-sm text-slate-600">
+                                    I confirm that the information above is correct and I would like to receive my admission letter.
                                 </span>
                             </label>
 
-                            <button type="button" onclick="submitAdmissionForm()"
-                                class="w-full bg-[#003366] hover:bg-red-700 text-white font-black py-6 rounded-3xl flex items-center justify-center gap-4 text-xl transition-all shadow-2xl shadow-blue-900/40 hover:shadow-red-900/40 transform hover:-translate-y-1">
-                                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                                SUBMIT TO ADMISSIONS OFFICE
+                            <button type="button" onclick="submitSimpleForm()"
+                                class="mt-8 w-full bg-[#003366] hover:bg-red-700 text-white font-black py-7 rounded-3xl flex items-center justify-center gap-3 text-2xl transition-all">
+                                <i class="fa-brands fa-whatsapp text-3xl"></i>
+                                SUMBIT APPLICATION 
                             </button>
-                            <p class="text-[10px] text-slate-400 uppercase tracking-[0.3em] font-bold">KISS REGISTRAR • 0741 958 940</p>
+                            <p class="text-center text-xs text-slate-400 mt-6">📞 Registrar: 0726 580 464 •  0741 958 940 </p>
                         </div>
+
                     </form>
                 </div>
             </main>
@@ -195,61 +189,40 @@
 </div>
 
 <script>
-    const courseData = {
-        school_soc: ["Social Work and Community Development", "Disaster Management", "Community Health", "Counseling Psychology", "Criminology and Security Studies", "Adult Education", "ECDE"],
-        school_bus: ["Business Management", "Human Resource Management", "Sales and Marketing", "Accounting/Accountancy", "Banking and Finance", "Purchasing and Procurement", "Public Administration", "Public Relations", "Secretarial Studies", "Store Keeping", "Front Office"],
-        school_health: ["Community Health", "Care Giving", "Nursing Aide", "HIV Testing and Services (HTS)", "Nutrition and Dietetics", "Public Health", "Health Records", "Certified Nursing Assistant", "Perioperative Theatre Technology", "Medical Engineering"],
-        school_ict: ["Computer Programming", "Computer Graphics", "ICT & IT", "Electrical and Electronics Engineering", "Automotive Engineering", "Plumbing Technology", "CCTV Installation", "Wifi Installation"],
-        school_cat: ["Food and Beverage Production", "Catering and Accommodation", "Bakery Technology", "Hospitality Management", "Housekeeping Studies"],
-        school_beauty: ["Nail Technology", "Beauty Therapy", "Hair Dressing", "Barbering", "Manicure & Pedicure", "Cosmetology", "Fashion & Design"],
-        school_short: ["Computer Packages", "ICDL", "Web Design", "Graphic Design", "Android Programming", "Video Editing", "Music Editing"]
-    };
+    function submitSimpleForm() {
+        const fullName = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const age = document.getElementById('age').value.trim();
+        const gender = document.getElementById('gender').value;
+        const course = document.getElementById('course').value.trim();
+        const guardianName = document.getElementById('guardianName').value.trim();
+        const guardianPhone = document.getElementById('guardianPhone').value.trim();
 
-    function updateCourses() {
-        const school = document.getElementById("schoolSelect").value;
-        const courseSelect = document.getElementById("courseSelect");
-        courseSelect.innerHTML = '<option value="">-- Select Course --</option>';
-
-        if (school && courseData[school]) {
-            courseData[school].forEach(course => {
-                const option = document.createElement("option");
-                option.value = course;
-                option.textContent = course;
-                courseSelect.appendChild(option);
-            });
-        }
-    }
-
-    function submitAdmissionForm() {
-        const name = document.getElementById('fullName').value;
-        const phone = document.getElementById('phone').value;
-        const email = document.getElementById('email').value;
-        const school = document.getElementById('schoolSelect').options[document.getElementById('schoolSelect').selectedIndex].text;
-        const course = document.getElementById('courseSelect').value;
-        const location = document.getElementById('physicalAddress').value;
-        const source = document.getElementById('hearAbout').value;
-
-        if (!name || !phone || !email || !course) {
-            alert("⚠️ Please fill in all required fields marked with *");
+        if (!fullName || !phone || !age || !gender || !course || !guardianName || !guardianPhone) {
+            alert("⚠️ Please fill in all fields marked with * before submitting.");
             return;
         }
 
+        const email = document.getElementById('email').value.trim();
+        const idNumber = document.getElementById('idNumber').value.trim();
+        const campus = document.getElementById('campus').value;
+
         const message = encodeURIComponent(
-            `*KISS ADMISSION PORTAL*\n` +
-            `---------------------------\n` +
-            `*Student:* ${name}\n` +
+            `*🌟 NEW KISS COLLEGE APPLICATION*\n\n` +
+            `*Full Name:* ${fullName}\n` +
             `*Phone:* ${phone}\n` +
-            `*Email:* ${email}\n` +
-            `*Location:* ${location}\n` +
-            `---------------------------\n` +
-            `*Applied for:* ${course}\n` +
-            `*Dept:* ${school}\n` +
-            `*Found us on:* ${source}\n` +
-            `---------------------------\n` +
-            `Kindly process my admission letter.`
+            `*Age:* ${age} years\n` +
+            `*Gender:* ${gender}\n` +
+            `${email ? `*Email:* ${email}\n` : ''}` +
+            `${idNumber ? `*ID/Passport:* ${idNumber}\n` : ''}` +
+            `*Course Interested In:* ${course}\n` +
+            `${campus ? `*Campus:* ${campus}\n` : ''}` +
+            `*Guardian Name:* ${guardianName}\n` +
+            `*Guardian Phone:* ${guardianPhone}\n\n` +
+            `Please send me my admission letter. Thank you!`
         );
 
-        window.open(`https://wa.me/254741958940?text=${message}`, '_blank');
+        window.open(`https://wa.me/254726580464?text=${message}`, '_blank');
     }
 </script>
 {% endblock %}

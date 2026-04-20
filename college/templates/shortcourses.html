@@ -1,155 +1,276 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Short Professional Courses | KISS College Kenya{% endblock %}
+{% block title %}Short Professional Courses | K.I.S.S College Kenya{% endblock %}
 
 {% block extra_css %}
 <style>
-  /* Fixed Parallax Background */
-  .short-hero {
-    background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(185, 28, 28, 0.85)),
-                url("../static/images/beauty.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  /* Sharp Card Design */
+  /* Clean, professional layout – consistent with main Programs page */
   .course-card {
     border: 1px solid #e5e7eb;
-    border-top: 4px solid #1e3a8a; /* Professional Blue Top */
+    border-top: 5px solid #1e3a8a;
     transition: all 0.3s ease;
   }
   .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    border-top-color: #b91c1c; /* Red on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    border-top-color: #b91c1c;
   }
 
-  .btn-sharp { border-radius: 0; }
-  .section-anchor { scroll-margin-top: 120px; }
+  .fee-badge {
+    background: #fefce8;
+    color: #854d0e;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+
+  .section-anchor {
+    scroll-margin-top: 100px;
+  }
+
+  .table-short {
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+  .table-short th {
+    background-color: #1e3a8a;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* PRIMARY BLUE BACKGROUND (exactly as requested) */
+  .short-courses-page {
+    background: #1e3a8a; /* Primary brand blue */
+  }
+
+  /* High-visibility text on dark blue background */
+  .short-courses-page h1,
+  .short-courses-page h2 {
+    color: #ffffff;
+  }
+  .short-courses-page p:not(.fee-badge *) {
+    color: #f1f5f9;
+  }
 </style>
 {% endblock %}
 
 {% block content %}
 
- <section class="short-hero h-[50vh] flex items-center justify-center text-red-700 text-center">
-  <div class="max-w-4xl px-6">
-    <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Short Professional Courses</h1>
-    <p class="text-xl font-light opacity-90 italic">Quick Skills. Immediate Impact. Professional Certification.</p>
-    <div class="h-1.5 w-32 bg-yellow-400 mx-auto mt-6"></div>
-  </div>
-</section>
+  <section class="short-courses-page max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-20">
 
-  <section class="max-w-7xl mx-auto px-6 py-20">
+    <!-- PAGE TITLE -->
+    <div class="flex items-center gap-4 mb-12">
+      <div class="h-12 w-3 bg-red-700"></div>
+      <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">
+        Short Professional Courses
+      </h1>
+    </div>
+    <p class="text-lg max-w-2xl mb-16">
+      2–6 months • Hands-on training • Professional certification • Immediate job-ready skills
+    </p>
 
+    <!-- 1. COMPUTER PACKAGES -->
     <div id="computer-packages" class="section-anchor mb-20">
-      <div class="flex items-center gap-4 mb-10">
-        <div class="h-12 w-2 bg-blue-800"></div>
-        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">ICT & Digital Skills</h2>
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-10 w-2 bg-blue-900"></div>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight">Computer Packages</h2>
       </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="course-card bg-white p-8">
-          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">Computer Packages (ICDL)</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Master MS Office (Word, Excel, Access), Internet, and Operating Systems. Essential for every career.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-blue-900 uppercase">1 - 2 Months</span>
-            <a href="https://wa.me/254741958940?text=Hi%20KISS%2C%20I%20want%20to%20enroll%20for%20Computer%20Packages." class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
-          </div>
-        </div>
-
-        <div id="web-design" class="course-card bg-white p-8 section-anchor">
-          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">Web & Graphics Design</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Learn HTML, CSS, Photoshop, and Illustrator. Create stunning websites and professional brand identities.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-blue-900 uppercase">3 Months</span>
-            <a href="#" class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          <h3 class="font-bold text-xl mb-2">Introduction to Computers + Typing &amp; Keyboarding</h3>
+          <p class="text-gray-600 text-sm mb-6">Basic computer literacy, typing speed, and essential office skills.</p>
+          <div class="flex justify-between items-end">
+            <span class="fee-badge">2 Months</span>
+            <a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27m%20interested%20in%20Computer%20Packages" class="text-red-700 font-bold hover:underline flex items-center gap-1">
+              Enroll Now →
+            </a>
           </div>
         </div>
 
         <div class="course-card bg-white p-8">
-          <h3 class="text-xl font-extrabold text-red-700 mb-4 uppercase">CISCO & Networking</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Professional networking skills. Learn to set up, configure, and troubleshoot corporate networks.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-blue-900 uppercase">3 Months</span>
-            <a href="#" class="bg-red-700 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
+          <h3 class="font-bold text-xl mb-2">MS Paint, Notepad &amp; WordPad</h3>
+          <p class="text-gray-600 text-sm mb-6">Creative tools and basic document editing – perfect starter package.</p>
+          <div class="flex justify-between items-end">
+            <span class="fee-badge">1 Month</span>
+            <a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27m%20interested%20in%20Computer%20Packages" class="text-red-700 font-bold hover:underline flex items-center gap-1">
+              Enroll Now →
+            </a>
+          </div>
+        </div>
+
+        <div class="course-card bg-white p-8 border-2 border-yellow-400 relative">
+          <div class="absolute -top-3 right-6 bg-yellow-400 text-blue-900 text-xs font-black px-4 py-1 rounded-full">SPECIAL OFFER</div>
+          <h3 class="font-bold text-xl mb-2">Full Computer Packages (ICDL)</h3>
+          <p class="text-gray-600 text-sm mb-6">MS Word, Excel, Access, PowerPoint + Internet &amp; Operating Systems.</p>
+          <div class="flex justify-between items-end">
+            <span class="fee-badge">1–2 Months</span>
+            <a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27m%20interested%20in%20Computer%20Packages" class="text-red-700 font-bold hover:underline flex items-center gap-1">
+              Enroll Now →
+            </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="technical" class="section-anchor mb-20">
-      <div class="flex items-center gap-4 mb-10">
-        <div class="h-12 w-2 bg-red-700"></div>
-        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">Technical & Trade Skills</h2>
+    <!-- 2. SHORT COURSES (2–6 Months) -->
+    <div id="short-courses" class="section-anchor mb-20">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-10 w-2 bg-red-700"></div>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight">Short Courses (2–6 Months)</h2>
       </div>
 
+      <div class="overflow-x-auto">
+        <table class="w-full text-left table-short bg-white">
+          <thead>
+            <tr>
+              <th class="px-6 py-5">Course</th>
+              <th class="px-6 py-5 text-center">Duration</th>
+              <th class="px-6 py-5 text-right">Fee</th>
+              <th class="px-6 py-5 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y text-sm">
+            <tr>
+              <td class="px-6 py-5 font-medium">Records &amp; Information Management</td>
+              <td class="px-6 py-5 text-center">2–3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">—</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Records%20%26%20Information%20Management" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Front Office</td>
+              <td class="px-6 py-5 text-center">2–3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 30,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Front%20Office" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Graphic Design</td>
+              <td class="px-6 py-5 text-center">2–4 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 12,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Graphic%20Design" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Video Editing</td>
+              <td class="px-6 py-5 text-center">2–3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 15,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Video%20Editing" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Music Editing</td>
+              <td class="px-6 py-5 text-center">2–3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 15,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Music%20Editing" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Android Programming</td>
+              <td class="px-6 py-5 text-center">3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 10,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Android%20Programming" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Accounting Packages</td>
+              <td class="px-6 py-5 text-center">2 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 10,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Accounting%20Packages" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Web Design</td>
+              <td class="px-6 py-5 text-center">3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 20,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Web%20Design" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Statistical Packages</td>
+              <td class="px-6 py-5 text-center">2 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 10,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Statistical%20Packages" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">CCTV Installation</td>
+              <td class="px-6 py-5 text-center">2 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 10,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20CCTV%20Installation" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+            <tr>
+              <td class="px-6 py-5 font-medium">Phone Repair</td>
+              <td class="px-6 py-5 text-center">2–3 Months</td>
+              <td class="px-6 py-5 text-right font-bold">KSh 20,000</td>
+              <td class="px-6 py-5 text-center"><a href="https://wa.me/254726580464?text=Hi%20KISS%2C%20I%27d%20like%20to%20enroll%20in%20Phone%20Repair" class="text-red-700 font-bold hover:underline">Enroll →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. TECHNICAL COURSES -->
+    <div id="technical-courses" class="section-anchor mb-20">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-10 w-2 bg-blue-900"></div>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight">Technical Courses (Dip &amp; Cert)</h2>
+      </div>
+      <p class="text-sm mb-6">Fees per term: KSh 12,000</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="bg-white border border-gray-200 p-6 text-center">
+          <p class="font-medium">Electrical &amp; Electronics Engineering</p>
+        </div>
+        <div class="bg-white border border-gray-200 p-6 text-center">
+          <p class="font-medium">Automotive Engineering</p>
+        </div>
+        <div class="bg-white border border-gray-200 p-6 text-center">
+          <p class="font-medium">Building &amp; Construction Technology</p>
+        </div>
+        <div class="bg-white border border-gray-200 p-6 text-center">
+          <p class="font-medium">Plumbing Technology</p>
+        </div>
+        <div class="bg-white border border-gray-200 p-6 text-center">
+          <p class="font-medium">Carpentry &amp; Furniture Technology</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. LANGUAGES -->
+    <div id="languages" class="section-anchor">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-10 w-2 bg-amber-500"></div>
+        <h2 class="text-3xl font-extrabold uppercase tracking-tight">Languages</h2>
+      </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
-          <h4 class="font-bold text-gray-900 mb-2">Plumbing & Fabrication</h4>
-          <p class="text-xs text-gray-500">Practical workshop-based training.</p>
+        <div class="course-card bg-white p-8 text-center">
+          <h3 class="text-2xl font-bold text-blue-900">French</h3>
+          <p class="text-sm text-gray-500 mt-1">4 stages • KSh 8,000 per stage</p>
         </div>
-        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
-          <h4 class="font-bold text-gray-900 mb-2">Electrical Installation</h4>
-          <p class="text-xs text-gray-500">NITA accredited short-module.</p>
+        <div class="course-card bg-white p-8 text-center">
+          <h3 class="text-2xl font-bold text-blue-900">English</h3>
+          <p class="text-sm text-gray-500 mt-1">4 stages • KSh 8,000 per stage</p>
         </div>
-        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
-          <h4 class="font-bold text-gray-900 mb-2">Phone Repair & CCTV</h4>
-          <p class="text-xs text-gray-500">Immediate income-generating skill.</p>
+        <div class="course-card bg-white p-8 text-center">
+          <h3 class="text-2xl font-bold text-blue-900">Chinese</h3>
+          <p class="text-sm text-gray-500 mt-1">4 stages • KSh 8,000 per stage</p>
         </div>
-        <div class="bg-white border-l-4 border-blue-800 p-6 shadow-sm">
-          <h4 class="font-bold text-gray-900 mb-2">Nail Technology</h4>
-          <p class="text-xs text-gray-500">Manicure, Pedicure & Art.</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="languages" class="section-anchor mb-20">
-      <div class="flex items-center gap-4 mb-10">
-        <div class="h-12 w-2 bg-yellow-500"></div>
-        <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tighter">Languages & Health</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="course-card bg-white p-8">
-          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">KSL (Sign Language)</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Bridge the communication gap. Perfect for social workers and educators.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-red-700 uppercase">Flexible Hours</span>
-            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
-          </div>
-        </div>
-
-        <div class="course-card bg-white p-8">
-          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">HIV Testing & Counselling</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">NASCOP approved curriculum for healthcare professionals and counselors.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-red-700 uppercase">3 Weeks</span>
-            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
-          </div>
-        </div>
-
-        <div class="course-card bg-white p-8">
-          <h3 class="text-xl font-extrabold text-blue-800 mb-4 uppercase">Foreign Languages (French)</h3>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed">Expand your horizons. Introductory to advanced levels available.</p>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span class="text-xs font-bold text-red-700 uppercase">3 - 6 Months</span>
-            <a href="#" class="bg-blue-900 text-white px-4 py-2 text-xs font-bold btn-sharp">ENROLL NOW</a>
-          </div>
+        <div class="course-card bg-white p-8 text-center">
+          <h3 class="text-2xl font-bold text-blue-900">Arabic</h3>
+          <p class="text-sm text-gray-500 mt-1">4 stages • KSh 8,000 per stage</p>
         </div>
       </div>
     </div>
 
   </section>
 
-  <section class="bg-red-700 py-10">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="text-white">
-        <h2 class="text-3xl font-black uppercase tracking-tighter">Limited Time Offer!</h2>
-        <p class="text-red-100">Get a <span class="font-bold text-yellow-400 text-2xl">50% DISCOUNT</span> on selected short courses this month.</p>
+  <!-- FINAL CTA -->
+  <section class="bg-red-700 py-12 text-white">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="text-3xl font-black uppercase tracking-tighter">Ready to upgrade your skills?</h2>
+        <p class="text-red-100 mt-2">Flexible schedules • Monthly installments • Job placement support</p>
       </div>
-      <a href="/contact" class="bg-white text-red-700 px-10 py-4 font-black uppercase shadow-xl hover:bg-yellow-400 hover:text-blue-900 transition btn-sharp">Claim Discount</a>
+      <a href="https://wa.me/254726580464" class="bg-white text-red-700 px-10 py-4 font-black uppercase text-lg shadow-xl hover:bg-yellow-300 hover:text-blue-900 transition">
+        WhatsApp Registrar Now
+      </a>
     </div>
   </section>
 

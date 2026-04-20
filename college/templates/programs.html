@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Our Programs | KISS College Kenya{% endblock %}
+{% block title %}Our Programs | K.I.S.S College Kenya{% endblock %}
 
 {% block extra_CSS %}
 <style>
   /* Fixed Parallax Background - Shorthand version to fix warnings */
   .hero-fixed {
-    background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(185, 28, 28, 0.8)),
+    background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(185, 28, 28, 0.85)),
                 url("../static/images/graduation2.png") center / cover fixed no-repeat;
     height: 60vh;
     display: flex;
@@ -16,164 +16,311 @@
   }
 
   /* Table Sharp Corners & Consistency */
-  .course-table { border-radius: 0; overflow: hidden; border: 1px solid #e5e7eb; }
-  .course-table th { background-color: #1e3a8a; color: white; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+  .course-table {
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+  .course-table th {
+    background-color: #1e3a8a;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+  }
+  .course-table td {
+    padding: 1rem;
+  }
 
   /* Section Spacing for Anchors */
-  .school-section { scroll-margin-top: 140px; margin-bottom: 4rem; }
+  .school-section {
+    scroll-margin-top: 140px;
+    margin-bottom: 4rem;
+  }
+
+  /* Mobile-friendly improvements */
+  @media (max-width: 1024px) {
+    .course-table th,
+    .course-table td {
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .sticky-nav {
+      display: none;
+    }
+  }
+
+  /* Highlight on hover for rows */
+  .course-table tbody tr:hover {
+    background-color: #f8fafc;
+  }
 </style>
 {% endblock %}
 
 {% block content %}
 
-  <section class="hero-fixed text-red-700 text-center">
-  <div class="max-w-4xl px-6">
-    <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Academic Programs</h1>
-    <p class="text-xl md:text-2xl font-light opacity-90">Explore our wide range of TVETA, NITA, and KNEC accredited courses.</p>
-    <div class="h-1 w-24 bg-yellow-400 mx-auto mt-6"></div>
-  </div>
-</section>
+  <!-- HERO SECTION -->
 
+  <!-- STICKY NAV (Desktop only) -->
   <div class="bg-blue-900 sticky top-[88px] z-40 hidden lg:block border-b border-yellow-500 shadow-xl">
     <div class="max-w-7xl mx-auto px-6 overflow-x-auto flex whitespace-nowrap">
-      <a href="#social-work" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Social Work</a>
-      <a href="#business" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Business</a>
-      <a href="#health" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Health Sciences</a>
-      <a href="#hospitality" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Hospitality</a>
-      <a href="#beauty" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Beauty & Fashion</a>
-      <a href="#engineering" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">Engineering</a>
-      <a href="#computing" class="px-4 py-4 text-[10px] font-bold text-white hover:bg-red-700 transition uppercase">IT</a>
+      <a href="#community-dev" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Community Dev</a>
+      <a href="#health-sciences" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Health Sciences</a>
+      <a href="#catering-hospitality" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Catering &amp; Hospitality</a>
+      <a href="#hairdressing-beauty" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Hairdressing &amp; Beauty</a>
+      <a href="#fashion-interior" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Fashion &amp; Interior</a>
+      <a href="#engineering" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Engineering</a>
+      <a href="#computing-it" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Computing &amp; IT</a>
+      <a href="#accounts-finance" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Accounts &amp; Finance</a>
+      <a href="#business-studies" class="px-5 py-4 text-xs font-bold text-white hover:bg-red-700 transition uppercase">Business Studies</a>
     </div>
   </div>
 
-  <section class="max-w-7xl mx-auto px-6 py-20">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-20">
 
-    <div id="social-work" class="school-section">
+    <!-- SCHOOL 1: Community Development & Social Work -->
+    <div id="community-dev" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-red-700"></div>
-        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Community Dev. & Social Work</h2>
+        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Community Development &amp; Social Work</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
             <tr>
-              <th class="p-4">Course Name</th>
-              <th class="p-4">Exam Body</th>
-              <th class="p-4">Min. Requirement</th>
-              <th class="p-4 text-center">Action</th>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
             </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Social Work & Community Development (Dip/Cert)</td><td class="p-4">KNEC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Criminology & Security Studies</td><td class="p-4">TVETA</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Disaster Management (Dip/Cert)</td><td>KNEC/TVETA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Community Health (Dip/Cert)</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Counseling Psychology (Dip/Cert)</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Social Work &amp; Community Development (Dip/Cert)</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Criminology &amp; Security Studies (Dip/Cert)</td><td>TVETA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div id="business" class="school-section">
+    <!-- SCHOOL 2: Health & Applied Sciences -->
+    <div id="health-sciences" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-blue-900"></div>
-        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Business Studies</h2>
+        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Health &amp; Applied Sciences</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Business Management / HR Management</td><td class="p-4">KNEC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Accounting (ATD / CPA)</td><td class="p-4">KASNEB</td><td class="p-4 italic text-gray-500">C+ / C-</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Perioperative Theatre Technology</td><td>TVETA/CDACC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Care Giving</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Nursing Aide</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">HIV Testing &amp; Services (HTS)</td><td>TVETA/NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Counseling Psychology</td><td>KNEC/NITA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Nutrition &amp; Dietetics</td><td>KNEC/NITA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Public Health</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Health Records &amp; IT</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Adherence Counseling</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Certified Nursing Assistant (CNA)</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div id="health" class="school-section">
+    <!-- SCHOOL 3: Catering & Hospitality Management -->
+    <div id="catering-hospitality" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-red-700"></div>
-        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Health & Applied Sciences</h2>
+        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Catering &amp; Hospitality Management</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Peri-operative Theatre Technology</td><td class="p-4">TVETA/CDACC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Care Giving / Nursing Aide</td><td class="p-4">NITA</td><td class="p-4 italic text-gray-500">D Plain / KCPE</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Food &amp; Beverage Production &amp; Service (Artisan / Cert / Dip)</td><td>KNEC/NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Catering &amp; Accommodation (Cert / Dip)</td><td>KNEC/NITA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Bakery Technology &amp; Pastry (Cert)</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Housekeeping &amp; Accommodation Studies (Dip)</td><td>KNEC/NITA</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Tourism Management (Cert / Dip)</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div id="hospitality" class="school-section">
+    <!-- SCHOOL 4: Hairdressing & Beauty Therapy -->
+    <div id="hairdressing-beauty" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-blue-900"></div>
-        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Hospitality & Tourism</h2>
+        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Hairdressing &amp; Beauty Therapy</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Catering & Accommodation Studies</td><td class="p-4">KNEC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Food & Beverage Production</td><td class="p-4">KNEC/NITA</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Hair Dressing</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Beauty Therapy</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Cosmetology</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Nail Technology</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div id="beauty" class="school-section">
+    <!-- SCHOOL 5: Fashion & Interior Design -->
+    <div id="fashion-interior" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-red-700"></div>
-        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Beauty & Fashion Design</h2>
+        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Fashion &amp; Interior Design</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Hairdressing & Beauty Therapy</td><td class="p-4">NITA</td><td class="p-4 italic text-gray-500">D Plain / KCPE</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Fashion Design & Tailoring</td><td class="p-4">NITA/KNEC</td><td class="p-4 italic text-gray-500">D Plain / KCPE</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Clothing &amp; Textiles Technology</td><td>NITA/KNEC</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Interior Design</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Creative Arts &amp; Design</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- SCHOOL 6: Engineering -->
     <div id="engineering" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-blue-900"></div>
-        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Electrical Engineering</h2>
+        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Engineering</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">Electrical & Electronic Engineering</td><td class="p-4">KNEC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Electrical Installation (Artisan)</td><td class="p-4">KNEC/NITA</td><td class="p-4 italic text-gray-500">D- / KCPE</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Electrical &amp; Electronics Engineering</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Automotive Engineering</td><td>KNEC/NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Building &amp; Construction Technology</td><td>KNEC/NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Plumbing Technology</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Carpentry &amp; Furniture Technology</td><td>NITA</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div id="computing" class="school-section">
+    <!-- SCHOOL 7: Computing & IT -->
+    <div id="computing-it" class="school-section">
       <div class="flex items-center gap-4 mb-6">
         <div class="h-10 w-2 bg-red-700"></div>
-        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Computing & IT</h2>
+        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Computing &amp; IT</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left course-table bg-white">
           <thead>
-            <tr><th class="p-4">Course Name</th><th class="p-4">Exam Body</th><th class="p-4">Min. Requirement</th><th class="p-4 text-center">Action</th></tr>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
           </thead>
           <tbody class="text-sm divide-y">
-            <tr><td class="p-4 font-bold">ICT & Computer Programming</td><td class="p-4">KNEC</td><td class="p-4 italic text-gray-500">C- / D Plain</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
-            <tr><td class="p-4 font-bold">Computer Graphics & Web Design</td><td class="p-4">KISS Cert</td><td class="p-4 italic text-gray-500">Open</td><td class="p-4 text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply</a></td></tr>
+            <tr><td class="font-bold">Diploma in ICT</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Certificate in ICT</td><td>KNEC</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Computer Programming &amp; Web Development</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Graphic Design &amp; Computer Packages</td><td>KISS / NITA</td><td class="italic text-gray-500">Open Entry</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 8: Accounts & Finance -->
+    <div id="accounts-finance" class="school-section">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="h-10 w-2 bg-blue-900"></div>
+        <h2 class="text-3xl font-extrabold text-red-800 uppercase tracking-tight">School of Accounts &amp; Finance</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left course-table bg-white">
+          <thead>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm divide-y">
+            <tr><td class="font-bold">Accounting Technician Diploma (ATD Levels 1-3)</td><td>KASNEB</td><td class="italic text-gray-500">C+ / C-</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Certified Public Accountant (CPA) – Foundation, Intermediate &amp; Advanced</td><td>KASNEB</td><td class="italic text-gray-500">C+ / C-</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Certificate in Accounting &amp; Management Skills (CAMS)</td><td>KASNEB</td><td class="italic text-gray-500">D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHOOL 9: Business Studies -->
+    <div id="business-studies" class="school-section">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="h-10 w-2 bg-red-700"></div>
+        <h2 class="text-3xl font-extrabold text-blue-900 uppercase tracking-tight">School of Business Studies</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left course-table bg-white">
+          <thead>
+            <tr>
+              <th>Course Name</th>
+              <th>Exam Body</th>
+              <th>Min. Requirement</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm divide-y">
+            <tr><td class="font-bold">Business Management (Dip/Cert)</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Secretarial &amp; Clerical Operations</td><td>KNEC</td><td class="italic text-gray-500">D Plain / KCPE</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Human Resource Management</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Sales &amp; Marketing</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Purchasing &amp; Procurement</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Public Administration</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Public Relations</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Project Management</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
+            <tr><td class="font-bold">Banking &amp; Finance</td><td>KNEC</td><td class="italic text-gray-500">C- / D Plain</td><td class="text-center"><a href="/admission" class="text-red-700 font-bold hover:underline">Apply Now →</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -181,16 +328,18 @@
 
   </section>
 
+  <!-- FINAL CTA SECTION -->
   <section class="bg-blue-950 py-20 text-center border-b-8 border-red-700">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-white text-4xl font-black uppercase mb-6 tracking-tighter">Ready to enroll for the May Intake?</h2>
-      <p class="text-gray-400 text-lg mb-10">Join thousands of students who have turned their skills into destiny.</p>
+      <h2 class="text-white text-4xl font-black uppercase mb-6 tracking-tighter">Ready to enroll? January Intake is ongoing!</h2>
+      <p class="text-gray-400 text-lg mb-10">Open / Virtual / Distance learning available. Affordable fees &amp; flexible payment plans.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="/admission" class="bg-red-700 text-white px-12 py-5 font-bold uppercase hover:bg-red-800 transition shadow-2xl">Start Application</a>
-        <a href="https://wa.me/254741958940" class="bg-green-600 text-white px-12 py-5 font-bold uppercase hover:bg-green-700 transition flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp"></i> Chat with Registrar
+        <a href="/admission" class="bg-red-700 text-white px-12 py-5 font-bold uppercase hover:bg-red-800 transition shadow-2xl text-lg">Start Your Application</a>
+        <a href="https://wa.me/254726580464" class="bg-green-600 text-white px-12 py-5 font-bold uppercase hover:bg-green-700 transition flex items-center justify-center gap-2 text-lg">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Registrar
         </a>
       </div>
+
     </div>
   </section>
 

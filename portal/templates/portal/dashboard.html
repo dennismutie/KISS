@@ -128,26 +128,41 @@
         <div class="p-8 overflow-y-auto space-y-8 h-full">
 
             <div class="grid lg:grid-cols-4 gap-6">
-                <div class="lg:col-span-2 bg-[#001f3f] p-10 text-white relative overflow-hidden shadow-2xl border-l-[12px] border-red-700" data-intro="Live Finance: View your current fee balance and check your full payment history here." data-step="3">
-                    <i class="fa-solid fa-money-check-dollar absolute -right-6 -bottom-6 text-[150px] opacity-10 rotate-12"></i>
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-center mb-4">
-                            <p class="text-[11px] font-black uppercase tracking-[0.5em] text-blue-300/80">Fee Obligation Status</p>
-                            {% if user.fee_balance == 0 %}
-                                <span class="bg-green-600 text-[9px] px-3 py-1 font-black uppercase tracking-widest">Cleared</span>
-                            {% else %}
-                                <span class="bg-red-700 text-[9px] px-3 py-1 font-black uppercase tracking-widest animate-pulse">Outstanding Balance</span>
-                            {% endif %}
-                        </div>
-                        <h3 class="text-5xl font-black italic mb-6">KES {{ user.fee_balance }}</h3>
-                        <div class="flex items-center gap-4 mt-6">
-                            <a href="{% url 'student_financials' %}" class="bg-white text-blue-950 hover:bg-red-700 hover:text-white text-[10px] font-black uppercase tracking-widest px-8 py-4 transition-all shadow-xl">
-                                <i class="fa-solid fa-clock-rotate-left mr-2"></i> Payment History
-                            </a>
-                        </div>
-                    </div>
-                </div>
+               <div class="lg:col-span-2 bg-[#001f3f] p-10 text-white relative overflow-hidden shadow-2xl border-l-[12px]
+    {% if user.fee_balance < 0 %}border-green-400{% elif user.fee_balance == 0 %}border-green-600{% else %}border-red-700{% endif %}"
+    data-intro="Live Finance: View your current fee balance and check your full payment history here." data-step="3">
 
+    <i class="fa-solid fa-money-check-dollar absolute -right-6 -bottom-6 text-[150px] opacity-10 rotate-12"></i>
+
+    <div class="relative z-10">
+        <div class="flex justify-between items-center mb-4">
+            <p class="text-[11px] font-black uppercase tracking-[0.5em] text-blue-300/80">Fee Obligation Status</p>
+            {% if user.fee_balance < 0 %}
+                <span class="bg-green-500 text-[9px] px-3 py-1 font-black uppercase tracking-widest">Prepaid Account</span>
+            {% elif user.fee_balance == 0 %}
+                <span class="bg-green-600 text-[9px] px-3 py-1 font-black uppercase tracking-widest">Cleared</span>
+            {% else %}
+                <span class="bg-red-700 text-[9px] px-3 py-1 font-black uppercase tracking-widest animate-pulse">Outstanding Balance</span>
+            {% endif %}
+        </div>
+
+        <h3 class="text-5xl font-black italic mb-2">
+            KES {{ user.fee_balance|default:"0.00" }}
+        </h3>
+
+        {% if user.fee_balance < 0 %}
+            <p class="text-[10px] font-bold text-green-400 uppercase italic tracking-widest mb-4">
+                * Excess funds will be applied to your next semester automatically.
+            </p>
+        {% endif %}
+
+        <div class="flex items-center gap-4 mt-6">
+            <a href="{% url 'student_financials' %}" class="bg-white text-blue-950 hover:bg-red-700 hover:text-white text-[10px] font-black uppercase tracking-widest px-8 py-4 transition-all shadow-xl">
+                <i class="fa-solid fa-clock-rotate-left mr-2"></i> Payment History
+            </a>
+        </div>
+    </div>
+</div>
                 <div class="bg-[#3b82f6] p-10 text-white relative overflow-hidden shadow-2xl border-l-[12px] border-yellow-400">
                     <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-6 text-[150px] opacity-10 rotate-12"></i>
                     <div class="relative z-10">
@@ -166,7 +181,7 @@
                     </div>
                 </a>
 
-                <a href="{% url 'view_transcript' %}" data-intro="Official Transcript: Generate and print your formal academic record as a PDF." data-step="6" class="bg-white p-10 border-b-8 border-blue-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all group relative overflow-hidden">
+                <a href="{% url 'semester_transcript' %}" data-intro="Official Transcript: Generate and print your formal academic record as a PDF." data-step="6" class="bg-white p-10 border-b-8 border-blue-900 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all group relative overflow-hidden">
                     <i class="fa-solid fa-file-contract absolute -right-4 -bottom-4 text-9xl opacity-5 text-blue-900"></i>
                     <div class="relative z-10">
                         <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Official Record</p>
