@@ -16,12 +16,12 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: #1e40af; /* Blue-800 */
+        background-color: #1e40af;
         width: 320px;
         border-radius: 0;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         z-index: 100;
-        border-top: 4px solid #facc15; /* Yellow Accent */
+        border-top: 4px solid #facc15;
     }
 
     .group:hover .nav-dropdown { display: block; }
@@ -41,7 +41,6 @@
         color: #facc15;
     }
 
-    /* Pulse animation for Facebook */
     @keyframes pulse-slow {
         0%, 100% { transform: scale(1); opacity: 1; }
         50% { transform: scale(1.05); opacity: 0.8; }
@@ -49,11 +48,11 @@
     .animate-pulse-slow { animation: pulse-slow 2s infinite ease-in-out; }
 
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-    /* PROFESSIONAL RECTANGULAR FLOATING ICONS (CUEA STYLE) */
+
     .floating-action-btn {
         width: 110px;
         height: 38px;
-        border-radius: 20px; /* Capsule shape like the CUEA screenshot */
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -65,10 +64,98 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
+    /* ==================== BLUE NAVBAR WITH SOFTER CORNERS & CONTINUOUS RED ANIMATION ==================== */
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.4px;
+      color: #1e40af;                    /* Blue text */
+      background: #eff6ff;               /* Light blue background */
+      border: 2px solid #1e40af;         /* Blue border */
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;                /* Softer corners */
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2);
+    }
+
+    /* Continuous red wipe animation */
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(185, 28, 28, 0.85) 40%,
+        rgba(185, 28, 28, 0.95) 50%,
+        rgba(185, 28, 28, 0.85) 60%,
+        transparent 100%
+      );
+      animation: swipe 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes swipe {
+      0%   { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .nav-btn:hover {
+      color: white;
+      background: #1e40af;
+      border-color: #1e40af;
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+    }
+
+    /* Apply Now Button */
+    .apply-btn {
+      background: #b91c1c;
+      color: white;
+      border: 2px solid #b91c1c;
+      padding: 10px 24px;
+      font-size: 0.875rem;
+      box-shadow: 0 5px 15px rgba(185, 28, 28, 0.5);
+    }
+
+    .apply-btn:hover {
+      background: #991b1b;
+      box-shadow: 0 8px 22px rgba(185, 28, 28, 0.6);
+    }
+
+    .apply-btn::before {
+      animation: swipe 4s linear infinite;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.45) 40%,
+        rgba(255,255,255,0.55) 50%,
+        rgba(255,255,255,0.45) 60%,
+        transparent 100%
+      );
+    }
+
+    /* Middle blue bar disappears on scroll */
+    #tempBlueBar.scrolled {
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: all 0.4s ease;
+    }
   </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
-<div class="bg-red-800 text-white text-xs py-2.5 font-medium z-[60]">
+
+  <!-- Top Contact Bar - Permanent -->
+  <div class="bg-red-800 text-white text-xs py-2.5 font-medium z-[60]">
     <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
       <div class="flex gap-6">
         <a href="tel:0741958940" class="hover:text-yellow-400 flex items-center gap-2">
@@ -96,160 +183,170 @@
     </div>
   </div>
 
-<div id="tempBlueBar" class="bg-blue-600 text-white py-1.5 text-center sticky top-0 z-[55]">
+  <!-- Middle Primary Blue Bar - Disappears on scroll -->
+  <div id="tempBlueBar" class="bg-blue-600 text-white py-1.5 text-center sticky top-0 z-[55]">
       <p class="text-[10px] font-black uppercase tracking-[0.3em]">Kenya Institute of Social Sciences</p>
   </div>
 
- <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <!-- Main Navbar - Permanent, raises up on scroll -->
+  <nav class="main-navbar bg-white border-b sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <a href="/home" class="flex items-center gap-3">
-      <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-14 w-auto">
-      <div class="leading-tight">
-        <span class="text-blue-900 text-2xl font-extrabold tracking-tighter">K.I.S.S</span>
-        <p class="text-red-700 text-[10px] font-bold uppercase tracking-widest">College Kenya</p>
-      </div>
-    </a>
-
-    <div class="hidden lg:flex items-center gap-1">
-      <a href="/home" class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 transition">Home</a>
-
-      <!-- Updated Programs Dropdown -->
-      <div class="relative group">
-        <button class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 flex items-center gap-1">
-          Programs <i class="fa-solid fa-chevron-down text-[10px]"></i>
-        </button>
-        <div class="nav-dropdown">
-          <a href="/programs/#community-dev" class="dropdown-link">School of Community Development &amp; Social Work</a>
-          <a href="/programs/#health-sciences" class="dropdown-link">School of Health &amp; Applied Sciences</a>
-          <a href="/programs/#catering-hospitality" class="dropdown-link">School of Catering &amp; Hospitality Management</a>
-          <a href="/programs/#hairdressing-beauty" class="dropdown-link">School of Hairdressing &amp; Beauty Therapy</a>
-          <a href="/programs/#fashion-interior" class="dropdown-link">School of Fashion &amp; Interior Design</a>
-          <a href="/programs/#engineering" class="dropdown-link">School of Engineering</a>
-          <a href="/programs/#computing-it" class="dropdown-link">School of Computing &amp; IT</a>
-          <a href="/programs/#accounts-finance" class="dropdown-link">School of Accounts &amp; Finance</a>
-          <a href="/programs/#business-studies" class="dropdown-link">School of Business Studies</a>
+      <!-- Logo -->
+      <a href="/home" class="flex items-center gap-3">
+        <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-14 w-auto">
+        <div class="leading-tight">
+          <span class="text-blue-900 text-2xl font-extrabold tracking-tighter">K.I.S.S</span>
+          <p class="text-red-700 text-[10px] font-bold uppercase tracking-widest">College Kenya</p>
         </div>
-      </div>
+      </a>
 
-      <!-- Updated Short Courses Dropdown -->
-      <div class="relative group">
-        <button class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 flex items-center gap-1">
-          Short Courses <i class="fa-solid fa-chevron-down text-[10px]"></i>
-        </button>
-        <div class="nav-dropdown">
-          <a href="/shortcourses/#computer-packages" class="dropdown-link">Computer Packages (ICDL)</a>
-          <a href="/shortcourses/#short-courses" class="dropdown-link">Short Courses (2–6 Months)</a>
-          <a href="/shortcourses/#technical-courses" class="dropdown-link">Technical Courses</a>
-          <a href="/shortcourses/#languages" class="dropdown-link">Foreign Languages</a>
+      <!-- Menu -->
+      <div class="hidden lg:flex items-center gap-2">
+
+        <a href="/home" class="nav-btn">Home</a>
+
+        <!-- Programs Dropdown - Clickable -->
+        <div class="relative group">
+          <a href="/programs" class="nav-btn flex items-center gap-1">
+            Programs
+            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/programs/#community-dev" class="dropdown-link">School of Community Development &amp; Social Work</a>
+            <a href="/programs/#health-sciences" class="dropdown-link">School of Health &amp; Applied Sciences</a>
+            <a href="/programs/#catering-hospitality" class="dropdown-link">School of Catering &amp; Hospitality Management</a>
+            <a href="/programs/#hairdressing-beauty" class="dropdown-link">School of Hairdressing &amp; Beauty Therapy</a>
+            <a href="/programs/#fashion-interior" class="dropdown-link">School of Fashion &amp; Interior Design</a>
+            <a href="/programs/#engineering" class="dropdown-link">School of Engineering</a>
+            <a href="/programs/#computing-it" class="dropdown-link">School of Computing &amp; IT</a>
+            <a href="/programs/#accounts-finance" class="dropdown-link">School of Accounts &amp; Finance</a>
+            <a href="/programs/#business-studies" class="dropdown-link">School of Business Studies</a>
+          </div>
         </div>
+
+        <!-- Short Courses Dropdown - Clickable -->
+        <div class="relative group">
+          <a href="/shortcourses" class="nav-btn flex items-center gap-1">
+            Short Courses
+            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/shortcourses/#computer-packages" class="dropdown-link">Computer Packages (ICDL)</a>
+            <a href="/shortcourses/#short-courses" class="dropdown-link">Short Courses (2–6 Months)</a>
+            <a href="/shortcourses/#technical-courses" class="dropdown-link">Technical Courses</a>
+            <a href="/shortcourses/#languages" class="dropdown-link">Foreign Languages</a>
+          </div>
+        </div>
+
+        <a href="/admission" class="nav-btn">Admissions</a>
+        <a href="/FAQ" class="nav-btn">FAQ</a>
+        <a href="/contact" class="nav-btn">Contact Us</a>
+
       </div>
 
-      <a href="/admission" class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 transition">Admissions</a>
-      <a href="/FAQ" class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 transition">FAQ</a>
-      <a href="/contact" class="px-4 py-2 text-gray-700 font-bold hover:text-red-700 transition">Contact Us</a>
+      <!-- Apply Now -->
+      <a href="/admission" class="nav-btn apply-btn">
+        APPLY NOW
+      </a>
+
     </div>
-
-    <a href="/admission" class="bg-red-700 hover:bg-red-800 text-white px-8 py-3 rounded-none font-bold text-sm transition shadow-lg">
-      APPLY NOW
-    </a>
-  </div>
-</nav>
-
-
+  </nav>
 
   <main class="flex-grow">
     {% block content %}{% endblock %}
   </main>
 
- <footer class="bg-blue-950 text-gray-300 pt-16 pb-12 border-t-4 border-yellow-400">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-5 gap-12">
+  <!-- Footer (unchanged) -->
+  <footer class="bg-blue-950 text-gray-300 pt-16 pb-12 border-t-4 border-yellow-400">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-5 gap-12">
 
-      <div class="flex flex-col items-center md:items-start text-center md:text-left">
-        <div class="w-24 h-24 bg-white flex items-center justify-center p-2 mb-6 shadow-xl">
-          <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-auto w-full">
+        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="w-24 h-24 bg-white flex items-center justify-center p-2 mb-6 shadow-xl">
+            <img src="../static/images/logo.jpg" alt="KISS Logo" class="h-auto w-full">
+          </div>
+          <h4 class="text-white font-bold text-xl mb-3 tracking-tighter">Kenya Institute of Social Sciences</h4>
+          <p class="text-sm leading-relaxed text-gray-400">
+            Transforming lives through quality education and practical skills.
+            <span class="block mt-2 font-bold text-red-400 italic">"My Skills – My Future"</span>
+          </p>
         </div>
-        <h4 class="text-white font-bold text-xl mb-3 tracking-tighter">Kenya Institute of Social Sciences</h4>
-        <p class="text-sm leading-relaxed text-gray-400">
-          Transforming lives through quality education and practical skills.
-          <span class="block mt-2 font-bold text-red-400 italic">"My Skills – My Future"</span>
+
+        <div>
+          <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Quick Links</h4>
+          <ul class="space-y-4 text-sm">
+            <li><a href="/programs" class="hover:text-yellow-400 transition">Our Programs</a></li>
+            <li><a href="/shortcourses" class="hover:text-yellow-400 transition">Short Courses</a></li>
+            <li><a href="/admission" class="hover:text-yellow-400 transition">Admissions</a></li>
+            <li><a href="/FAQ" class="hover:text-yellow-400 transition">FAQ</a></li>
+            <li><a href="/contact" class="hover:text-yellow-400 transition">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Our Campuses</h4>
+          <div class="space-y-6 text-sm">
+            <div>
+              <p class="text-yellow-400 font-bold uppercase tracking-tighter">Machakos Campus (HQ)</p>
+              <p class="text-gray-400 mt-1 leading-relaxed">Kenya Institute Building, Next to Lysak Haven Park, Along Machakos-Nairobi Highway</p>
+            </div>
+            <div>
+              <p class="text-yellow-400 font-bold uppercase tracking-tighter">Malili Campus</p>
+              <p class="text-gray-400 mt-1 leading-relaxed">Malili Shopping Centre, Along Konza Road, 7KM off Mombasa Road</p>
+            </div>
+            <div>
+              <p class="text-yellow-400 font-bold uppercase tracking-tighter">Mlolongo Campus</p>
+              <p class="text-gray-400 mt-1 leading-relaxed">Unaitas Building, 1st Floor</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Get In Touch</h4>
+          <div class="space-y-4 text-sm">
+            <div class="flex gap-3">
+              <i class="fa-solid fa-phone text-red-500 mt-1"></i>
+              <div>
+                <a href="tel:0741958940" class="block hover:text-white transition">0741 958 940</a>
+                <a href="tel:0726580464" class="block hover:text-white transition">0726 580 464</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-red-500"></i>
+              <a href="mailto:kissje2009@gmail.com" class="hover:text-white transition">kissje2009@gmail.com</a>
+            </div>
+            <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-none text-white text-xs font-bold mt-4 transition-all uppercase">
+              <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Us
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Visit HQ (Machakos)</h4>
+          <div class="border border-gray-800 shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.471677322301!2d37.24596747371901!3d-1.5174469358117765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f81f909b52fcf%3A0x228c1f4d8e4f0e0b!2sLysak%20Haven%20Park!5e0!3m2!1sen!2ske!4v1713444000000!5m2!1sen!2ske"
+              width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=-1.5174523,37.2485424" target="_blank" class="block text-center bg-red-700 text-white text-[10px] font-bold uppercase tracking-widest py-2 mt-2 hover:bg-white hover:text-red-700 transition-all">
+            <i class="fa-solid fa-location-arrow mr-1"></i> Get Live Directions
+          </a>
+        </div>
+
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+        <p class="text-white text-sm font-medium tracking-tight">
+          © 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved | Designed by Brightline Creations.
         </p>
       </div>
 
-      <div>
-        <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Quick Links</h4>
-        <ul class="space-y-4 text-sm">
-          <li><a href="/programs" class="hover:text-yellow-400 transition">Our Programs</a></li>
-          <li><a href="/shortcourses" class="hover:text-yellow-400 transition">Short Courses</a></li>
-          <li><a href="/admission" class="hover:text-yellow-400 transition">Admissions</a></li>
-          <li><a href="/FAQ" class="hover:text-yellow-400 transition">FAQ</a></li>
-          <li><a href="/contact" class="hover:text-yellow-400 transition">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Our Campuses</h4>
-        <div class="space-y-6 text-sm">
-          <div>
-            <p class="text-yellow-400 font-bold uppercase tracking-tighter">Machakos Campus (HQ)</p>
-            <p class="text-gray-400 mt-1 leading-relaxed">Kenya Institute Building, Next to Lysak Haven Park, Along Machakos-Nairobi Highway</p>
-          </div>
-          <div>
-            <p class="text-yellow-400 font-bold uppercase tracking-tighter">Malili Campus</p>
-            <p class="text-gray-400 mt-1 leading-relaxed">Malili Shopping Centre, Along Konza Road, 7KM off Mombasa Road</p>
-          </div>
-          <div>
-            <p class="text-yellow-400 font-bold uppercase tracking-tighter">Mlolongo Campus</p>
-            <p class="text-gray-400 mt-1 leading-relaxed">Unaitas Building, 1st Floor</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Get In Touch</h4>
-        <div class="space-y-4 text-sm">
-          <div class="flex gap-3">
-            <i class="fa-solid fa-phone text-red-500 mt-1"></i>
-            <div>
-              <a href="tel:0741958940" class="block hover:text-white transition">0741 958 940</a>
-              <a href="tel:0726580464" class="block hover:text-white transition">0726 580 464</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-3">
-            <i class="fa-solid fa-envelope text-red-500"></i>
-            <a href="mailto:kissje2009@gmail.com" class="hover:text-white transition">kissje2009@gmail.com</a>
-          </div>
-          <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-none text-white text-xs font-bold mt-4 transition-all uppercase">
-            <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Us
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-sm">Visit HQ (Machakos)</h4>
-        <div class="border border-gray-800 shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.471677322301!2d37.24596747371901!3d-1.5174469358117765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f81f909b52fcf%3A0x228c1f4d8e4f0e0b!2sLysak%20Haven%20Park!5e0!3m2!1sen!2ske!4v1713444000000!5m2!1sen!2ske"
-            width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=-1.5174523,37.2485424" target="_blank" class="block text-center bg-red-700 text-white text-[10px] font-bold uppercase tracking-widest py-2 mt-2 hover:bg-white hover:text-red-700 transition-all">
-          <i class="fa-solid fa-location-arrow mr-1"></i> Get Live Directions
-        </a>
-      </div>
-
     </div>
+  </footer>
 
-    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-      <p class="text-white text-sm font-medium tracking-tight">
-        © 2026 Kenya Institute of Social Sciences (KISS). All Rights Reserved | Designed by Brightline Creations.
-      </p>
-    </div>
-
-  </div>
-</footer>
-
-<div class="fixed bottom-4 left-6 z-50 flex flex-col items-center gap-3">
+  <!-- Floating buttons & scripts (unchanged) -->
+  <div class="fixed bottom-4 left-6 z-50 flex flex-col items-center gap-3">
 
         <a href="https://wa.me/254741958940?text=Hello!%20I%20am%20contacting%20you%20from%20your%20website%20regarding%20the%20Kenya%20Institute%20of%20Social%20Sciences."
        class="floating-action-btn bg-[#25D366] text-white hover:scale-105 active:scale-95 !w-[95px] !h-[32px] !text-[9px]">
@@ -268,9 +365,9 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
 
-<script>
+  <script>
     const backToTopBtn = document.getElementById('backToTop');
     const progressCircle = document.getElementById('progressCircle');
     const circumference = 2 * Math.PI * 24;
@@ -292,54 +389,32 @@
     });
 
     backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+ <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69f0ebc6ada8911c32dd4144/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
+<!--End of Tawk.to Script-->
+<script>
+    // Make middle blue bar disappear on scroll, main navbar raises up
+    const blueBar = document.getElementById('tempBlueBar');
 
-<!--  <div id="backToTop" class="fixed bottom-6 right-6 z-50 cursor-pointer opacity-0 invisible transition-all duration-300 translate-y-10">-->
-<!--    <div class="relative flex items-center justify-center w-14 h-14">-->
-<!--      <svg class="absolute transform -rotate-90" width="56" height="56">-->
-<!--        <circle cx="28" cy="28" r="24" stroke="#1f2937" stroke-width="4" fill="transparent" />-->
-<!--        <circle id="progressCircle" cx="28" cy="28" r="24" stroke="#16a34a" stroke-width="4" fill="transparent" stroke-dasharray="150.8" stroke-dashoffset="150.8" stroke-linecap="round" class="transition-all duration-150" />-->
-<!--      </svg>-->
-<!--      <div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg"><i class="fa-solid fa-arrow-up text-green-600"></i></div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <script>-->
-<!--    const backToTopBtn = document.getElementById('backToTop');-->
-<!--    const progressCircle = document.getElementById('progressCircle');-->
-<!--    const circumference = 2 * Math.PI * 24;-->
-
-<!--    window.addEventListener('scroll', () => {-->
-<!--        const scrollTop = window.scrollY;-->
-<!--        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;-->
-<!--        const scrollPercentage = scrollTop / (scrollHeight || 1);-->
-
-<!--        progressCircle.style.strokeDashoffset = (circumference - (scrollPercentage * circumference)).toString();-->
-
-<!--        if (scrollTop > 400) {-->
-<!--            backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-10');-->
-<!--            backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');-->
-<!--        } else {-->
-<!--            backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-10');-->
-<!--            backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');-->
-<!--        }-->
-<!--    });-->
-
-<!--    backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));-->
-<!--  </script>-->
-
-{% if not user.is_staff %}
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69e45edd65fc181c3553aea8/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    {% endif %}
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        blueBar.classList.add('scrolled');
+      } else {
+        blueBar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
